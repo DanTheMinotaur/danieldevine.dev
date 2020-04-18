@@ -34,7 +34,7 @@
                 <a href="gallery.html" class="button big">Full Gallery</a>
             </footer>
         </div>
-</section>
+    </section>
 </template>
 
 <script>  

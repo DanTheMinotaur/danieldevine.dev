@@ -1,28 +1,11 @@
 <template>  
-  <div>
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-          <li>
-            <a href="/">Strapi Blog </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav">
-          <li v-for="category in categories" v-bind:key="category.id">
-            <router-link
-              :to="{ path: '/category/' + category.id }"
-              :key="category.id"
-            >
-              {{ category.name }}
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+  <nav id="nav">
+    <ul>
+      <li><a href="index.html" class="active"><span class="icon fa-home"></span></a></li>
+      <li><a href="gallery.html"><span class="icon fa-camera-retro"></span></a></li>
+      <li><a href="generic.html"><span class="icon fa-file-text-o"></span></a></li>
+    </ul>
+  </nav>
 </template>
 
 <script>  
