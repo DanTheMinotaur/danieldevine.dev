@@ -1,17 +1,21 @@
 <template>  
   <div id="app">
-    <Nav />
-    <router-view :key="$route.fullPath"></router-view>
+    <div class="page-wrap">
+      <Nav />
+      <router-view :key="$route.fullPath"></router-view>
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script>
 
 import Nav from "./components/Nav.vue"
+import Footer from './components/Footer.vue'
 
 export default {
   name: "App",
-  components: { Nav }
+  components: { Nav, Footer }
 };
 </script>
 
