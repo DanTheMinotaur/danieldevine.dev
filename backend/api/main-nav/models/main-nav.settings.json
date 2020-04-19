@@ -1,6 +1,6 @@
 {
   "kind": "singleType",
-  "collectionName": "main_navs",
+  "collectionName": "main_nav",
   "info": {
     "name": "Main Nav"
   },
@@ -9,7 +9,7 @@
     "timestamps": true
   },
   "attributes": {
-    "nav_links": {
+    "links": {
       "type": "component",
       "repeatable": true,
       "component": "nav.link"

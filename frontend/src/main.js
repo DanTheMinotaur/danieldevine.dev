@@ -29,7 +29,8 @@ const router = new VueRouter({
       path: "/category/:id",
       components: require("./containers/Category.vue")
     }
-  ]
+  ],
+  linkExactActiveClass: 'active'
 })
 
 new Vue({  

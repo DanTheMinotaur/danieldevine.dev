@@ -1,9 +1,11 @@
 <template>  
   <nav id="nav">
     <ul>
-      <li><a href="index.html" class="active"><span class="icon fa-home"></span></a></li>
-      <li><a href="gallery.html"><span class="icon fa-camera-retro"></span></a></li>
-      <li><a href="generic.html"><span class="icon fa-file-text-o"></span></a></li>
+      <li v-for="link in mainNav.links" v-bind:key="link.link">
+        <router-link :to="link.link" v-bind:class="{ active: active }">
+            <span v-bind:class="link.icon" class="icon"></span>
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -15,15 +17,18 @@ export default {
   name: "Nav",
   data() {
     return {
-      categories: []
+      mainNav: []
     };
   },
   apollo: {
-    categories: gql`
-      query Categories {
-        categories {
-          id
-          name
+    mainNav: gql`
+      query MainNav {
+        mainNav {
+          links {
+            name,
+            link,
+            icon
+          }
         }
       }
     `

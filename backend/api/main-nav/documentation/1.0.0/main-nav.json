@@ -323,7 +323,7 @@
           "id": {
             "type": "string"
           },
-          "nav_links": {
+          "links": {
             "type": "array",
             "items": {
               "type": "object",
@@ -352,7 +352,7 @@
       },
       "NewMain-nav": {
         "properties": {
-          "nav_links": {
+          "links": {
             "type": "array",
             "items": {
               "type": "object",
