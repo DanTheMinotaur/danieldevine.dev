@@ -5,29 +5,11 @@
                 <h2>What's New</h2>
             </header>
             <div class="content">
-                <div class="media">
-                    <a href="images/fulls/01.jpg"><img src="images/thumbs/01.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/05.jpg"><img src="images/thumbs/05.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/09.jpg"><img src="images/thumbs/09.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/06.jpg"><img src="images/thumbs/06.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/10.jpg"><img src="images/thumbs/10.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/03.jpg"><img src="images/thumbs/03.jpg" alt="" title="This right here is a caption." /></a>
-                </div>
-                <div class="media">
-                    <a href="images/fulls/07.jpg"><img src="images/thumbs/07.jpg" alt="" title="This right here is a caption." /></a>
+                <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
+                    <!-- {{g}} -->
+                    <router-link :to="g.link">
+                        <img :src="apiUrl + g.image.url" :alt="g.image.alternateText" :title="g.image.caption" />
+                    </router-link>
                 </div>
             </div>
             <footer>
@@ -38,9 +20,32 @@
 </template>
 
 <script>  
-// import gql from "graphql-tag"
+import gql from "graphql-tag"
 
 export default {  
-  name: "Gallery"
+  name: "Gallery",
+  data() {
+    return {
+      apiUrl: process.env.VUE_APP_STRAPI_API_URL,
+      galleryItems: []
+    }
+  },
+  apollo: {
+    galleries: gql`
+        query galleries {
+        galleries(limit:8) {
+            id,
+            name,
+            link,
+            image {
+            url,
+            formats,
+            caption,
+            alternativeText
+            }
+        }
+    }
+    `
+  }
 }
 </script>

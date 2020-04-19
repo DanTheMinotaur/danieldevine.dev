@@ -2,7 +2,7 @@
   <nav id="nav">
     <ul>
       <li v-for="link in mainNav.links" v-bind:key="link.link" :title="link.name">
-        <router-link :to="link.link" v-bind:class="{ active: active }">
+        <router-link :to="link.link">
             <span v-bind:class="link.icon" class="icon"></span>
         </router-link>
       </li>
