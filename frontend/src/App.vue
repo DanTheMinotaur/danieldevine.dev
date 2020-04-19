@@ -3,7 +3,6 @@
     <div class="page-wrap">
       <Nav />
       <section id="main">
-        
         <router-view :key="$route.fullPath"></router-view>
         <Footer />
       </section>
