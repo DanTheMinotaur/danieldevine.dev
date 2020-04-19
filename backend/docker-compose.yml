@@ -12,9 +12,8 @@ services:
       .env
     ports:
       - '127.0.0.1:1337:1337'
-    
     volumes:
-      - ./:/srv/app
+      - ./:/usr/src/app
     depends_on:
       - db
 
