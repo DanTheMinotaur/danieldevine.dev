@@ -6,7 +6,6 @@
             </header>
             <div class="content">
                 <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
-                    <!-- {{g}} -->
                     <router-link :to="g.link">
                         <img :src="apiUrl + g.image.url" :alt="g.image.alternateText" :title="g.image.caption" />
                     </router-link>
@@ -38,10 +37,9 @@ export default {
             name,
             link,
             image {
-            url,
-            formats,
-            caption,
-            alternativeText
+                url,
+                caption,
+                alternativeText
             }
         }
     }
