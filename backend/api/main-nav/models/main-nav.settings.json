@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_navs",
+  "info": {
+    "name": "Main Nav"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nav_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "nav.link"
+    }
+  }
+}

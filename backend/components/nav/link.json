@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_nav_links",
+  "info": {
+    "name": "link",
+    "icon": "arrow-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
