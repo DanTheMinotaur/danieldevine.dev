@@ -7,7 +7,7 @@ COPY ./yarn.lock ./
 
 RUN yarn install
 
-COPY . .
+COPY ./ ./
 
 ENV NODE_ENV staging
 
