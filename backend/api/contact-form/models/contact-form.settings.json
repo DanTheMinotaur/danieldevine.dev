@@ -1,10 +1,13 @@
 {
-  "collectionName": "components_forms_contact_forms",
+  "kind": "collectionType",
+  "collectionName": "contact_forms",
   "info": {
-    "name": "Contact Form",
-    "icon": "address-card"
+    "name": "Contact Form"
   },
-  "options": {},
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
   "attributes": {
     "name": {
       "type": "string",
@@ -15,8 +18,7 @@
       "required": true
     },
     "message": {
-      "type": "text",
-      "required": true
+      "type": "text"
     }
   }
 }
