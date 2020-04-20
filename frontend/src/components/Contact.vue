@@ -59,27 +59,32 @@ export default {
               displayCloseButton: false,
               positionClass: 'nfc-top-right',
           }
-          let message = {}
-          axios.post(process.env.VUE_APP_STRAPI_API_URL + '/contact-forms', {
-              name: this.name,
-              email: this.email,
-              message: this.message
-          }).then(() => {
-              this.name = ""
-              this.email = ""
-              this.message = ""
-              notificationConfig.theme = 'success'
-              message.title = 'Message Sent!'
-              message.message = 'Your message was recieved succesfully'
-          }).catch(error => {
-              console.log(error)
-              notificationConfig.theme = 'error'
-              message.title = 'Error!'
-              message.message = 'Could not send message :-('
-          }).finally(() => {
-              const notification = window.createNotification(notificationConfig)
-              notification(message)
-          })
+
+          if (this.name && this.email && this.message) {
+            let message = {}
+            axios.post(process.env.VUE_APP_STRAPI_API_URL + '/contact-forms', {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            }).then(() => {
+                this.name = ""
+                this.email = ""
+                this.message = ""
+                notificationConfig.theme = 'success'
+                message.title = 'Message Sent!'
+                message.message = 'Your message was recieved succesfully'
+            }).catch(error => {
+                console.log(error)
+                notificationConfig.theme = 'error'
+                message.title = 'Error!'
+                message.message = 'Could not send message :-('
+            }).finally(() => {
+                const notification = window.createNotification(notificationConfig)
+                notification(message)
+            })
+          }
+          
+          
       }
   }
 }
