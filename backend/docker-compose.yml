@@ -2,6 +2,8 @@ version: '3'
 
 services:
   strapi:
+    build:
+      context: .
     container_name: strapi
     image: strapi/strapi
     environment:
