@@ -59,6 +59,7 @@ export default {
               displayCloseButton: false,
               positionClass: 'nfc-top-right',
           }
+          let message = {}
           axios.post(process.env.VUE_APP_STRAPI_API_URL + '/contact-forms', {
               name: this.name,
               email: this.email,
@@ -68,15 +69,16 @@ export default {
               this.email = ""
               this.message = ""
               notificationConfig.theme = 'success'
+              message.title = 'Message Sent!'
+              message.message = 'Your message was recieved succesfully'
           }).catch(error => {
               console.log(error)
               notificationConfig.theme = 'error'
+              message.title = 'Error!'
+              message.message = 'Could not send message :-('
           }).finally(() => {
               const notification = window.createNotification(notificationConfig)
-              notification({
-                  title: 'Title',
-                  message: 'Notification Message'
-              })
+              notification(message)
           })
       }
   }
