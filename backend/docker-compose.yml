@@ -5,7 +5,6 @@ services:
     build:
       context: .
     container_name: strapi
-    image: strapi/strapi
     environment:
       - VIRTUAL_HOST=api.dev.danieldevine.dev
       - LETSENCRYPT_HOST=api.dev.danieldevine.dev
