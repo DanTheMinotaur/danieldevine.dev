@@ -1,5 +1,6 @@
 <template>
     <main>
+        <blog-header :title="'Blog'" :image="'img'"/>
         <section v-for="post in articles" v-bind:key="post.slug" class="hero">
             <div class="hero-body">
             <div class="container">
@@ -35,6 +36,7 @@
 <script>
 import gql from "graphql-tag"
 const moment = require("moment")
+import BlogHeader from "../components/Blog/BlogHeader.vue"
 
 export default {
     name: "Blog",
@@ -43,6 +45,9 @@ export default {
             articles: [],
             moment: moment
         }
+    },
+    components: {
+        BlogHeader,
     },
     apollo: {
         articles: gql`
