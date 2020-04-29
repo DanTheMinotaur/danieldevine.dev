@@ -1,8 +1,8 @@
 <template>  
-    <section id="banner">
+    <section id="banner" v-bind:style="{'background-image': `url(${getURL(homePage.header_image.url).href})`}" v-if="homePage.header_image">
         <div class="inner">
-            <h1>Hey, I'm Snapshot</h1>
-            <p>A fully responsive gallery template by <a href="https://templated.co">TEMPLATED</a></p>
+            <h1>{{homePage.header}}</h1>
+            <p>{{homePage.sub_header}}</p>
             <ul class="actions">
                 <li><a href="#galleries" class="button alt scrolly big">Continue</a></li>
             </ul>
@@ -10,10 +10,10 @@
     </section>
 </template>
 
-<script>  
-// import gql from "graphql-tag"
+<script>
 
 export default {  
-  name: "Banner"
+  name: "Banner",
+  props: ['homePage']
 }
 </script>  
