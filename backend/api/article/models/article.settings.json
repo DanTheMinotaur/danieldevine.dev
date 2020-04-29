@@ -30,8 +30,8 @@
       "type": "date"
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "media": {
       "collection": "file",
@@ -43,6 +43,13 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }
