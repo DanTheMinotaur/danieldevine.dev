@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "social_media_links",
+  "info": {
+    "name": "Social Media Links"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "nav.link"
+    }
+  }
+}

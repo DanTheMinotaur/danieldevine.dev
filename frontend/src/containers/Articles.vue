@@ -25,17 +25,17 @@ export default {
   },
   apollo: {
     articles: gql`
-      query Articles {
-        articles {
-          id
-          title
-          content
-          image {
-            url
-          }
-          category {
-            name
-          }
+      query articles {
+        id
+        title
+        content
+        category {
+          name
+        },
+        description,
+        header_image {
+          name,
+          url
         }
       }
     `

@@ -20,3 +20,26 @@ export default {
   components: { Nav, Footer }
 };
 </script>
+
+<style>
+  @import './assets/css/font-awesome.min.css';
+</style>
+
+<style scoped>
+	.page-wrap {
+		display: -ms-flexbox;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-wrap: nowrap;
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		-moz-justify-content: -moz-flex-start;
+		-webkit-justify-content: -webkit-flex-start;
+		-ms-justify-content: -ms-flex-start;
+		justify-content: flex-start;
+  }
+
+</style>

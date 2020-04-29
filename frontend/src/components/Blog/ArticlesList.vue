@@ -10,14 +10,10 @@
         >
           <div class="uk-card uk-card-muted">
             <div class="uk-card-media-top">
-              <img :src="api_url + article.image.url" alt="" height="100" />
+              <img :src="getURL(article.image.url).href" alt="" height="100" />
             </div>
             <div class="uk-card-body">
-              <p
-                id="category"
-                v-if="article.category"
-                class="uk-text-uppercase"
-              >
+              <p id="category" v-if="article.category" class="uk-text-uppercase">
                 {{ article.category.name }}
               </p>
               <p id="title" class="uk-text-large">{{ article.title }}</p>
@@ -57,11 +53,6 @@
 
 <script>  
 export default {  
-  data: function() {
-    return {
-      api_url: process.env.VUE_APP_STRAPI_API_URL
-    }
-  },
   props: {
     articles: Array
   },

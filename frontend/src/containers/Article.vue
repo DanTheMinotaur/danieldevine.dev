@@ -1,56 +1,62 @@
 <template>  
   <div>
-    <div
-      v-if="article.image"
-      id="banner"
-      class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding"
-      :data-src="api_url + article.image.url"
-      uk-img
-    >
-      <h1>{{ article.title }}</h1>
-    </div>
-
-    <div class="uk-section">
-      <div class="uk-container uk-container-small">
-        <vue-markdown-it
-          v-if="article.content"
-          :source="article.content"
-          id="editor"
-        />
-        <p v-if="article.published_at">
-          {{ moment(article.published_at).format("MMM Do YY") }}
-        </p>
+    <blog-header :title="article.title" :image="article.header_image" />
+    <article class="container">
+      <div class="column is-12 is-center">
+        <div class="card article">
+          <div class="card-content">
+              <div class="media">
+                  <div class="media-content has-text-centered">
+                      <p class="title article-title">{{article.description}}</p>
+                      <div class="tags has-addons level-item">
+                          <span class="tag is-rounded">{{ moment(article.published_at).format("MMMM Do, YYYY") }}</span>
+                      </div>
+                  </div>
+              </div>
+              <markdown-it-vue v-if="article.content" class="content article-body" :content="article.content" />
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   </div>
 </template>
 
 <script>  
-var moment = require("moment");  
-import VueMarkdownIt from "vue-markdown-it";  
-import gql from "graphql-tag";
+const moment = require("moment")
+import MarkdownItVue from 'markdown-it-vue'
+import 'markdown-it-vue/dist/markdown-it-vue.css'
+import gql from "graphql-tag"
+import BlogHeader from "../components/Blog/BlogHeader.vue"
 
 export default {  
   data() {
     return {
-      article: {},
+      articles: {},
       moment: moment,
-      api_url: process.env.VUE_APP_STRAPI_API_URL,
-      routeParam: this.$route.params.id
+      routeParam: this.$route.params.slug
     };
   },
   components: {
-    VueMarkdownIt
+    MarkdownItVue,
+    BlogHeader
+  },
+  computed: {
+    article() {
+      return this.articles && this.articles.length > 0 ? this.articles[0] : {}
+    },
+    headerImage() {
+      return {'background-image': `url(${this.getURL(this.article.header_image.url).href})`}
+    }
   },
   apollo: {
-    article: {
+    articles: {
       query: gql`
-        query Articles($id: ID!) {
-          article(id: $id) {
-            id
+        query Article($slug: String!){
+          articles(where: {slug: $slug}) {
+            slug,
             title
             content
-            image {
+            header_image {
               url
             }
             published_at
@@ -59,7 +65,7 @@ export default {
       `,
       variables() {
         return {
-          id: this.routeParam
+          slug: this.routeParam
         };
       }
     }

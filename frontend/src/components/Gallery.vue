@@ -7,7 +7,7 @@
             <div class="content">
                 <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
                     <router-link :to="g.link">
-                        <img :src="apiUrl + g.image.url" :alt="g.image.alternateText" :title="g.image.caption" />
+                        <img :src="getURL(g.image.url).href" :alt="g.image.alternateText" :title="g.image.caption" />
                     </router-link>
                 </div>
             </div>
@@ -25,7 +25,6 @@ export default {
   name: "Gallery",
   data() {
     return {
-      apiUrl: process.env.VUE_APP_STRAPI_API_URL,
       galleryItems: []
     }
   },
