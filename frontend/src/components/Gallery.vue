@@ -133,6 +133,8 @@ export default {
       opacity: 0;
       position: relative;
       width: 25%;
+      margin-top: 0;
+      padding-top: 0;
 
       a {
         display: block;
