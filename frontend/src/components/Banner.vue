@@ -3,9 +3,6 @@
         <div class="inner">
             <h1>{{homePage.header}}</h1>
             <p>{{homePage.sub_header}}</p>
-            <ul class="actions">
-                <li><a href="#galleries" class="button alt scrolly big">Continue</a></li>
-            </ul>
         </div>
     </section>
 </template>
@@ -17,3 +14,117 @@ export default {
   props: ['homePage']
 }
 </script>  
+
+<style lang="scss" scoped>
+body.is-loading #banner > .inner {
+  opacity: 0;
+  -moz-transform: translateY(1em);
+  -webkit-transform: translateY(1em);
+  -ms-transform: translateY(1em);
+  transform: translateY(1em);
+}
+
+#banner {
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  padding: 8em 0 6em 0;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  min-height: 75vh;
+  height: 75vh;
+  position: relative;
+  background: #000;
+  // background-image: url(../../images/banner.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  color: #FFF;
+
+  &:before {
+    -moz-transition: opacity 3s ease;
+    -webkit-transition: opacity 3s ease;
+    -ms-transition: opacity 3s ease;
+    transition: opacity 3s ease;
+    -moz-transition-delay: 0.25s;
+    -webkit-transition-delay: 0.25s;
+    -ms-transition-delay: 0.25s;
+    transition-delay: 0.25s;
+    content: '';
+    display: block;
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    opacity: 0.65;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .inner {
+    -moz-transform: none;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    -moz-transition: opacity 1s ease, transform 1s ease;
+    -webkit-transition: opacity 1s ease, transform 1s ease;
+    -ms-transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
+    position: relative;
+    opacity: 1;
+    z-index: 3;
+    padding: 0 2em;
+  }
+
+  h1 {
+    font-size: 4em;
+    line-height: 1em;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    color: #FFF;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 1.75em;
+  }
+
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  #banner h1 {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #banner {
+    background-attachment: scroll;
+
+    h1 {
+      font-size: 2.25em;
+    }
+
+    p {
+      font-size: 1.25em;
+    }
+  }
+}
+</style>
