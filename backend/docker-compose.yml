@@ -11,7 +11,10 @@ services:
       .env
     networks:
       - backend
-
+    external_links:
+        - mariadb_server:mysql
+    restart: unless-stopped
+    
 networks:
   backend:
     external:
