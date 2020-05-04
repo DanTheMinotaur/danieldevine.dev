@@ -4,6 +4,8 @@ services:
   strapi-api:
     build:
       context: .
+      args: 
+        STRAPI_VERSION: '3.0.0-beta.20'
     container_name: strapi-api
     env_file: 
       .env
