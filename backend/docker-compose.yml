@@ -1,18 +1,15 @@
-version: '3'
-
+version: '3.3'
 services:
-  strapi-api:
-    build:
-      context: .
-      args: 
-        STRAPI_VERSION: '3.0.0-beta.20'
-    container_name: strapi-api
-    env_file: 
-      .env
+  strapi:
+    build: .
     ports:
       - '127.0.0.1:1337:1337'
     volumes:
-      - ./:/usr/src/app
+      - '`pwd`:/srv/app'
+    
+    env_file: 
+      .env
+    # image: strapi/strapi
     networks:
       - backend
 

@@ -1,18 +1,15 @@
-FROM node:12.16
+FROM strapi/base
 
-WORKDIR /usr/src/app
-
-ARG STRAPI_VERSION
-RUN yarn add strapi@${STRAPI_VERSION}
-
-RUN ls
+WORKDIR /app
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
 
 RUN yarn install
 
-COPY ./ ./
+COPY . .
+
+ENV NODE_ENV production
 
 RUN yarn build
 
