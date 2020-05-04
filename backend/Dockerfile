@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 ARG STRAPI_VERSION
 RUN yarn add strapi@${STRAPI_VERSION}
 
-RUN la
+RUN ls
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
