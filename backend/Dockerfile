@@ -3,7 +3,9 @@ FROM node:12.16
 WORKDIR /usr/src/app
 
 ARG STRAPI_VERSION
-RUN yarn global add strapi@${STRAPI_VERSION}
+RUN yarn add strapi@${STRAPI_VERSION}
+
+RUN la
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
