@@ -1,14 +1,10 @@
 version: '3'
 
 services:
-  strapi:
+  strapi-api:
     build:
       context: .
-    container_name: strapi
-    environment:
-      - VIRTUAL_HOST=api.dev.danieldevine.dev
-      - LETSENCRYPT_HOST=api.dev.danieldevine.dev
-      - VIRTUAL_PORT=1337
+    container_name: strapi-api
     env_file: 
       .env
     ports:

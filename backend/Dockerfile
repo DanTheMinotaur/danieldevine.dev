@@ -1,4 +1,4 @@
-FROM strapi/base
+FROM node:12.16
 
 WORKDIR /usr/src/app
 
@@ -8,8 +8,6 @@ COPY ./yarn.lock ./
 RUN yarn install
 
 COPY ./ ./
-
-ENV NODE_ENV staging
 
 RUN yarn build
 
