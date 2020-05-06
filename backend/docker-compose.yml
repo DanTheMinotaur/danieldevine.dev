@@ -5,7 +5,6 @@ services:
     ports:
       - '127.0.0.1:1337:1337'
     volumes:
-      - './:/srv/app'
       - 'staging_public_files:/app/public'
     env_file: 
       .env
