@@ -6,7 +6,7 @@ services:
       - '127.0.0.1:1337:1337'
     volumes:
       - './:/srv/app'
-      - 'staging_public_files:/srv/app/public/'
+      - 'staging_public_files:/srv/app/public'
     env_file: 
       .env
     networks:
@@ -15,8 +15,7 @@ services:
         - mariadb_server:mysql
     restart: unless-stopped
 volumes:
-  staging_public_files:
-      external: true
+  staging_public_files: {}
 networks:
   backend:
     external:
