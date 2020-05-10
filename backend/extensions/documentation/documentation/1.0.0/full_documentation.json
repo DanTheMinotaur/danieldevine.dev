@@ -27,11 +27,11 @@
       "description": "Development server"
     },
     {
-      "url": "YOUR_STAGING_SERVER",
+      "url": "https://api.dev.danieldevine.dev",
       "description": "Staging server"
     },
     {
-      "url": "YOUR_PRODUCTION_SERVER",
+      "url": "https://api.danieldevine.dev",
       "description": "Production server"
     }
   ],
