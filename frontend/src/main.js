@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.mixin({
   methods: {
     getURL: url => {
-      return new URL(url, process.env.VUE_APP_STRAPI_API_URL)
+      return new URL(url, process.env.API_URL)
     },
     capitalize: string => {
       return string.charAt(0).toUpperCase() + string.slice(1)
