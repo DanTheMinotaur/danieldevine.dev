@@ -45,7 +45,7 @@ export default {
 
           if (this.name && this.email && this.message) {
             let message = {}
-            axios.post(process.env.API_URL + '/contact-forms', {
+            axios.post(process.env.VUE_APP_STRAPI_API_URL + '/contact-forms', {
                 name: this.name,
                 email: this.email,
                 message: this.message

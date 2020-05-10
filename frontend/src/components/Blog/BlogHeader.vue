@@ -11,12 +11,11 @@
       <ul>
         <li v-for="crumb in breadCrumbs()" v-bind:key="crumb">
           <router-link :to="{path: crumb}" :key="crumb">
-            {{capitalize(crumb)}}
+            {{capitalize(slugToText(crumb))}}
           </router-link>
         </li>
         </ul>
       </nav>
-      {{breadCrumbs()}}
   </div>
 </template>
 
@@ -32,7 +31,17 @@ export default {
   methods: {
     breadCrumbs() {
       return this.$route.path.split('/').filter(Boolean)
+    },
+    slugToText(slug) {
+      return slug.replace(/-/g, ' ')
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .breadcrumb {
+    margin-left: 3em;
+    margin-top: 1em;
+  }
+</style>

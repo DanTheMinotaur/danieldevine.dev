@@ -1,13 +1,16 @@
 <template>  
   <div>
     <blog-header :title="article.title" :image="article.header_image" />
+    <hr>
     <article class="container">
-      <div class="column is-12 is-center">
+      <div class="columns">
+      <div class="column is-full">
         <div class="card article">
           <div class="card-content">
               <div class="media">
                   <div class="media-content has-text-centered">
                       <p class="title article-title">{{article.description}}</p>
+                      <hr>
                       <div class="tags has-addons level-item">
                           <span class="tag is-rounded">{{ moment(article.published_at).format("MMMM Do, YYYY") }}</span>
                       </div>
@@ -16,6 +19,7 @@
               <markdown-it-vue v-if="article.content" class="content article-body" :content="article.content" />
           </div>
         </div>
+      </div>
       </div>
     </article>
   </div>
@@ -72,3 +76,22 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+hr {
+    background-color: #f5f5f5;
+    border: none;
+    display: block;
+    height: 2px;
+    margin: 1.5rem 0;
+}
+
+.markdown-body {
+  font-size: 2rem;
+  padding: 2%;
+}
+
+.container {
+  max-width: 1744px;
+}
+</style>
