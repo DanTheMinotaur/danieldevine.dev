@@ -9,7 +9,8 @@ RUN yarn install
 
 COPY . .
 
-ENV NODE_ENV production
+ARG ENVIRONMENT
+ENV NODE_ENV ${ENVIRONMENT}
 
 RUN yarn build
 

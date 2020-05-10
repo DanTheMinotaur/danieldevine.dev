@@ -11,8 +11,10 @@ services:
     networks:
       - backend
     external_links:
-        - mariadb_server:mysql
+      - mariadb_server:mysql
     restart: unless-stopped
+    args:
+      ENVIRONMENT: ${NODE_ENV}
 volumes:
   staging_public_files:
     external: true
