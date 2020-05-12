@@ -1,9 +1,7 @@
 <template>
   <div><section class="hero is-info is-bold" v-bind:style="headerImage" v-if="image">
     <div class="hero-body">
-      <div class="container has-text-centered">
         <h1 class="title">{{title}}</h1>
-      </div>
     </div>
 
   </section>
@@ -43,5 +41,11 @@ export default {
   .breadcrumb {
     margin-left: 3em;
     margin-top: 1em;
+  }
+</style>
+
+<style lang="scss" scoped>
+  .hero-body {
+    margin-left: 1%;
   }
 </style>

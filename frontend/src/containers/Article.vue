@@ -9,11 +9,18 @@
           <div class="card-content">
               <div class="media">
                   <div class="media-content has-text-centered">
+                    <hr>
+                    <div v-if="article.description">
                       <p class="title article-title">{{article.description}}</p>
                       <hr>
-                      <div class="tags has-addons level-item">
-                          <span class="tag is-rounded">{{ moment(article.published_at).format("MMMM Do, YYYY") }}</span>
-                      </div>
+                    </div>
+                    <figure class="image">
+                      <img :src="getURL(article.header_image.url).href"/>
+                    </figure>
+                    <hr>
+                    <div class="tags has-addons level-item">
+                        <span class="tag is-rounded">{{ moment(article.published_at).format("MMMM Do, YYYY") }}</span>
+                    </div>
                   </div>
               </div>
               <markdown-it-vue v-if="article.content" class="content article-body" :content="article.content" />
@@ -60,6 +67,7 @@ export default {
             slug,
             title
             content
+            description
             header_image {
               url
             }
