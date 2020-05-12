@@ -1,19 +1,10 @@
 <template>
-  <div><section class="hero is-info is-bold" v-bind:style="headerImage" v-if="image">
-    <div class="hero-body">
-        <h1 class="title">{{title}}</h1>
-    </div>
-
-  </section>
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-      <ul>
-        <li v-for="crumb in breadCrumbs()" v-bind:key="crumb">
-          <router-link :to="{path: crumb}" :key="crumb">
-            {{capitalize(slugToText(crumb))}}
-          </router-link>
-        </li>
-        </ul>
-      </nav>
+  <div>
+    <section class="hero is-info is-bold" v-bind:style="headerImage" v-if="image">
+      <div class="hero-body">
+          <h1 class="title">{{title}}</h1>
+      </div>
+    </section>
   </div>
 </template>
 
