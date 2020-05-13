@@ -1,9 +1,15 @@
 <template>  
-    <section id="banner" v-bind:style="{'background-image': `url(${getURL(homePage.header_image.url).href})`}" v-if="homePage.header_image">
-        <div class="inner">
-            <h1>{{homePage.header}}</h1>
-            <p>{{homePage.sub_header}}</p>
+    <section class="hero is-success is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            {{homePage.header}}
+          </h1>
+          <h2 class="subtitle">
+            {{homePage.sub_header}}
+          </h2>
         </div>
+      </div>
     </section>
 </template>
 
