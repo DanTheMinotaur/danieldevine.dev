@@ -8,7 +8,7 @@
             <div class="columns has-text-centered is-multiline">
                <div v-for="(posts, index) in this.getChunks(this.articles, 3)" v-bind:key="index" class="column">
                   <div v-for="post in posts" v-bind:key="post.slug">
-                      <article-preview :image="post.header_image" :title="post.title" :description="post.description"  />
+                      <article-preview :image="post.header_image" :title="post.title" :description="post.description" :slug="post.slug" />
                   </div>
               </div>
             </div> 
