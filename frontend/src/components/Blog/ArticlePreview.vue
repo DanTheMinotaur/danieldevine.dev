@@ -10,11 +10,9 @@
       </div>
       <div class="card-content">
         <div class="content">
-          <transition name="fade" mode="out-in">
-          <router-link :to="{path: `/blog/${slug}`}" :key="slug">
-            <h2 class="is-2 has-text-center has-text-weight-medium">{{title}}</h2>
-          </router-link>
-          </transition>
+            <router-link :to="{path: `/blog/${slug}`}" :key="slug">
+              <h2 class="is-2 has-text-center has-text-weight-medium">{{title}}</h2>
+            </router-link>
           <div v-if="description">
             <hr />
             <p class="is-4 has-text-grey has-text-center">{{description}}</p>

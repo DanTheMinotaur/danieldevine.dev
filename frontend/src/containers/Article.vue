@@ -1,39 +1,39 @@
 <template>  
-  <div>
-    <blog-header :title="article.title" :image="article.header_image" />
-    <hr>
-    <article class="container">
-      <div class="columns">
-      <div class="column is-full">
-        <div class="card article">
-          <div class="card-content">
-              <div class="media">
-                  <div class="media-content has-text-centered">
-                    <hr>
-                    <div v-if="article.description">
-                      <p class="title article-title">{{article.description}}</p>
-                      <hr>
-                    </div>
-                    <figure class="image">
-                      <img :src="getURL(article.header_image.url).href"/>
-                    </figure>
-                    <hr>
-                    <div class="tags has-addons level-item">
-                        <span class="tag is-rounded">{{ moment(article.published_at).format("MMMM Do, YYYY") }}</span>
-                    </div>
+    <transition name="fade">
+      <div> <!-- TODO Background Colour genertation -->
+        <blog-header :title="article.title" :background_colour="'black'" :datePosted="article.published_at" />
+        <hr>
+
+        <article class="container">
+          <div class="columns">
+          <div class="column is-full">
+            <div class="card article">
+              <div class="card-content">
+                  <div class="media">
+                      <div class="media-content has-text-centered">
+                        <hr>
+                        <div v-if="article.description">
+                          <p class="title article-title">{{article.description}}</p>
+                          <hr>
+                        </div>
+                        <figure class="image">
+                          <img :src="getURL(article.header_image.url).href" v-if="article.header_image"/>
+                        </figure>
+                        <hr>
+                      </div>
                   </div>
+                  <markdown-it-vue v-if="article.content" class="content article-body" :content="article.content" />
               </div>
-              <markdown-it-vue v-if="article.content" class="content article-body" :content="article.content" />
+            </div>
           </div>
-        </div>
+          </div>
+        </article>
+
       </div>
-      </div>
-    </article>
-  </div>
+      </transition>
 </template>
 
-<script>  
-const moment = require("moment")
+<script>
 import MarkdownItVue from 'markdown-it-vue'
 import 'markdown-it-vue/dist/markdown-it-vue.css'
 import gql from "graphql-tag"
@@ -43,7 +43,6 @@ export default {
   data() {
     return {
       articles: {},
-      moment: moment,
       routeParam: this.$route.params.slug
     };
   },
@@ -54,9 +53,6 @@ export default {
   computed: {
     article() {
       return this.articles && this.articles.length > 0 ? this.articles[0] : {}
-    },
-    headerImage() {
-      return {'background-image': `url(${this.getURL(this.article.header_image.url).href})`}
     }
   },
   apollo: {
@@ -86,6 +82,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.image {
+  background-color: black;
+  img {
+    height: auto;
+    width: auto;
+    max-height: 30rem;
+    margin: auto;
+  }
+}
+
+
 hr {
     background-color: #f5f5f5;
     border: none;

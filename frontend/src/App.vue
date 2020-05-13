@@ -34,6 +34,52 @@ export default {
   }
 }
 
+// Vue Transitions
+
+.tray-enter,
+.tray-leave-to { opacity: 0 }
+
+.tray-leave,
+.tray-enter-to { opacity: 1 }
+
+.tray-enter-active,
+.tray-leave-active { transition: opacity 10000ms }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.slither-enter-active, .slither-leave-active {
+  transition: transform 1s;
+}
+
+.slither-enter, .slither-leave-to {
+  transform: translateX(-100%);
+}
+
+.slither-enter-to, .slither-leave {
+  transform: translateX(0);
+}
+
+.drain-enter-active, .drain-leave-active {
+  transition: transform 1s;
+}
+
+.drain-enter, .drain-leave-to {
+  transform: translateY(100%);
+}
+
+.drain-enter-to, .drain-leave {
+  transform: translateY(0);
+}
+
+.no-hover{
+    pointer-events: none;
+}
+
 .icon {
   text-decoration: none;
   border-bottom: none;

@@ -1,20 +1,33 @@
 <template>
   <div>
-    <section class="hero is-info is-bold" v-bind:style="headerImage" v-if="image">
+    <section class="hero is-success" >
       <div class="hero-body">
-          <h1 class="title">{{title}}</h1>
+          <h1 class="title">{{title}} <span v-if="datePosted" class="button is-rounded is-primary is-light no-hover">Date Posted: {{ moment(datePosted).format("MMMM Do, YYYY") }}</span></h1>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+const moment = require("moment")
+
 export default {
   name: "BlogHeader",
-  props: ['image', 'title'], 
+  props: ['title', 'datePosted', 'background_colour'], 
+  data() {
+    return {
+      moment: moment,
+    }
+  },
   computed: {
     headerImage() {
       return {'background-image': `url(${this.getURL(this.image.url).href})`}
+    },
+    backgroundColour() {
+      if (this.backgroundColour) {
+        return {'background-color': this.background_colour}
+      }
+      return {}
     }
   },
   methods: {
@@ -28,15 +41,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .breadcrumb {
-    margin-left: 3em;
-    margin-top: 1em;
-  }
-</style>
 
 <style lang="scss" scoped>
   .hero-body {
     margin-left: 1%;
+
+    h1 span {
+      float: right;
+      margin-right: 3%;
+    }
   }
 </style>
