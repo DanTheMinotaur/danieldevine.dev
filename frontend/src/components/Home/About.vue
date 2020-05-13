@@ -1,7 +1,7 @@
 <template>
-    <div class="social column">
+    <div class="social column has-text-centered">
         <h3 class="title">{{about_header}}</h3>
-        <markdown-it-vue  v-if="about" :content="about"/>
+        <markdown-it-vue  v-if="about" :content="about" class="has-text-light"/>
         <h3 class="subtitle">Follow Me</h3>
         <ul class="icons">
             <li v-for="link in socialMediaLink.links" v-bind:key="link.name" :title="link.name">

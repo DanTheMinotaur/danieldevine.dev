@@ -1,6 +1,6 @@
 <template>
     <div class="column">
-        <h3 class="title">Get in Touch</h3>
+        <h3 class="title has-text-centered">Get in Touch</h3>
         <form>
             <div id="form-submit-notify"></div>
             <div class="field half first">
@@ -288,7 +288,7 @@ input {
 }
 
 ::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder, .formerize-placeholder {
-  opacity: 1.0;
-  color: rgba(34, 49, 63, 0.25);
+
+  color: rgba(10, 11, 12, 0.25);
 }
 </style>

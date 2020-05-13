@@ -1,54 +1,63 @@
 <template>
-    <section id="galleries">
-        <div class="gallery">
+  <section class="hero is-warning is-fullheight">
+    <div class="hero-body">
+
+        <section id="galleries">
+          <div class="gallery">
             <header class="special">
-                <h2 class="title">What's New</h2>
+              <h2 class="title">Projects</h2>
             </header>
             <div class="content">
-                <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
-                    <router-link :to="g.link">
-                        <img :src="getURL(g.image.url).href" :alt="g.image.alternateText" :title="g.image.caption" />
-                    </router-link>
-                </div>
+              <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
+                <router-link :to="g.link">
+                  <img
+                    :src="getURL(g.image.url).href"
+                    :alt="g.image.alternateText"
+                    :title="g.image.caption"
+                  />
+                </router-link>
+              </div>
             </div>
             <footer>
-                <a href="gallery.html" class="button large is-danger">Full Gallery</a>
+              <a href="gallery.html" class="button large is-danger">Full Gallery</a>
             </footer>
-        </div>
-    </section>
+          </div>
+        </section>
+
+    </div>
+  </section>
 </template>
 
-<script>  
-import gql from "graphql-tag"
+<script>
+import gql from "graphql-tag";
 
-export default {  
+export default {
   name: "Gallery",
   data() {
     return {
       galleryItems: []
-    }
+    };
   },
   apollo: {
     galleries: gql`
-        query galleries {
-        galleries(limit:8) {
-            id,
-            name,
-            link,
-            image {
-                url,
-                caption,
-                alternativeText
-            }
+      query galleries {
+        galleries(limit: 8) {
+          id
+          name
+          link
+          image {
+            url
+            caption
+            alternativeText
+          }
         }
-    }
+      }
     `
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 @-moz-keyframes gallery {
   100% {
     opacity: 1;
@@ -185,7 +194,7 @@ export default {
 
 @media screen and (max-width: 480px) {
   .gallery header h2 {
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
 }
 
