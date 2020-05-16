@@ -1,35 +1,32 @@
 <template>
     <div>
-        <Banner :homePage="homePage" />
+        <Banner :homePage="homePage"/>
         <Gallery />
         <Contact :homePage="homePage" />
-        <section id="contact">
-          <ContactForm />
-          <About :about="homePage.about" :about_header="homePage.about_header"/>
-        </section> 
     </div>
 </template>
 
 <script>
 
+
 import Banner from "../components/Home/Banner.vue"
 import Gallery from '../components/Home/Gallery.vue'
 import Contact from '../components/Home/Contact.vue'
-// import ContactForm from '../components/ContactForm.vue'
-// import About from '../components/Home/About.vue'
+
 
 import gql from "graphql-tag"
 
 export default {  
   name: 'Home',
   components: {
-    Banner,
-    Gallery,
-    Contact
+    banner: Banner,
+    gallery: Gallery,
+    contact: Contact
   },
   data() {
     return {
       homePage: {},
+      currentSection: 'banner'
     }
   },
   apollo: {

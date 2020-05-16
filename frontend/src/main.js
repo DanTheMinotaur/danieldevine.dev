@@ -6,9 +6,11 @@ import apolloClient from './vue-apollo'
 
 import App from './App.vue'
 import gql from 'graphql-tag'
+// use default options
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
+
 Vue.config.productionTip = false
 Vue.mixin({
   methods: {
@@ -27,6 +29,7 @@ Vue.mixin({
     }
   }
 })
+
 // Vue.component(gql)
 // Vue.use(gql)
 
