@@ -12,10 +12,6 @@
             >
             <span>{{capitalize(comp)}}</span>
             </a>
-						<!-- <a href="#" v-on:click="currentComponent = 'home'" class="icon solid fa-home"><span>Home</span></a>
-						<a href="#work" v-on:click="currentComponent = 'work'"  class="icon solid fa-folder"><span>Work</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
-						<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a> -->
 					</nav>
 
 				<!-- Main -->
@@ -35,16 +31,16 @@
 <script>
 
 import './assets/css/main.css'
-import Home from './containers/Home.vue'
-import Work from './containers/Work.vue'
+import Intro from './components/Home/Intro.vue'
+import Work from './components/Home/Work.vue'
 
 export default {
   name: "App",
   data() {
     return {
-      currentComponent: 'home',
+      currentComponent: 'intro',
       navComponents: {
-        home: {
+        intro: {
           icon: 'fa-home'
         },
         work: {
@@ -54,7 +50,7 @@ export default {
     }
   },
   components: { 
-    'home': Home,
+    'intro': Intro,
     'work': Work
   },
   computed: {

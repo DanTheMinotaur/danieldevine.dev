@@ -42,7 +42,7 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: require('./containers/Home.vue')
+      components: require('./App.vue')
     },
     {
       path: '/blog',

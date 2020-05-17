@@ -19,7 +19,7 @@
 import gql from "graphql-tag"
 
 export default {  
-  name: 'Home',
+  name: 'Intro',
   components: {},
   data() {
     return {
