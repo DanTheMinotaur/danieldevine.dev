@@ -1,35 +1,76 @@
 <template>
-  <section class="hero is-danger is-fullheight">
-    <div class="hero-body">
-        <div class="container">
-            <section id="contact">
-                <ContactForm />
-            </section>
-            <section>
-                <About :about="homePage.about" :about_header="homePage.about_header" />
-            </section>
+  <article id="contact" class="panel">
+    <header>
+      <h2>Contact Me</h2>
+    </header>
+    <form v-on:submit.prevent="onSubmit">
+      <div>
+        <div class="row">
+          <div class="col-6 col-12-medium">
+            <input type="text" name="name" placeholder="Name" required/>
+          </div>
+          <div class="col-6 col-12-medium">
+            <input type="text" name="email" placeholder="Email" required/>
+          </div>
+          <div class="col-12">
+            <textarea name="message" placeholder="Message" rows="6" required></textarea>
+          </div>
+          <div class="col-12">
+            <input type="submit" value="Send Message" />
+          </div>
         </div>
-    </div>
-  </section>
+      </div>
+    </form>
+  </article>
 </template>
 
 <script>
-import ContactForm from "./ContactForm.vue"
-import About from "./About.vue"
 
-export default {
+const axios = require('axios')
+
+export default {  
   name: "Contact",
-  props: ["homePage"],
-  components: {
-    ContactForm,
-    About
-  }
-};
-</script>
+  data() {
+      return {
+          message: null,
+          name: null,
+          email: null
+      }
+  },
+  methods: {
+      postMessage() {
+          const notificationConfig = {
+              closeOnClick: true,
+              displayCloseButton: false,
+              positionClass: 'nfc-top-right',
+          }
 
-<style lang="scss" scoped>
-.container section {
-    float: left;
-    width: 49.9%;
+          if (this.name && this.email && this.message) {
+            let message = {}
+            axios.post(process.env.VUE_APP_STRAPI_API_URL + '/contact-forms', {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            }).then(() => {
+                this.name = ""
+                this.email = ""
+                this.message = ""
+                notificationConfig.theme = 'success'
+                message.title = 'Message Sent!'
+                message.message = 'Your message was recieved succesfully'
+            }).catch(error => {
+                console.log(error)
+                notificationConfig.theme = 'error'
+                message.title = 'Error!'
+                message.message = 'Could not send message :-('
+            }).finally(() => {
+                const notification = window.createNotification(notificationConfig)
+                notification(message)
+            })
+          }
+          
+          
+      }
   }
-</style>
+}
+</script>
