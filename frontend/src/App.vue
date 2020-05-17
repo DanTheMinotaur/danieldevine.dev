@@ -15,7 +15,9 @@
 
     <!-- Main -->
     <div id="main">
-      <component v-bind:is="currentComponent" v-if="currentComponent"></component>
+      <transition name="component-fade" mode="out-in">
+        <component v-bind:is="currentComponent"></component>
+      </transition>
     </div>
 
     <!-- Footer -->
@@ -70,8 +72,14 @@ export default {
 
 <style>
 @import "./assets/css/font-awesome.min.css";
-body.is-preload #wrapper {
-  opacity: 1;
+
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity 2s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 
@@ -146,9 +154,6 @@ body.is-preload #wrapper {
 }
 
 .icon {
-  text-decoration: none;
-  border-bottom: none;
-  position: relative;
 
   &:before {
     -moz-osx-font-smoothing: grayscale;
@@ -158,53 +163,6 @@ body.is-preload #wrapper {
     font-weight: normal;
     text-transform: none !important;
   }
-
-  > .label {
-    display: none;
-  }
 }
 
-.page-wrap {
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-wrap: nowrap;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -moz-justify-content: -moz-flex-start;
-  -webkit-justify-content: -webkit-flex-start;
-  -ms-justify-content: -ms-flex-start;
-  justify-content: flex-start;
-}
-
-#main {
-  background: #f1f1f1;
-  width: 100%;
-
-  #header {
-    background: #e6e6e6;
-    padding: 1.15em 3.5em;
-    text-align: right;
-
-    h1 {
-      margin: 0;
-      font-size: 1em;
-    }
-  }
-}
-
-@media screen and (max-width: 980px) {
-  #main #header {
-    padding: 1.15em 2em;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  #main #header {
-    text-align: center;
-  }
-}
 </style>

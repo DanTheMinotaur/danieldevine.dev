@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" mode="out-in">
   <article id="work" class="panel">
     <header>
       <h2>Work</h2>
@@ -73,4 +74,5 @@
       </div>
     </section>
   </article>
+</transition>
 </template>
