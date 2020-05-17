@@ -1,28 +1,75 @@
 <template>  
-  <div id="app">
-    <div class="page-wrap">
-      <Nav />
-      <section id="main">
-        <router-view :key="$route.fullPath"></router-view>
-        <Footer />
-      </section>
-    </div>
-  </div>
+<div id="wrapper">
+
+				<!-- Nav -->
+					<nav id="nav">
+            <a 
+              v-for="(data, comp) in navComponents"
+              v-bind:key="comp"
+              v-bind:class="[data.icon, { active: currentComponent == comp }]"
+              v-on:click="currentComponent = comp"
+              class="icon solid"
+            >
+            <span>{{capitalize(comp)}}</span>
+            </a>
+						<!-- <a href="#" v-on:click="currentComponent = 'home'" class="icon solid fa-home"><span>Home</span></a>
+						<a href="#work" v-on:click="currentComponent = 'work'"  class="icon solid fa-folder"><span>Work</span></a>
+						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+						<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a> -->
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+              <component v-bind:is="currentComponent" v-if="currentComponent"></component>
+					</div>
+
+				<!-- Footer -->
+					<div id="footer">
+						<ul class="copyright">
+							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+			</div>
 </template>
 
 <script>
 
-import Nav from "./components/Nav.vue"
-import Footer from './components/Footer.vue'
+import './assets/css/main.css'
+import Home from './containers/Home.vue'
+import Work from './containers/Work.vue'
 
 export default {
   name: "App",
-  components: { Nav, Footer }
+  data() {
+    return {
+      currentComponent: 'home',
+      navComponents: {
+        home: {
+          icon: 'fa-home'
+        },
+        work: {
+          icon: 'fa-folder'
+        }
+      }
+    }
+  },
+  components: { 
+    'home': Home,
+    'work': Work
+  },
+  computed: {
+    currentDisplayComponent() {
+      return this.currentComponent
+    }
+  }
 };
 </script>
 
 <style>
   @import './assets/css/font-awesome.min.css';
+  body.is-preload #wrapper {
+    opacity: 1;
+  }
 </style>
 
 <style lang="scss">
