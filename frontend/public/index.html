@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-
-    <link rel="stylesheet" type="text/css" href="/assets/notifications/notifications.css"/>
-    <script src="/assets/notifications/notifications.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-
+    <link rel="stylesheet" type="text/css" href="/static/notifications/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/notifications/notifications.css"/>
   </head>
-  <body>
+  <body class="is-preload">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/browser.min.js"></script>
+    <script src="/static/js/breakpoints.min.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/assets/notifications/notifications.js"></script>
   </body>
 </html>
