@@ -1,12 +1,12 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" v-bind:style="{ width: wrapperWidth, transition: 'width .5s' }">
     <!-- Nav -->
     <nav id="nav">
       <a
         v-for="(data, comp) in navComponents"
         v-bind:key="comp"
         v-bind:class="[data.icon, { active: currentComponent == comp }]"
-        v-on:click="currentComponent = comp"
+        v-on:click="currentComponent = comp, updateWidth(data.width)"
         class="icon solid"
       >
         <span>{{capitalize(comp)}}</span>
@@ -38,6 +38,7 @@ import "./assets/css/main.css";
 import Intro from "./components/Home/Intro.vue";
 import Work from "./components/Home/Work.vue";
 import Contact from './components/Home/Contact.vue'
+import Blog from './containers/Blog.vue'
 
 export default {
   name: "App",
@@ -46,25 +47,39 @@ export default {
       currentComponent: "intro",
       navComponents: {
         intro: {
-          icon: "fa-home"
+          icon: "fa-home",
+          width: '45em'
         },
         work: {
-          icon: "fa-folder"
+          icon: "fa-folder",
+          width: '45em'
         },
         contact: {
-          icon: 'fa-envelope'
+          icon: 'fa-envelope',
+          width: '45em'
+        },
+        blog: {
+          icon: 'fa-newspaper-o',
+          width: '60em'
         }
-      }
+      },
+      wrapperWidth: '45em'
     };
   },
   components: {
     intro: Intro,
     work: Work,
-    contact: Contact
+    contact: Contact,
+    blog: Blog
   },
   computed: {
     currentDisplayComponent() {
       return this.currentComponent;
+    }
+  },
+  methods: {
+    updateWidth(width) {
+      this.wrapperWidth = width
     }
   }
 };
@@ -72,10 +87,12 @@ export default {
 
 <style>
 @import "./assets/css/font-awesome.min.css";
-
+/* #wrapper {
+  width: 45em;
+} */
 
 .component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity 2s ease;
+  transition: opacity .4s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active below version 2.1.8 */ {

@@ -1,6 +1,5 @@
 <template>
-  <main>
-    <blog-header :title="'Blog'" :image="'img'" />
+  <div>
     <div class="section">
       <div class="columns">
         <div class="column is-full has-text-centered">
@@ -52,13 +51,12 @@
         </div>
       </div>
     </section> -->
-  </main>
+  </div>
 </template>
 
 <script>
 import gql from "graphql-tag";
 const moment = require("moment");
-import BlogHeader from "../components/Blog/BlogHeader.vue";
 import ArticlePreview from '../components/Blog/ArticlePreview.vue'
 
 export default {
@@ -70,7 +68,6 @@ export default {
     };
   },
   components: {
-    BlogHeader,
     ArticlePreview
   },
   computed: {
