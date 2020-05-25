@@ -1,28 +1,15 @@
 <template>
-  <section>
-    <div class="card image-box">
-      <div class="card-image">
-        <figure class="image is-5by4">
-          <router-link :to="{path: `/blog/${slug}`}" :key="slug">
-            <img :src="getURL(image.url).href" :alt="image.alternativeText" />
-          </router-link>
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="content">
-            <router-link :to="{path: `/blog/${slug}`}" :key="slug">
-              <h2 class="is-2 has-text-center has-text-weight-medium">{{title}}</h2>
-            </router-link>
-          <div v-if="description">
-            <hr />
-            <p class="is-4 has-text-grey has-text-center">{{description}}</p>
-          </div>
-  
-        </div>
-      </div>
-    </div>
-    <hr class="has-background-black">
-  </section>
+  <div class="article-preview">
+    <header>
+      <router-link :to="{path: `/blog/${slug}`}" :key="slug">
+        <h1>{{title}}</h1>
+      </router-link>
+      <h2 v-if="description">{{description}}</h2>
+    </header>
+    <figure>
+      <img :src="getURL(image.url).href" :alt="image.alternativeText" />
+    </figure>
+  </div>
 </template>
 
 <script>
@@ -33,6 +20,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.article-preview {
+  display: flex;
+}
+
+header {
+  flex-grow: 1;
+  -moz-flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-shrink: 1;
+  flex-shrink: 1;
+  width: 50%;
+
+  a {
+    text-decoration: none;
+  }
+
+  h1 {
+    line-height: 1.25em;
+    margin-bottom: 0;
+    
+
+  }
+}
+
+figure {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  margin: 0 0 2em 4em;
+  width: 50%;
+  position: relative;
+  border-radius: 0.375em;
+  border: 0;
+
+  img {
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.375em;
+    display: block;
+  }
+}
+
 
 .image-box {
      -moz-box-sizing: border-box;

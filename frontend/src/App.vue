@@ -3,7 +3,7 @@
     <!-- Nav -->
     <nav id="nav">
       <a
-        v-for="(data, comp) in navComponents"
+        v-for="(data, comp) in navComponents.buttons"
         v-bind:key="comp"
         v-bind:class="[data.icon, { active: currentComponent == comp }]"
         v-on:click="currentComponent = comp, updateWidth(data.width)"
@@ -11,10 +11,21 @@
       >
         <span>{{capitalize(comp)}}</span>
       </a>
+      <!-- <router-link v-for="(data, comp) in navComponents.routing"
+        v-bind:key="comp"
+        v-bind:class="[data.icon, { active: currentComponent == comp }]"
+        v-on:click="currentComponent = comp, updateWidth(data.width)"
+        class="icon solid"
+        :to="{path: data.link}"
+      >
+        <span>{{capitalize(comp)}}</span>
+      </router-link> -->
+
     </nav>
 
     <!-- Main -->
     <div id="main">
+      
       <transition name="component-fade" mode="out-in">
         <component v-bind:is="currentComponent"></component>
       </transition>
@@ -46,21 +57,31 @@ export default {
     return {
       currentComponent: "intro",
       navComponents: {
-        intro: {
-          icon: "fa-home",
-          width: '45em'
+        buttons: {
+          intro: {
+            icon: "fa-home",
+            width: '45em'
+          },
+          work: {
+            icon: "fa-folder",
+            width: '45em'
+          },
+          contact: {
+            icon: 'fa-envelope',
+            width: '45em'
+          },
+          blog: { // TODO router-link
+            icon: 'fa-newspaper-o',
+            width: '60em',
+            link: 'blog'
+          }
         },
-        work: {
-          icon: "fa-folder",
-          width: '45em'
-        },
-        contact: {
-          icon: 'fa-envelope',
-          width: '45em'
-        },
-        blog: {
-          icon: 'fa-newspaper-o',
-          width: '60em'
+        routing: {
+          blog: {
+            icon: 'fa-newspaper-o',
+            width: '60em',
+            link: 'blog'
+          }
         }
       },
       wrapperWidth: '45em'

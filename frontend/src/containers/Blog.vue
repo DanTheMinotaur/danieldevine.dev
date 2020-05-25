@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="section">
+    <section v-for="article in this.articles" v-bind:key="article.slug">
+      <article-preview :image="article.header_image" :title="article.title" :description="article.description" :slug="article.slug" />
+    </section>
+    <!-- <div class="section">
       <div class="columns">
         <div class="column is-full has-text-centered">
           <div class="box transparent">
@@ -20,7 +23,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <section v-for="post in articles" v-bind:key="post.slug" class="hero">
       <div class="hero-body">
