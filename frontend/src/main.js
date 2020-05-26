@@ -42,7 +42,11 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: require('./App.vue')
+      components: require('./components/Home/Intro.vue')
+    },
+    {
+      path: '/contact',
+      components: require('./components/Home/Contact.vue')
     },
     {
       path: '/blog',

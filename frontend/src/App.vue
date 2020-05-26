@@ -2,32 +2,21 @@
   <div id="wrapper" v-bind:style="{ width: wrapperWidth, transition: 'width .5s' }">
     <!-- Nav -->
     <nav id="nav">
-      <a
-        v-for="(data, comp) in navComponents.buttons"
+      <router-link v-for="(data, comp) in navComponents"
         v-bind:key="comp"
-        v-bind:class="[data.icon, { active: currentComponent == comp }]"
-        v-on:click="currentComponent = comp, updateWidth(data.width)"
-        class="icon solid"
-      >
-        <span>{{capitalize(comp)}}</span>
-      </a>
-      <!-- <router-link v-for="(data, comp) in navComponents.routing"
-        v-bind:key="comp"
-        v-bind:class="[data.icon, { active: currentComponent == comp }]"
-        v-on:click="currentComponent = comp, updateWidth(data.width)"
+        v-bind:class="[data.icon]"
+        v-on:click.native="updateWidth(data.width)"
         class="icon solid"
         :to="{path: data.link}"
       >
         <span>{{capitalize(comp)}}</span>
-      </router-link> -->
-
+      </router-link>
     </nav>
 
     <!-- Main -->
     <div id="main">
-      
       <transition name="component-fade" mode="out-in">
-        <component v-bind:is="currentComponent"></component>
+        <router-view :key="$route.fullPath"></router-view>
       </transition>
     </div>
 
@@ -46,61 +35,49 @@
 
 <script>
 import "./assets/css/main.css";
-import Intro from "./components/Home/Intro.vue";
-import Work from "./components/Home/Work.vue";
-import Contact from './components/Home/Contact.vue'
-import Blog from './containers/Blog.vue'
+// import Intro from "./components/Home/Intro.vue";
+// import Work from "./components/Home/Work.vue";
+// import Contact from './components/Home/Contact.vue'
+// import Blog from './containers/Blog.vue'
 
 export default {
   name: "App",
   data() {
     return {
-      currentComponent: "intro",
       navComponents: {
-        buttons: {
-          intro: {
-            icon: "fa-home",
-            width: '45em'
-          },
-          work: {
-            icon: "fa-folder",
-            width: '45em'
-          },
-          contact: {
-            icon: 'fa-envelope',
-            width: '45em'
-          },
-          blog: { // TODO router-link
-            icon: 'fa-newspaper-o',
-            width: '60em',
-            link: 'blog'
-          }
+        intro: {
+          icon: "fa-home",
+          width: "45em",
+          link: '/'
         },
-        routing: {
-          blog: {
-            icon: 'fa-newspaper-o',
-            width: '60em',
-            link: 'blog'
-          }
+        // work: {
+        //   icon: "fa-folder",
+        //   width: "45em"
+        // },
+        contact: {
+          icon: "fa-envelope",
+          width: "45em",
+          link: '/contact'
+        },
+        blog: {
+          icon: "fa-newspaper-o",
+          width: "60em",
+          link: '/blog'
         }
       },
-      wrapperWidth: '45em'
+      wrapperWidth: "45em"
     };
   },
   components: {
-    intro: Intro,
-    work: Work,
-    contact: Contact,
-    blog: Blog
-  },
-  computed: {
-    currentDisplayComponent() {
-      return this.currentComponent;
-    }
+    // intro: Intro,
+    // work: Work,
+    // contact: Contact,
+    // blog: Blog
   },
   methods: {
     updateWidth(width) {
-      this.wrapperWidth = width
+      console.log('Width Change', width)
+      this.wrapperWidth = width;
     }
   }
 };
@@ -112,8 +89,9 @@ export default {
   width: 45em;
 } */
 
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .4s ease;
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.4s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active below version 2.1.8 */ {
@@ -192,7 +170,6 @@ export default {
 }
 
 .icon {
-
   &:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -202,5 +179,4 @@ export default {
     text-transform: none !important;
   }
 }
-
 </style>
