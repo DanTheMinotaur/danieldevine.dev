@@ -1,7 +1,129 @@
 <template>
-  <div>
-    <section v-for="article in this.articles" v-bind:key="article.slug">
+  <div id="blog">
+    <!-- <section v-for="article in this.articles" v-bind:key="article.slug">
       <article-preview :image="article.header_image" :title="article.title" :description="article.description" :slug="article.slug" />
+    </section>-->
+    <section class="posts">
+      <article>
+        <header>
+          <span class="date">April 24, 2017</span>
+          <h2>
+            <a href="#">
+              Sed magna
+              <br />ipsum faucibus
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic02.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <header>
+          <span class="date">April 22, 2017</span>
+          <h2>
+            <a href="#">
+              Primis eget
+              <br />imperdiet lorem
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic03.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <header>
+          <span class="date">April 18, 2017</span>
+          <h2>
+            <a href="#">
+              Ante mattis
+              <br />interdum dolor
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic04.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <header>
+          <span class="date">April 14, 2017</span>
+          <h2>
+            <a href="#">
+              Tempus sed
+              <br />nulla imperdiet
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic05.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <header>
+          <span class="date">April 11, 2017</span>
+          <h2>
+            <a href="#">
+              Odio magna
+              <br />sed consectetur
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic06.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <header>
+          <span class="date">April 7, 2017</span>
+          <h2>
+            <a href="#">
+              Augue lorem
+              <br />primis vestibulum
+            </a>
+          </h2>
+        </header>
+        <a href="#" class="image fit">
+          <img src="images/pic07.jpg" alt />
+        </a>
+        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <ul class="actions special">
+          <li>
+            <a href="#" class="button">Full Story</a>
+          </li>
+        </ul>
+      </article>
     </section>
     <!-- <div class="section">
       <div class="columns">
@@ -23,7 +145,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>-->
 
     <!-- <section v-for="post in articles" v-bind:key="post.slug" class="hero">
       <div class="hero-body">
@@ -53,14 +175,15 @@
           <div class="is-divider"></div>
         </div>
       </div>
-    </section> -->
+    </section>-->
   </div>
 </template>
 
 <script>
 import gql from "graphql-tag";
 const moment = require("moment");
-import ArticlePreview from '../components/Blog/ArticlePreview.vue'
+
+// import ArticlePreview from '../components/Blog/ArticlePreview.vue'
 
 export default {
   name: "Blog",
@@ -71,12 +194,12 @@ export default {
     };
   },
   components: {
-    ArticlePreview
+    // ArticlePreview
   },
   computed: {
     columnSplit() {
-      if (this.articles) return this.getChunks(this.articles, 3)
-      return []
+      if (this.articles) return this.getChunks(this.articles, 3);
+      return [];
     }
   },
   apollo: {
@@ -101,3 +224,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+
+</style>

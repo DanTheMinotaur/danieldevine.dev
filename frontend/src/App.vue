@@ -57,7 +57,7 @@ export default {
         },
         blog: {
           icon: "fa-newspaper-o",
-          width: "60em",
+          width: "70em",
           link: '/blog'
         }
       }
