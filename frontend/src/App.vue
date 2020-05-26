@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper" v-bind:style="{ width: wrapperWidth, transition: 'width .5s' }">
+  <div id="wrapper" v-bind:style="{ width: this.wrapperWidth, transition: 'width .5s' }">
     <!-- Nav -->
     <nav id="nav">
       <router-link v-for="(data, comp) in navComponents"
@@ -35,17 +35,13 @@
 
 <script>
 import "./assets/css/main.css";
-// import Intro from "./components/Home/Intro.vue";
-// import Work from "./components/Home/Work.vue";
-// import Contact from './components/Home/Contact.vue'
-// import Blog from './containers/Blog.vue'
 
 export default {
   name: "App",
   data() {
     return {
       navComponents: {
-        intro: {
+        home: {
           icon: "fa-home",
           width: "45em",
           link: '/'
@@ -64,15 +60,8 @@ export default {
           width: "60em",
           link: '/blog'
         }
-      },
-      wrapperWidth: "45em"
+      }
     };
-  },
-  components: {
-    // intro: Intro,
-    // work: Work,
-    // contact: Contact,
-    // blog: Blog
   },
   methods: {
     updateWidth(width) {

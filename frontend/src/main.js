@@ -27,6 +27,11 @@ Vue.mixin({
         return all
       }, [])
     }
+  },
+  data () {
+    return {
+      wrapperWidth: '45em'
+    }
   }
 })
 
