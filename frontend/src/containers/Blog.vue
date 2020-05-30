@@ -1,181 +1,10 @@
 <template>
   <div id="blog">
-    <!-- <section v-for="article in this.articles" v-bind:key="article.slug">
-      <article-preview :image="article.header_image" :title="article.title" :description="article.description" :slug="article.slug" />
-    </section>-->
     <section class="posts">
-      <article>
-        <header>
-          <span class="date">April 24, 2017</span>
-          <h2>
-            <a href="#">
-              Sed magna
-              <br />ipsum faucibus
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic02.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 22, 2017</span>
-          <h2>
-            <a href="#">
-              Primis eget
-              <br />imperdiet lorem
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic03.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 18, 2017</span>
-          <h2>
-            <a href="#">
-              Ante mattis
-              <br />interdum dolor
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic04.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 14, 2017</span>
-          <h2>
-            <a href="#">
-              Tempus sed
-              <br />nulla imperdiet
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic05.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 11, 2017</span>
-          <h2>
-            <a href="#">
-              Odio magna
-              <br />sed consectetur
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic06.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 7, 2017</span>
-          <h2>
-            <a href="#">
-              Augue lorem
-              <br />primis vestibulum
-            </a>
-          </h2>
-        </header>
-        <a href="#" class="image fit">
-          <img src="images/pic07.jpg" alt />
-        </a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions special">
-          <li>
-            <a href="#" class="button">Full Story</a>
-          </li>
-        </ul>
-      </article>
+      <div v-for="article in this.articles" v-bind:key="article.slug" >
+        <article-preview :image="article.header_image" :title="article.title" :description="article.description" :slug="article.slug" :published="article.published_at" />
+      </div>
     </section>
-    <!-- <div class="section">
-      <div class="columns">
-        <div class="column is-full has-text-centered">
-          <div class="box transparent">
-            <div class="columns has-text-centered is-multiline">
-               <div v-for="(posts, index) in this.getChunks(this.articles, 3)" v-bind:key="index" class="column">
-                  <div v-for="post in posts" v-bind:key="post.slug">
-                      <article-preview :image="post.header_image" :title="post.title" :description="post.description" :slug="post.slug" />
-                  </div>
-              </div>
-            </div> 
-
-            <div class="box">
-              <div class="notification has-background-black">
-                <h3 class="has-text-white">LOAD MORE...</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
-    <!-- <section v-for="post in articles" v-bind:key="post.slug" class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-              <figure class="image is-16by9">
-                <img :src="getURL(post.header_image.url).href" :alt="post.name" />
-              </figure>
-            </div>
-          </div>
-
-          <section class="section">
-            <div class="columns">
-              <div class="column is-8 is-offset-2">
-                <div class="content is-medium">
-                  <h2 class="subtitle is-4">{{ moment(post.published_at).format("MMMM Do, YYYY") }}</h2>
-                  <router-link :to="{path: `/blog/${post.slug}`}" :key="post.slug">
-                    <h1 class="title">{{post.title}}</h1>
-                  </router-link>
-                  <p v-if="post.description">{{post.description}}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div class="is-divider"></div>
-        </div>
-      </div>
-    </section>-->
   </div>
 </template>
 
@@ -183,7 +12,7 @@
 import gql from "graphql-tag";
 const moment = require("moment");
 
-// import ArticlePreview from '../components/Blog/ArticlePreview.vue'
+import ArticlePreview from '../components/Blog/ArticlePreview.vue'
 
 export default {
   name: "Blog",
@@ -194,7 +23,7 @@ export default {
     };
   },
   components: {
-    // ArticlePreview
+    ArticlePreview
   },
   computed: {
     columnSplit() {
@@ -226,5 +55,192 @@ export default {
 </script>
 
 <style lang="scss">
+#blog {
+		background-color: #ffffff;
+		position: relative;
+		margin: 0 auto;
+		width: calc(100% - 4rem);
+		// max-width: 72rem;
+		z-index: 2;
+	}
 
+		#blog > * {
+			padding: 4rem 4rem 2rem 4rem ;
+			border-top: solid 2px #eeeeee;
+			margin: 0;
+		}
+
+			#blog > *:first-child {
+				border-top: 0;
+			}
+
+		#blog > footer {
+			text-align: center;
+		}
+
+		#blog > .post {
+			padding: 8rem 8rem 6rem 8rem ;
+		}
+
+			#blog > .post header.major > .date {
+				margin-top: -2rem;
+			}
+
+			#blog > .post header.major > h1, #blog > .post header.major h2 {
+				font-size: 4rem;
+				line-height: 1.1;
+				margin: 0 0 2rem 0;
+			}
+
+			#blog > .post.featured {
+				text-align: center;
+			}
+
+			@media screen and (max-width: 1280px) {
+
+				#blog > .post {
+					padding: 6rem 4rem 4rem 4rem ;
+				}
+
+			}
+
+			@media screen and (max-width: 736px) {
+
+				#blog > .post {
+					padding: 4rem 2rem 2rem 2rem ;
+				}
+
+					#blog > .post header.major > .date {
+						margin-top: -1rem;
+						margin-bottom: 2rem;
+					}
+
+					#blog > .post header.major > h1, #blog > .post header.major h2 {
+						font-size: 2.5rem;
+						line-height: 1.2;
+						margin: 0 0 1.5rem 0;
+					}
+
+			}
+
+		#blog > .posts {
+			display: -moz-flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
+			-moz-flex-wrap: wrap;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-moz-align-items: -moz-stretch;
+			-webkit-align-items: -webkit-stretch;
+			-ms-align-items: -ms-stretch;
+			align-items: stretch;
+			text-align: center;
+			width: 100%;
+			padding: 0;
+		}
+
+			#blog > .posts > * {
+				-moz-flex-shrink: 1;
+				-webkit-flex-shrink: 1;
+				-ms-flex-shrink: 1;
+				flex-shrink: 1;
+				-moz-flex-grow: 0;
+				-webkit-flex-grow: 0;
+				-ms-flex-grow: 0;
+				flex-grow: 0;
+			}
+
+			#blog > .posts > * {
+				width: 50%;
+			}
+
+			#blog > .posts > * {
+				padding: 4rem;
+				width: 50%;
+			}
+
+			#blog > .posts > article {
+				border-color: #eeeeee;
+				border-left-width: 2px;
+				border-style: solid;
+				border-top-width: 2px;
+				text-align: center;
+			}
+
+				#blog > .posts > article > :last-child {
+					margin-bottom: 0;
+				}
+
+				#blog > .posts > article:nth-child(2n - 1) {
+					border-left-width: 0;
+				}
+
+				#blog > .posts > article:nth-child(-n + 2) {
+					border-top-width: 0;
+				}
+
+			@media screen and (max-width: 980px) {
+
+				#blog > .posts > * {
+					width: 50%;
+				}
+
+				#blog > .posts > * {
+					padding: 2.5rem;
+					width: 50%;
+				}
+
+			}
+
+			@media screen and (max-width: 736px) {
+
+				#blog > .posts > * {
+					width: 100%;
+				}
+
+				#blog > .posts > * {
+					padding: 2rem;
+					width: 100%;
+				}
+
+				#blog > .posts > article:nth-child(2n - 1) {
+					border-left-width: 2px;
+				}
+
+				#blog > .posts > article:nth-child(-n + 2) {
+					border-top-width: 2px;
+				}
+
+				#blog > .posts > article:nth-child(n) {
+					border-left-width: 0;
+				}
+
+				#blog > .posts > article:nth-child(-n + 1) {
+					border-top-width: 0;
+				}
+
+				#blog > .posts > article .image {
+					max-width: 25rem;
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+			}
+
+		@media screen and (max-width: 736px) {
+
+			#blog > * {
+				padding: 2rem 2rem 0.1rem 2rem ;
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			#blog {
+				width: 100%;
+			}
+		}
 </style>
