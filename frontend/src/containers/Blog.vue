@@ -61,14 +61,25 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
+
 #blog {
   background-color: #ffffff;
   position: relative;
   margin: 0 auto;
   width: calc(100% - 4rem);
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 2.375;
 
   // max-width: 72rem;
   z-index: 2;
+
+  p {
+    text-align: justify;
+    margin: 0 0 2rem 0;
+  }
 
   .image {
     border: 0;

@@ -1,5 +1,5 @@
 <template>
-  <div id="blog">
+  <article id="blog">
     <section class="post">
       <header class="major">
         <span class="date">{{moment(article.published_at).format("MMMM Do, YYYY")}}</span>
@@ -11,7 +11,7 @@
       </div>
       <markdown-it-vue v-if="article.content" :content="article.content" />
     </section>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -62,32 +62,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.image {
-  background-color: black;
-  img {
-    height: auto;
-    width: auto;
-    max-height: 30rem;
-    margin: auto;
-  }
-}
-
-hr {
-  background-color: #f5f5f5;
-  border: none;
-  display: block;
-  height: 2px;
-  margin: 1.5rem 0;
-}
-
-.markdown-body {
-  font-size: 2rem;
-  padding: 2%;
-}
-
-.container {
-  max-width: 1744px;
-}
-</style>
