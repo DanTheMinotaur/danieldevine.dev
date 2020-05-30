@@ -1,8 +1,14 @@
 <template>
   <div id="blog">
     <section class="posts">
-      <div v-for="article in this.articles" v-bind:key="article.slug" >
-        <article-preview :image="article.header_image" :title="article.title" :description="article.description" :slug="article.slug" :published="article.published_at" />
+      <div v-for="article in this.articles" v-bind:key="article.slug">
+        <article-preview
+          :image="article.header_image"
+          :title="article.title"
+          :description="article.description"
+          :slug="article.slug"
+          :published="article.published_at"
+        />
       </div>
     </section>
   </div>
@@ -12,7 +18,7 @@
 import gql from "graphql-tag";
 const moment = require("moment");
 
-import ArticlePreview from '../components/Blog/ArticlePreview.vue'
+import ArticlePreview from "../components/Blog/ArticlePreview.vue";
 
 export default {
   name: "Blog",
@@ -56,191 +62,381 @@ export default {
 
 <style lang="scss">
 #blog {
-		background-color: #ffffff;
-		position: relative;
-		margin: 0 auto;
-		width: calc(100% - 4rem);
-		// max-width: 72rem;
-		z-index: 2;
-	}
+  background-color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  width: calc(100% - 4rem);
 
-		#blog > * {
-			padding: 4rem 4rem 2rem 4rem ;
-			border-top: solid 2px #eeeeee;
-			margin: 0;
-		}
+  // max-width: 72rem;
+  z-index: 2;
 
-			#blog > *:first-child {
-				border-top: 0;
-			}
+  .image {
+    border: 0;
+    display: inline-block;
+    position: relative;
 
-		#blog > footer {
-			text-align: center;
-		}
+    img {
+      display: block;
+    }
 
-		#blog > .post {
-			padding: 8rem 8rem 6rem 8rem ;
-		}
+    &.left,
+    &.right {
+      max-width: 40%;
+    }
 
-			#blog > .post header.major > .date {
-				margin-top: -2rem;
-			}
+    &.left img,
+    &.right img {
+      width: 100%;
+    }
 
-			#blog > .post header.major > h1, #blog > .post header.major h2 {
-				font-size: 4rem;
-				line-height: 1.1;
-				margin: 0 0 2rem 0;
-			}
+    &.left {
+      float: left;
+      margin: 0 2rem 2rem 0;
+      top: 0.75rem;
+    }
 
-			#blog > .post.featured {
-				text-align: center;
-			}
+    &.right {
+      float: right;
+      margin: 0 0 2rem 2rem;
+      top: 0.75rem;
+    }
 
-			@media screen and (max-width: 1280px) {
+    &.fit {
+      display: block;
+      margin: 2.5rem 0;
+      width: 100%;
 
-				#blog > .post {
-					padding: 6rem 4rem 4rem 4rem ;
-				}
+      &:first-child {
+        margin-top: 0;
+      }
 
-			}
+      img {
+        width: 100%;
+      }
+    }
 
-			@media screen and (max-width: 736px) {
+    &.main {
+      display: block;
+      margin: 4rem 0;
+      width: 100%;
 
-				#blog > .post {
-					padding: 4rem 2rem 2rem 2rem ;
-				}
+      &:first-child {
+        margin-top: 0;
+      }
 
-					#blog > .post header.major > .date {
-						margin-top: -1rem;
-						margin-bottom: 2rem;
-					}
+      img {
+        width: 100%;
+      }
+    }
+  }
 
-					#blog > .post header.major > h1, #blog > .post header.major h2 {
-						font-size: 2.5rem;
-						line-height: 1.2;
-						margin: 0 0 1.5rem 0;
-					}
+  @media screen and (max-width: 736px) {
+    .image {
+      &.fit,
+      &.main {
+        margin: 2rem 0;
+      }
+    }
+  }
 
-			}
+  a.image {
+    overflow: hidden;
 
-		#blog > .posts {
-			display: -moz-flex;
-			display: -webkit-flex;
-			display: -ms-flex;
-			display: flex;
-			-moz-flex-wrap: wrap;
-			-webkit-flex-wrap: wrap;
-			-ms-flex-wrap: wrap;
-			flex-wrap: wrap;
-			-moz-align-items: -moz-stretch;
-			-webkit-align-items: -webkit-stretch;
-			-ms-align-items: -ms-stretch;
-			align-items: stretch;
-			text-align: center;
-			width: 100%;
-			padding: 0;
-		}
+    img {
+      -moz-transition: -moz-transform 0.2s ease-out;
+      -webkit-transition: -webkit-transform 0.2s ease-out;
+      -ms-transition: -ms-transform 0.2s ease-out;
+      transition: transform 0.2s ease-out;
+    }
 
-			#blog > .posts > * {
-				-moz-flex-shrink: 1;
-				-webkit-flex-shrink: 1;
-				-ms-flex-shrink: 1;
-				flex-shrink: 1;
-				-moz-flex-grow: 0;
-				-webkit-flex-grow: 0;
-				-ms-flex-grow: 0;
-				flex-grow: 0;
-			}
+    &:hover img {
+      -moz-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+  }
 
-			#blog > .posts > * {
-				width: 50%;
-			}
+  header {
+    cursor: default;
 
-			#blog > .posts > * {
-				padding: 4rem;
-				width: 50%;
-			}
+    > {
+      .date {
+        display: block;
+        font-size: 0.8rem;
+        height: 1;
+        margin: 0 0 1rem 0;
+        position: relative;
+      }
 
-			#blog > .posts > article {
-				border-color: #eeeeee;
-				border-left-width: 2px;
-				border-style: solid;
-				border-top-width: 2px;
-				text-align: center;
-			}
+      p {
+        font-style: italic;
+      }
 
-				#blog > .posts > article > :last-child {
-					margin-bottom: 0;
-				}
+      h1 + p {
+        font-size: 1.1rem;
+        margin-top: -0.5rem;
+        line-height: 2;
+      }
 
-				#blog > .posts > article:nth-child(2n - 1) {
-					border-left-width: 0;
-				}
+      h2 + p {
+        font-size: 1rem;
+        margin-top: -0.75rem;
+      }
 
-				#blog > .posts > article:nth-child(-n + 2) {
-					border-top-width: 0;
-				}
+      h3 + p {
+        font-size: 0.9rem;
+        margin-top: -0.75rem;
+      }
 
-			@media screen and (max-width: 980px) {
+      h4 + p {
+        font-size: 0.8rem;
+        margin-top: -0.75rem;
+      }
+    }
 
-				#blog > .posts > * {
-					width: 50%;
-				}
+    &.major {
+      margin: 0 0 4rem 0;
+      text-align: center;
 
-				#blog > .posts > * {
-					padding: 2.5rem;
-					width: 50%;
-				}
+      > {
+        :last-child {
+          margin-bottom: 0;
+        }
 
-			}
+        p {
+          margin-top: 0;
+          text-align: center;
+        }
 
-			@media screen and (max-width: 736px) {
+        .date {
+          font-size: 1rem;
+          margin: 0 0 4rem 0;
 
-				#blog > .posts > * {
-					width: 100%;
-				}
+          &:before,
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            width: calc(50% - 6rem);
+            border-top: solid 2px;
+          }
 
-				#blog > .posts > * {
-					padding: 2rem;
-					width: 100%;
-				}
+          &:before {
+            left: 0;
+          }
 
-				#blog > .posts > article:nth-child(2n - 1) {
-					border-left-width: 2px;
-				}
+          &:after {
+            right: 0;
+          }
+        }
+      }
 
-				#blog > .posts > article:nth-child(-n + 2) {
-					border-top-width: 2px;
-				}
+      .date {
+        &:before,
+        &:after {
+          border-top-color: #eeeeee;
+        }
+      }
+    }
+  }
 
-				#blog > .posts > article:nth-child(n) {
-					border-left-width: 0;
-				}
+  @media screen and (max-width: 980px) {
+    header br {
+      display: none;
+    }
+  }
 
-				#blog > .posts > article:nth-child(-n + 1) {
-					border-top-width: 0;
-				}
+  @media screen and (max-width: 736px) {
+    header.major {
+      margin: 0 0 2rem 0;
+    }
+  }
 
-				#blog > .posts > article .image {
-					max-width: 25rem;
-					margin-left: auto;
-					margin-right: auto;
-				}
+  > {
+    * {
+      padding: 4rem 4rem 2rem 4rem;
+      border-top: solid 2px #eeeeee;
+      margin: 0;
 
-			}
+      &:first-child {
+        border-top: 0;
+      }
+    }
 
-		@media screen and (max-width: 736px) {
+    footer {
+      text-align: center;
+    }
 
-			#blog > * {
-				padding: 2rem 2rem 0.1rem 2rem ;
-			}
+    .post {
+      padding: 8rem 8rem 6rem 8rem;
 
-		}
+      header.major {
+        > {
+          .date {
+            margin-top: -2rem;
+          }
 
-		@media screen and (max-width: 480px) {
+          h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin: 0 0 2rem 0;
+          }
+        }
 
-			#blog {
-				width: 100%;
-			}
-		}
+        h2 {
+          font-size: 4rem;
+          line-height: 1.1;
+          margin: 0 0 2rem 0;
+        }
+      }
+
+      &.featured {
+        text-align: center;
+      }
+    }
+
+    .posts {
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      -moz-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -moz-align-items: -moz-stretch;
+      -webkit-align-items: -webkit-stretch;
+      -ms-align-items: -ms-stretch;
+      align-items: stretch;
+      text-align: center;
+      width: 100%;
+      padding: 0;
+
+      > {
+        * {
+          -moz-flex-shrink: 1;
+          -webkit-flex-shrink: 1;
+          -ms-flex-shrink: 1;
+          flex-shrink: 1;
+          -moz-flex-grow: 0;
+          -webkit-flex-grow: 0;
+          -ms-flex-grow: 0;
+          flex-grow: 0;
+          width: 50%;
+          padding: 4rem;
+          width: 50%;
+        }
+
+        article {
+          border-color: #eeeeee;
+          border-left-width: 2px;
+          border-style: solid;
+          border-top-width: 2px;
+          text-align: center;
+
+          > :last-child {
+            margin-bottom: 0;
+          }
+
+          &:nth-child(2n - 1) {
+            border-left-width: 0;
+          }
+
+          &:nth-child(-n + 2) {
+            border-top-width: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  #blog > .post {
+    padding: 6rem 4rem 4rem 4rem;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #blog > .post {
+    padding: 4rem 2rem 2rem 2rem;
+
+    header.major {
+      > {
+        .date {
+          margin-top: -1rem;
+          margin-bottom: 2rem;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+          line-height: 1.2;
+          margin: 0 0 1.5rem 0;
+        }
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin: 0 0 1.5rem 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #blog > .posts > * {
+    width: 50%;
+    padding: 2.5rem;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #blog > .posts > {
+    * {
+      width: 100%;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    article {
+      &:nth-child(2n - 1) {
+        border-left-width: 2px;
+      }
+
+      &:nth-child(-n + 2) {
+        border-top-width: 2px;
+      }
+
+      &:nth-child(n) {
+        border-left-width: 0;
+      }
+
+      &:nth-child(-n + 1) {
+        border-top-width: 0;
+      }
+
+      .image {
+        max-width: 25rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #blog > * {
+    padding: 2rem 2rem 0.1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #blog {
+    width: 100%;
+  }
+}
 </style>
