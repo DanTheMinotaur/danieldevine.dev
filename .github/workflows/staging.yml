@@ -9,12 +9,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   name: connect and pull updates
-            uses: appleboy/ssh-action@master
+            uses: garygrossgarten/github-action-ssh@release
             with:
                 host: ${{ secrets.STAGING_HOST }}
                 username: ${{ secrets.STAGING_USERNAME }}
-                key: ${{ secrets.STAGING_KEY }}
-                script: |
-                    whoami
-                    ls -al
-                    mkdir /home/daniel/iamhere
+                privateKey: ${{ secrets.STAGING_KEY }}
+                command: whoami && ls -a
