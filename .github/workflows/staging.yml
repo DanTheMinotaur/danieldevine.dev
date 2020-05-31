@@ -8,6 +8,7 @@ jobs:
     execute_update_commands:
         runs-on: ubuntu-latest
         steps:
+        -   name: connect and pull updates
             uses: appleboy/ssh-action@master
             with:
                 host: ${{ secrets.STAGING_HOST }}
