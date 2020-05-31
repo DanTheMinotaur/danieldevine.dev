@@ -14,4 +14,4 @@ jobs:
                 host: ${{ secrets.STAGING_HOST }}
                 username: ${{ secrets.STAGING_USERNAME }}
                 privateKey: ${{ secrets.STAGING_KEY }}
-                command: whoami && ls -a
+                command: cd ${{ secrets.STAGING_DIRECTORY }} && git checkout STAGING && git pull && docker-compose up
