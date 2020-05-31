@@ -30,7 +30,6 @@ export default {
   },
   components: {
     MarkdownItVue
-    // BlogHeader
   },
   computed: {
     article() {

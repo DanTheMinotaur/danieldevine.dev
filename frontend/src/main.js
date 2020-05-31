@@ -54,6 +54,10 @@ const router = new VueRouter({
       components: require('./components/Home/Contact.vue')
     },
     {
+      path: '/projects',
+      components: require('./components/Home/Work.vue')
+    },
+    {
       path: '/blog',
       components: require('./containers/Blog.vue')
     },

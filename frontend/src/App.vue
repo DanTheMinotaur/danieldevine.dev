@@ -47,10 +47,11 @@ export default {
         //   width: "45em",
         //   link: '/'
         // },
-        // work: {
-        //   icon: "fa-folder",
-        //   width: "45em"
-        // },
+        work: {
+          icon: "fa-folder",
+          width: "45em",
+          link: '/projects'
+        },
         contact: {
           icon: "fa-envelope",
           width: "45em",
