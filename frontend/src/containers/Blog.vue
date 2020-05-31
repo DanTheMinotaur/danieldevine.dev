@@ -72,13 +72,53 @@ export default {
   font-weight: 300;
   font-size: 1rem;
   line-height: 2.375;
-  // font-size: 16pt;
-
-  // max-width: 72rem;
   z-index: 2;
 
   .markdown-body {
     font-size: 16pt;
+  }
+
+  .button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 980px) {
+    .button {
+      font-size: 0.9rem;
+      height: 3.25rem;
+      line-height: 3.25rem;
+    }
+    .button.large {
+      font-size: 1rem;
+      height: 3.75rem;
+      line-height: 3.75rem;
+    }
   }
 
   strong,
