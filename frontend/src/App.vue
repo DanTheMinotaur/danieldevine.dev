@@ -2,6 +2,7 @@
   <div id="wrapper" v-bind:style="{ width: this.wrapperWidth, transition: 'width .5s' }">
     <!-- Nav -->
     <nav id="nav">
+      <router-link :to="{path: '/'}" class="icon solid fa-home" exact><span>Home</span></router-link>
       <router-link v-for="(data, comp) in navComponents"
         v-bind:key="comp"
         v-bind:class="[data.icon]"
@@ -41,11 +42,11 @@ export default {
   data() {
     return {
       navComponents: {
-        home: {
-          icon: "fa-home",
-          width: "45em",
-          link: '/'
-        },
+        // home: {
+        //   icon: "fa-home",
+        //   width: "45em",
+        //   link: '/'
+        // },
         // work: {
         //   icon: "fa-folder",
         //   width: "45em"

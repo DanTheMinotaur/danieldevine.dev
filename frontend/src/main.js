@@ -66,7 +66,8 @@ const router = new VueRouter({
       components: require('./containers/Category.vue')
     }
   ],
-  linkExactActiveClass: 'active'
+  // linkExactActiveClass: 'active',
+  linkActiveClass: 'active'
 })
 
 new Vue({
