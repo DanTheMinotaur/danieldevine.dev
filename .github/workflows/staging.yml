@@ -16,3 +16,4 @@ jobs:
                 script: |
                     whoami
                     ls -al
+                    mkdir /home/daniel/iamhere
