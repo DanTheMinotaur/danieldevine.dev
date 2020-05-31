@@ -81,6 +81,126 @@ export default {
     margin: 0 0 2rem 0;
   }
 
+  strong,
+  b {
+    font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  p {
+    text-align: justify;
+    margin: 0 0 2rem 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-weight: 900;
+    line-height: 1.5;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    border-bottom: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin: 0 0 1.5rem 0;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.9rem;
+  }
+
+  h6 {
+    font-size: 0.8rem;
+  }
+
+  sub {
+    font-size: 0.8rem;
+    position: relative;
+    top: 0.5rem;
+  }
+
+  sup {
+    font-size: 0.8rem;
+    position: relative;
+    top: -0.5rem;
+  }
+
+  blockquote {
+    border-left: solid 4px;
+    font-style: italic;
+    margin: 0 0 2rem 0;
+    padding: 0.5rem 0 0.5rem 2rem;
+  }
+
+  code {
+    border: solid 2px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    margin: 0 0.25rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  pre {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    margin: 0 0 2rem 0;
+
+    code {
+      display: block;
+      line-height: 1.75;
+      padding: 1rem 1.5rem;
+      overflow-x: auto;
+    }
+  }
+
+  hr {
+    border: 0;
+    border-bottom: solid 2px;
+    margin: 3rem 0;
+
+    &.major {
+      margin: 5rem 0;
+    }
+  }
+
   .image {
     border: 0;
     display: inline-block;
@@ -287,6 +407,11 @@ export default {
         > {
           .date {
             margin-top: -2rem;
+          }
+
+          p {
+            margin-top: 0;
+            text-align: center;
           }
 
           h1 {
