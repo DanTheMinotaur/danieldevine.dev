@@ -27,6 +27,11 @@ Vue.mixin({
         return all
       }, [])
     }
+  },
+  data () {
+    return {
+      wrapperWidth: '45em'
+    }
   }
 })
 
@@ -42,7 +47,15 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: require('./containers/Home.vue')
+      components: require('./components/Home/Intro.vue')
+    },
+    {
+      path: '/contact',
+      components: require('./components/Home/Contact.vue')
+    },
+    {
+      path: '/projects',
+      components: require('./components/Home/Work.vue')
     },
     {
       path: '/blog',
@@ -57,7 +70,8 @@ const router = new VueRouter({
       components: require('./containers/Category.vue')
     }
   ],
-  linkExactActiveClass: 'active'
+  // linkExactActiveClass: 'active',
+  linkActiveClass: 'active'
 })
 
 new Vue({

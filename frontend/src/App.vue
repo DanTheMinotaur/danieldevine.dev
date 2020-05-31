@@ -1,35 +1,101 @@
-<template>  
-  <div id="app">
-    <div class="page-wrap">
-      <Nav />
-      <section id="main">
+<template>
+  <div id="wrapper" v-bind:style="{ width: this.wrapperWidth, transition: 'width .5s' }">
+    <!-- Nav -->
+    <nav id="nav">
+      <router-link :to="{path: '/'}" class="icon solid fa-home" exact><span>Home</span></router-link>
+      <router-link v-for="(data, comp) in navComponents"
+        v-bind:key="comp"
+        v-bind:class="[data.icon]"
+        v-on:click.native="updateWidth(data.width)"
+        class="icon solid"
+        :to="{path: data.link}"
+      >
+        <span>{{capitalize(comp)}}</span>
+      </router-link>
+    </nav>
+
+    <!-- Main -->
+    <main id="main">
+      <transition name="component-fade" mode="out-in">
         <router-view :key="$route.fullPath"></router-view>
-        <Footer />
-      </section>
+      </transition>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer">
+      <ul class="copyright">
+        <li>&copy; Untitled.</li>
+        <li>
+          Design:
+          <a href="http://html5up.net">HTML5 UP</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-
-import Nav from "./components/Nav.vue"
-import Footer from './components/Footer.vue'
+import "./assets/css/main.css";
 
 export default {
   name: "App",
-  components: { Nav, Footer }
+  data() {
+    return {
+      navComponents: {
+        // home: {
+        //   icon: "fa-home",
+        //   width: "45em",
+        //   link: '/'
+        // },
+        work: {
+          icon: "fa-folder",
+          width: "45em",
+          link: '/projects'
+        },
+        contact: {
+          icon: "fa-envelope",
+          width: "45em",
+          link: '/contact'
+        },
+        blog: {
+          icon: "fa-newspaper-o",
+          width: "70em",
+          link: '/blog'
+        }
+      }
+    };
+  },
+  methods: {
+    updateWidth(width) {
+      console.log('Width Change', width)
+      this.wrapperWidth = width;
+    }
+  }
 };
 </script>
 
 <style>
-  @import './assets/css/font-awesome.min.css';
+@import "./assets/css/font-awesome.min.css";
+/* #wrapper {
+  width: 45em;
+} */
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600");
 
 @media screen and (max-width: 480px) {
-  html, body {
+  html,
+  body {
     min-width: 320px;
   }
 }
@@ -37,54 +103,64 @@ export default {
 // Vue Transitions
 
 .tray-enter,
-.tray-leave-to { opacity: 0 }
-
-.tray-leave,
-.tray-enter-to { opacity: 1 }
-
-.tray-enter-active,
-.tray-leave-active { transition: opacity 10000ms }
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 3s;
-}
-.fade-enter, .fade-leave-to {
+.tray-leave-to {
   opacity: 0;
 }
 
-.slither-enter-active, .slither-leave-active {
+.tray-leave,
+.tray-enter-to {
+  opacity: 1;
+}
+
+.tray-enter-active,
+.tray-leave-active {
+  transition: opacity 10000ms;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slither-enter-active,
+.slither-leave-active {
   transition: transform 1s;
 }
 
-.slither-enter, .slither-leave-to {
+.slither-enter,
+.slither-leave-to {
   transform: translateX(-100%);
 }
 
-.slither-enter-to, .slither-leave {
+.slither-enter-to,
+.slither-leave {
   transform: translateX(0);
 }
 
-.drain-enter-active, .drain-leave-active {
+.drain-enter-active,
+.drain-leave-active {
   transition: transform 1s;
 }
 
-.drain-enter, .drain-leave-to {
+.drain-enter,
+.drain-leave-to {
   transform: translateY(100%);
 }
 
-.drain-enter-to, .drain-leave {
+.drain-enter-to,
+.drain-leave {
   transform: translateY(0);
 }
 
-.no-hover{
-    pointer-events: none;
+.no-hover {
+  pointer-events: none;
 }
 
 .icon {
-  text-decoration: none;
-  border-bottom: none;
-  position: relative;
-
   &:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -93,54 +169,5 @@ export default {
     font-weight: normal;
     text-transform: none !important;
   }
-
-  > .label {
-    display: none;
-  }
 }
-
-.page-wrap {
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-wrap: nowrap;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -moz-justify-content: -moz-flex-start;
-  -webkit-justify-content: -webkit-flex-start;
-  -ms-justify-content: -ms-flex-start;
-  justify-content: flex-start;
-}
-
-#main {
-  background: #f1f1f1;
-  width: 100%;
-
-  #header {
-    background: #e6e6e6;
-    padding: 1.15em 3.5em;
-    text-align: right;
-
-    h1 {
-      margin: 0;
-      font-size: 1em;
-    }
-  }
-}
-
-@media screen and (max-width: 980px) {
-  #main #header {
-    padding: 1.15em 2em;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  #main #header {
-    text-align: center;
-  }
-}
-
 </style>
