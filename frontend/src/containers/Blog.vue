@@ -72,9 +72,28 @@ export default {
   font-weight: 300;
   font-size: 1rem;
   line-height: 2.375;
+  font-size: 16pt;
 
   // max-width: 72rem;
   z-index: 2;
+
+  @media screen and (max-width: 1680px) {
+    html {
+      font-size: 12pt;
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    html {
+      font-size: 11pt;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    html {
+      font-size: 10pt;
+    }
+  }
 
   p {
     text-align: justify;
