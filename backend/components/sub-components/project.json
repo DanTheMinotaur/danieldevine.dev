@@ -37,6 +37,9 @@
     },
     "link": {
       "type": "string"
+    },
+    "technologies": {
+      "collection": "technologies"
     }
   }
 }
