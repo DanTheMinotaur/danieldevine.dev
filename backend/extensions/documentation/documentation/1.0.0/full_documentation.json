@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/29/2020 8:08:50 PM"
+    "x-generation-date": "06/03/2020 7:17:26 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -27,11 +27,11 @@
       "description": "Development server"
     },
     {
-      "url": "https://api.dev.danieldevine.dev",
+      "url": "YOUR_STAGING_SERVER",
       "description": "Staging server"
     },
     {
-      "url": "https://api.danieldevine.dev",
+      "url": "YOUR_PRODUCTION_SERVER",
       "description": "Production server"
     }
   ],
@@ -2993,20 +2993,19 @@
         ]
       }
     },
-    "/main-nav": {
+    "/projects": {
       "get": {
         "deprecated": false,
-        "description": "Find all the main-nav's records",
+        "description": "Find all the projects's records",
         "responses": {
           "200": {
-            "description": "Retrieve main-nav document(s)",
+            "description": "Retrieve projects document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Projects"
                   }
                 }
               }
@@ -3045,7 +3044,7 @@
         },
         "summary": "",
         "tags": [
-          "Main-nav"
+          "Projects"
         ],
         "parameters": [
           {
@@ -3186,18 +3185,81 @@
           }
         ]
       },
-      "put": {
+      "post": {
         "deprecated": false,
-        "description": "Update a single main-nav record",
+        "description": "Create a new projects record",
         "responses": {
           "200": {
-            "description": "Retrieve main-nav document(s)",
+            "description": "Retrieve projects document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Projects"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Projects"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProjects"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Retrieve the numver of projects documents",
+        "responses": {
+          "200": {
+            "description": "Retrieve projects document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -3237,7 +3299,122 @@
         },
         "summary": "",
         "tags": [
-          "Main-nav"
+          "Projects"
+        ],
+        "parameters": []
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Find one projects record",
+        "responses": {
+          "200": {
+            "description": "Retrieve projects document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Projects"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a single projects record",
+        "responses": {
+          "200": {
+            "description": "Retrieve projects document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Projects"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Projects"
         ],
         "requestBody": {
           "description": "",
@@ -3245,19 +3422,30 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMain-nav"
+                "$ref": "#/components/schemas/NewProjects"
               }
             }
           }
         },
-        "parameters": []
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single main-nav record",
+        "description": "Delete a single projects record",
         "responses": {
           "200": {
-            "description": "deletes a single main-nav based on the ID supplied",
+            "description": "deletes a single projects based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -3300,9 +3488,20 @@
         },
         "summary": "",
         "tags": [
-          "Main-nav"
+          "Projects"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/social-media-links": {
@@ -6450,7 +6649,7 @@
           }
         }
       },
-      "Main-nav": {
+      "Projects": {
         "required": [
           "id"
         ],
@@ -6458,26 +6657,150 @@
           "id": {
             "type": "string"
           },
-          "links": {
+          "project": {
             "type": "array",
             "items": {
               "type": "object",
               "required": [
                 "id",
-                "name",
-                "link"
+                "title"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "name": {
+                "title": {
                   "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "main_image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "gallery": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "name",
+                      "hash",
+                      "mime",
+                      "size",
+                      "url",
+                      "provider"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "alternativeText": {
+                        "type": "string"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "formats": {
+                        "type": "object"
+                      },
+                      "hash": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "previewUrl": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "provider_metadata": {
+                        "type": "object"
+                      },
+                      "related": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 },
                 "link": {
-                  "type": "string"
-                },
-                "icon": {
                   "type": "string"
                 }
               }
@@ -6485,28 +6808,152 @@
           }
         }
       },
-      "NewMain-nav": {
+      "NewProjects": {
         "properties": {
-          "links": {
+          "project": {
             "type": "array",
             "items": {
               "type": "object",
               "required": [
                 "id",
-                "name",
-                "link"
+                "title"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "name": {
+                "title": {
                   "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "main_image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "gallery": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "name",
+                      "hash",
+                      "mime",
+                      "size",
+                      "url",
+                      "provider"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "alternativeText": {
+                        "type": "string"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "formats": {
+                        "type": "object"
+                      },
+                      "hash": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "previewUrl": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "provider_metadata": {
+                        "type": "object"
+                      },
+                      "related": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 },
                 "link": {
-                  "type": "string"
-                },
-                "icon": {
                   "type": "string"
                 }
               }
@@ -6838,6 +7285,9 @@
     },
     {
       "name": "Link"
+    },
+    {
+      "name": "Projects"
     },
     {
       "name": "Email - Email"

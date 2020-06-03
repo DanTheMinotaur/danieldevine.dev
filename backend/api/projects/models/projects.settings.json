@@ -1,18 +1,18 @@
 {
-  "kind": "singleType",
-  "collectionName": "main_nav",
+  "kind": "collectionType",
+  "collectionName": "projects",
   "info": {
-    "name": "Main Nav"
+    "name": "Projects"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "links": {
+    "project": {
       "type": "component",
       "repeatable": true,
-      "component": "nav.link"
+      "component": "sub-components.project"
     }
   }
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `main-nav` model.
+ * Lifecycle callbacks for the `projects` model.
  */
 
 module.exports = {
