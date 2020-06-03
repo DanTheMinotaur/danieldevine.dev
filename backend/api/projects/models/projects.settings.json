@@ -9,10 +9,38 @@
     "timestamps": true
   },
   "attributes": {
-    "project": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sub-components.project"
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "main_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "link": {
+      "type": "string"
+    },
+    "gallery": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "technologies": {
+      "collection": "technologies"
     }
   }
 }

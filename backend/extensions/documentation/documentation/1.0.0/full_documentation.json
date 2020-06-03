@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/03/2020 8:16:22 PM"
+    "x-generation-date": "06/03/2020 9:30:00 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7162,347 +7162,182 @@
       },
       "Projects": {
         "required": [
-          "id"
+          "id",
+          "title"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "project": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "main_image": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              }
+            }
+          },
+          "link": {
+            "type": "string"
+          },
+          "gallery": {
             "type": "array",
             "items": {
-              "type": "object",
               "required": [
                 "id",
-                "title"
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "title": {
+                "name": {
                   "type": "string"
                 },
-                "description": {
+                "alternativeText": {
                   "type": "string"
                 },
-                "main_image": {
-                  "required": [
-                    "id",
-                    "name",
-                    "hash",
-                    "mime",
-                    "size",
-                    "url",
-                    "provider"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "alternativeText": {
-                      "type": "string"
-                    },
-                    "caption": {
-                      "type": "string"
-                    },
-                    "width": {
-                      "type": "integer"
-                    },
-                    "height": {
-                      "type": "integer"
-                    },
-                    "formats": {
-                      "type": "object"
-                    },
-                    "hash": {
-                      "type": "string"
-                    },
-                    "ext": {
-                      "type": "string"
-                    },
-                    "mime": {
-                      "type": "string"
-                    },
-                    "size": {
-                      "type": "number"
-                    },
-                    "url": {
-                      "type": "string"
-                    },
-                    "previewUrl": {
-                      "type": "string"
-                    },
-                    "provider": {
-                      "type": "string"
-                    },
-                    "provider_metadata": {
-                      "type": "object"
-                    },
-                    "related": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "gallery": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "id",
-                      "name",
-                      "hash",
-                      "mime",
-                      "size",
-                      "url",
-                      "provider"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "alternativeText": {
-                        "type": "string"
-                      },
-                      "caption": {
-                        "type": "string"
-                      },
-                      "width": {
-                        "type": "integer"
-                      },
-                      "height": {
-                        "type": "integer"
-                      },
-                      "formats": {
-                        "type": "object"
-                      },
-                      "hash": {
-                        "type": "string"
-                      },
-                      "ext": {
-                        "type": "string"
-                      },
-                      "mime": {
-                        "type": "string"
-                      },
-                      "size": {
-                        "type": "number"
-                      },
-                      "url": {
-                        "type": "string"
-                      },
-                      "previewUrl": {
-                        "type": "string"
-                      },
-                      "provider": {
-                        "type": "string"
-                      },
-                      "provider_metadata": {
-                        "type": "object"
-                      },
-                      "related": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "link": {
+                "caption": {
                   "type": "string"
                 },
-                "technologies": {
-                  "required": [
-                    "id",
-                    "name"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "image_icon": {
-                      "type": "string"
-                    }
-                  }
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
                 }
+              }
+            }
+          },
+          "technologies": {
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "image_icon": {
+                "type": "string"
               }
             }
           }
         }
       },
       "NewProjects": {
+        "required": [
+          "title"
+        ],
         "properties": {
-          "project": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id",
-                "title"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "main_image": {
-                  "required": [
-                    "id",
-                    "name",
-                    "hash",
-                    "mime",
-                    "size",
-                    "url",
-                    "provider"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "alternativeText": {
-                      "type": "string"
-                    },
-                    "caption": {
-                      "type": "string"
-                    },
-                    "width": {
-                      "type": "integer"
-                    },
-                    "height": {
-                      "type": "integer"
-                    },
-                    "formats": {
-                      "type": "object"
-                    },
-                    "hash": {
-                      "type": "string"
-                    },
-                    "ext": {
-                      "type": "string"
-                    },
-                    "mime": {
-                      "type": "string"
-                    },
-                    "size": {
-                      "type": "number"
-                    },
-                    "url": {
-                      "type": "string"
-                    },
-                    "previewUrl": {
-                      "type": "string"
-                    },
-                    "provider": {
-                      "type": "string"
-                    },
-                    "provider_metadata": {
-                      "type": "object"
-                    },
-                    "related": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "gallery": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "id",
-                      "name",
-                      "hash",
-                      "mime",
-                      "size",
-                      "url",
-                      "provider"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "alternativeText": {
-                        "type": "string"
-                      },
-                      "caption": {
-                        "type": "string"
-                      },
-                      "width": {
-                        "type": "integer"
-                      },
-                      "height": {
-                        "type": "integer"
-                      },
-                      "formats": {
-                        "type": "object"
-                      },
-                      "hash": {
-                        "type": "string"
-                      },
-                      "ext": {
-                        "type": "string"
-                      },
-                      "mime": {
-                        "type": "string"
-                      },
-                      "size": {
-                        "type": "number"
-                      },
-                      "url": {
-                        "type": "string"
-                      },
-                      "previewUrl": {
-                        "type": "string"
-                      },
-                      "provider": {
-                        "type": "string"
-                      },
-                      "provider_metadata": {
-                        "type": "object"
-                      },
-                      "related": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "link": {
-                  "type": "string"
-                },
-                "technologies": {
-                  "required": [
-                    "id",
-                    "name"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "image_icon": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "technologies": {
+            "type": "string"
           }
         }
       },
