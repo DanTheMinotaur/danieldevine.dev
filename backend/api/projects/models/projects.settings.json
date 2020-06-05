@@ -41,6 +41,10 @@
     },
     "technologies": {
       "collection": "technologies"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
