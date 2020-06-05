@@ -58,6 +58,10 @@ const router = new VueRouter({
       components: require('./components/Home/Work.vue')
     },
     {
+      path: '/projects/:slug',
+      components: require('./components/Home/Project.vue')
+    },
+    {
       path: '/blog',
       components: require('./containers/Blog.vue')
     },
