@@ -35,6 +35,8 @@ Vue.mixin({
   }
 })
 
+Vue.prototype.$gql = gql
+
 // Vue.component(gql)
 // Vue.use(gql)
 
@@ -81,6 +83,5 @@ const router = new VueRouter({
 new Vue({
   apolloProvider,
   router,
-  gql,
   render: h => h(App)
 }).$mount('#app')

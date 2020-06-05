@@ -1,15 +1,46 @@
 <template>
-  <div>{{projects}}</div>
+  <article>
+    <section class="panel intro">
+      <a v-bind:href="project.link" class="jumplink pic" target="_blank" v-if="project.main_image">
+        <span class="arrow icon solid fa-external-link">
+          <span>See my work</span>
+        </span>
+        <img
+          :src="getURL(project.main_image.formats.large.url).href"
+          :alt="project.main_image.alternativeText"
+        />
+        <!-- <img src="images/me.jpg" alt /> -->
+      </a>
+      <header>
+        <h1>{{project.title}}</h1>
+      </header>
+    </section>
+    <section>
+      <markdown-it-vue v-if="project.description" :content="project.description" />
+    </section>
+    <section class="gallery">
+
+    </section>
+  </article>
 </template>
 
 <script>
 import gql from "graphql-tag";
+import MarkdownItVue from "markdown-it-vue";
 
 export default {
   data() {
     return {
       projects: {},
-      routeParam: this.$route.params.slug,
+      routeParam: this.$route.params.slug
+    };
+  },
+  components: {
+    MarkdownItVue
+  },
+  computed: {
+    project() {
+      return this.projects && this.projects.length > 0 ? this.projects[0] : {};
     }
   },
   apollo: {
@@ -19,6 +50,7 @@ export default {
           projects(where: { slug: $slug }) {
             title
             description
+            link
             main_image {
               formats
               alternativeText
@@ -42,3 +74,14 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.markdown-body {
+  letter-spacing: -0.015em;
+  font-size: 1.9rem;
+  margin: 0.25em 0 0 0;
+  color: #aaa;
+  padding: 3rem;
+  text-align: center;
+}
+</style>

@@ -55,7 +55,7 @@ export default {
       variables() {
         return {
           slug: this.routeParam
-        }
+        };
       }
     }
   }
