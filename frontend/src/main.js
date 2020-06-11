@@ -6,10 +6,13 @@ import apolloClient from './vue-apollo'
 
 import App from './App.vue'
 import gql from 'graphql-tag'
+import VueLazyLoad from 'vue-lazyload'
+
 // use default options
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
+Vue.use(VueLazyLoad)
 
 Vue.config.productionTip = false
 Vue.mixin({

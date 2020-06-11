@@ -18,25 +18,47 @@
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
-    <section class="gallery">
-
-    </section>
+    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery" />
   </article>
 </template>
 
 <script>
 import gql from "graphql-tag";
 import MarkdownItVue from "markdown-it-vue";
+import Gallery from "./Gallery.vue";
+require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
 
 export default {
   data() {
     return {
       projects: {},
-      routeParam: this.$route.params.slug
+      routeParam: this.$route.params.slug,
+      showLightBox: false,
+      imageList: [
+        {
+          // For image
+          thumb:
+            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-6.jpg",
+          src:
+            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-6-lg.jpg",
+          caption: "caption to display. receive <html> <b>tag</b>" // Optional
+          // srcset: "..." // Optional for displaying responsive images
+        },
+        {
+          // For image
+          thumb:
+            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-12.jpg",
+          src:
+            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-12-lg.jpg",
+          caption: "caption to display. receive <html> <b>tag</b>" // Optional
+          // srcset: "..." // Optional for displaying responsive images
+        }
+      ]
     };
   },
   components: {
-    MarkdownItVue
+    MarkdownItVue,
+    Gallery
   },
   computed: {
     project() {
@@ -55,12 +77,13 @@ export default {
               formats
               alternativeText
             }
-          }
-          galleries {
-            name
-            image {
-              formats
+            gallery {
+              id
+              name
               alternativeText
+              url
+              formats
+              caption
             }
           }
         }
