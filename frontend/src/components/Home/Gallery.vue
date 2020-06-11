@@ -39,9 +39,10 @@ export default {
     lightBoxFormat() {
       const lightBoxData = [];
       this.images.forEach(i => {
+
         lightBoxData.push({
           thumb: this.getURL(i.formats.thumbnail.url).href,
-          src: this.getURL(i.url).herf,
+          src: this.getURL(i.url).href,
           caption: i.caption
         });
       });
