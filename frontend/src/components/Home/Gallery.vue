@@ -17,16 +17,17 @@
         :media="lightBoxFormat()"
         :show-caption="true"
         :show-light-box="false"
-      v-if="images"/>
+        v-if="images"
+      />
     </div>
     <footer>
-      <a href="gallery.html" class="button large">Full Gallery</a>
+      <button class="button large" @click="openGallery(0)">Full Gallery</button>
     </footer>
   </section>
 </template>
 
 <script>
-import LightBox from 'vue-image-lightbox'
+import LightBox from "vue-image-lightbox";
 require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
 
 export default {
@@ -39,20 +40,19 @@ export default {
     lightBoxFormat() {
       const lightBoxData = [];
       this.images.forEach(i => {
-
         lightBoxData.push({
           thumb: this.getURL(i.formats.thumbnail.url).href,
           src: this.getURL(i.url).href,
           caption: i.caption
         });
       });
-      return lightBoxData
+      return lightBoxData;
     },
     openGallery(index) {
       this.$refs.lightbox.showImage(index);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
