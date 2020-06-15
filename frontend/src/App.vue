@@ -76,6 +76,7 @@ export default {
 
 <style>
 @import "./assets/css/font-awesome.min.css";
+@import "./assets/css/notifications.css";
 /* #wrapper {
   width: 45em;
 } */

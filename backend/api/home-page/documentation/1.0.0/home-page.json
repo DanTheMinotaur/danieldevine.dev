@@ -319,9 +319,7 @@
         "required": [
           "id",
           "header",
-          "header_image",
-          "about",
-          "about_header"
+          "profile_image"
         ],
         "properties": {
           "id": {
@@ -333,7 +331,7 @@
           "sub_header": {
             "type": "string"
           },
-          "header_image": {
+          "profile_image": {
             "required": [
               "id",
               "name",
@@ -393,21 +391,12 @@
                 "type": "string"
               }
             }
-          },
-          "about": {
-            "type": "string"
-          },
-          "about_header": {
-            "type": "string",
-            "default": "About Me"
           }
         }
       },
       "NewHome-page": {
         "required": [
-          "header",
-          "about",
-          "about_header"
+          "header"
         ],
         "properties": {
           "header": {
@@ -415,13 +404,6 @@
           },
           "sub_header": {
             "type": "string"
-          },
-          "about": {
-            "type": "string"
-          },
-          "about_header": {
-            "type": "string",
-            "default": "About Me"
           }
         }
       }

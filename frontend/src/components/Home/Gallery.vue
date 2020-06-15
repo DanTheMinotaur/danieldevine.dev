@@ -1,58 +1,56 @@
 <template>
-  <section class="hero is-warning is-fullheight">
-    <div class="hero-body">
-
-        <section id="galleries">
-          <div class="gallery">
-            <header class="special">
-              <h2 class="title">Projects</h2>
-            </header>
-            <div class="content">
-              <div v-for="g in galleries" v-bind:key="g.id" :title="g.name" class="media">
-                <router-link :to="g.link">
-                  <img
-                    :src="getURL(g.image.url).href"
-                    :alt="g.image.alternateText"
-                    :title="g.image.caption"
-                  />
-                </router-link>
-              </div>
-            </div>
-            <footer>
-              <a href="gallery.html" class="button large is-danger">Full Gallery</a>
-            </footer>
-          </div>
-        </section>
-
+  <section class="gallery">
+    <header class="special">
+      <h2 class="title">{{title}} Gallery</h2>
+    </header>
+    <div class="content">
+      <div v-for="(img, i) in images" v-bind:key="img.id" :title="img.caption" class="media">
+        <img
+          :src="getURL(img.formats.small.url).href"
+          :alt="img.alternateText"
+          :title="img.caption"
+          @click="openGallery(i)"
+        />
+      </div>
+      <LightBox
+        ref="lightbox"
+        :media="lightBoxFormat()"
+        :show-caption="true"
+        :show-light-box="false"
+        v-if="images"
+      />
     </div>
+    <footer>
+      <button class="button large" @click="openGallery(0)">Full Gallery</button>
+    </footer>
   </section>
 </template>
 
 <script>
-import gql from "graphql-tag";
+import LightBox from "vue-image-lightbox";
+require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
 
 export default {
   name: "Gallery",
-  data() {
-    return {
-      galleryItems: []
-    };
+  props: ["images", "title"],
+  components: {
+    LightBox
   },
-  apollo: {
-    galleries: gql`
-      query galleries {
-        galleries(limit: 8) {
-          id
-          name
-          link
-          image {
-            url
-            caption
-            alternativeText
-          }
-        }
-      }
-    `
+  methods: {
+    lightBoxFormat() {
+      const lightBoxData = [];
+      this.images.forEach(i => {
+        lightBoxData.push({
+          thumb: this.getURL(i.formats.thumbnail.url).href,
+          src: this.getURL(i.url).href,
+          caption: i.caption
+        });
+      });
+      return lightBoxData;
+    },
+    openGallery(index) {
+      this.$refs.lightbox.showImage(index);
+    }
   }
 };
 </script>
@@ -141,7 +139,7 @@ export default {
       overflow: hidden;
       opacity: 0;
       position: relative;
-      width: 25%;
+      width: 50%;
       margin-top: 0;
       padding-top: 0;
 

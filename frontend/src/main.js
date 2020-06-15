@@ -6,10 +6,13 @@ import apolloClient from './vue-apollo'
 
 import App from './App.vue'
 import gql from 'graphql-tag'
+import VueLazyLoad from 'vue-lazyload'
+
 // use default options
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
+Vue.use(VueLazyLoad)
 
 Vue.config.productionTip = false
 Vue.mixin({
@@ -35,6 +38,8 @@ Vue.mixin({
   }
 })
 
+Vue.prototype.$gql = gql
+
 // Vue.component(gql)
 // Vue.use(gql)
 
@@ -58,6 +63,10 @@ const router = new VueRouter({
       components: require('./components/Home/Work.vue')
     },
     {
+      path: '/projects/:slug',
+      components: require('./components/Home/Project.vue')
+    },
+    {
       path: '/blog',
       components: require('./containers/Blog.vue')
     },
@@ -77,6 +86,5 @@ const router = new VueRouter({
 new Vue({
   apolloProvider,
   router,
-  gql,
   render: h => h(App)
 }).$mount('#app')
