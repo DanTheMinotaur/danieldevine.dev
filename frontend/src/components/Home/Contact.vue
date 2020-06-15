@@ -3,20 +3,21 @@
     <header>
       <h2>Contact Me</h2>
     </header>
-    <form v-on:submit.prevent="onSubmit">
+    <form @submit.prevent="postMessage" >
+      <div id="form-submit-notify"></div>
       <div>
         <div class="row">
           <div class="col-6 col-12-medium">
-            <input type="text" name="name" placeholder="Name" required/>
+            <input type="text" name="name" placeholder="Name" v-model="name"  required/>
           </div>
           <div class="col-6 col-12-medium">
-            <input type="text" name="email" placeholder="Email" required/>
+            <input type="text" name="email" placeholder="Email" v-model="email" required/>
           </div>
           <div class="col-12">
-            <textarea name="message" placeholder="Message" rows="6" required></textarea>
+            <textarea name="message" placeholder="Message" rows="6" v-model="message"  required></textarea>
           </div>
-          <div class="col-12">
-            <input type="submit" value="Send Message" />
+          <div class="col-12" >
+            <input value="Send Message" type="submit" v-on:click="postMessage">
           </div>
         </div>
       </div>
@@ -63,13 +64,12 @@ export default {
                 notificationConfig.theme = 'error'
                 message.title = 'Error!'
                 message.message = 'Could not send message :-('
-            }).finally(() => {
+            })
+            .finally(() => {
                 const notification = window.createNotification(notificationConfig)
                 notification(message)
             })
           }
-          
-          
       }
   }
 }
