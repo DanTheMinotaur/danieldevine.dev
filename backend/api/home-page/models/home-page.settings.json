@@ -16,22 +16,13 @@
     "sub_header": {
       "type": "string"
     },
-    "header_image": {
+    "profile_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
         "images"
       ],
       "plugin": "upload",
-      "required": true
-    },
-    "about": {
-      "type": "richtext",
-      "required": true
-    },
-    "about_header": {
-      "type": "string",
-      "default": "About Me",
       "required": true
     }
   }

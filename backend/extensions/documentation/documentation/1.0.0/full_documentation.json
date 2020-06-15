@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/05/2020 8:24:30 PM"
+    "x-generation-date": "06/15/2020 11:33:55 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6963,9 +6963,7 @@
         "required": [
           "id",
           "header",
-          "header_image",
-          "about",
-          "about_header"
+          "profile_image"
         ],
         "properties": {
           "id": {
@@ -6977,7 +6975,7 @@
           "sub_header": {
             "type": "string"
           },
-          "header_image": {
+          "profile_image": {
             "required": [
               "id",
               "name",
@@ -7037,21 +7035,12 @@
                 "type": "string"
               }
             }
-          },
-          "about": {
-            "type": "string"
-          },
-          "about_header": {
-            "type": "string",
-            "default": "About Me"
           }
         }
       },
       "NewHome-page": {
         "required": [
-          "header",
-          "about",
-          "about_header"
+          "header"
         ],
         "properties": {
           "header": {
@@ -7059,13 +7048,6 @@
           },
           "sub_header": {
             "type": "string"
-          },
-          "about": {
-            "type": "string"
-          },
-          "about_header": {
-            "type": "string",
-            "default": "About Me"
           }
         }
       },
