@@ -6,10 +6,12 @@
       <h1>{{homePage.header}}</h1>
       <p>{{homePage.sub_header}}</p>
     </header>
-    <a href="#work" class="jumplink pic">
-      <span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
+    <span class="jumplink pic">
+      <router-link 
+        :to="{path: 'projects'}"
+        class="arrow icon solid fa-chevron-right"><span>See my work</span></router-link>
       <img :src="getURL(homePage.profile_image.url)" :alt="homePage.alternativeText" :title="homePage.name" />
-    </a>
+    </span>
   </article>
             
 </template>

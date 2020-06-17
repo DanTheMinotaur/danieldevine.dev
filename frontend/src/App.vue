@@ -42,11 +42,6 @@ export default {
   data() {
     return {
       navComponents: {
-        // home: {
-        //   icon: "fa-home",
-        //   width: "45em",
-        //   link: '/'
-        // },
         work: {
           icon: "fa-folder",
           width: "45em",
