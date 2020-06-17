@@ -5,7 +5,6 @@ import VueRouter from 'vue-router'
 import apolloClient from './vue-apollo'
 
 import App from './App.vue'
-import gql from 'graphql-tag'
 import VueLazyLoad from 'vue-lazyload'
 
 // use default options
@@ -38,7 +37,7 @@ Vue.mixin({
   }
 })
 
-Vue.prototype.$gql = gql
+// Vue.prototype.$gql = gql
 
 // Vue.component(gql)
 // Vue.use(gql)

@@ -12,6 +12,7 @@
         :src="getURL(homePage.profile_image.url)"
         :alt="homePage.alternativeText"
         :title="homePage.name"
+        v-if="homePage.profile_image"
       />
     </span>
   </article>
@@ -29,7 +30,7 @@ export default {
     };
   },
   apollo: {
-    homePage: gql(`
+    homePage: gql`
       query {
         homePage {
           header
@@ -41,7 +42,7 @@ export default {
           }
         }
       }
-    `)
+    `
   }
 };
 </script>
