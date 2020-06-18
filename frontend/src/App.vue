@@ -1,12 +1,13 @@
 <template>
-  <div id="wrapper" v-bind:style="{ width: this.wrapperWidth, transition: 'width .5s' }">
-    <!-- Nav -->
+  <div id="wrapper" v-bind:style="{ width: wrapperWidth, transition: 'width .5s' }">
     <nav id="nav">
-      <router-link :to="{path: '/'}" class="icon solid fa-home" exact><span>Home</span></router-link>
-      <router-link v-for="(data, comp) in navComponents"
+      <router-link :to="{path: '/'}" class="icon solid fa-home" exact>
+        <span>Home</span>
+      </router-link>
+      <router-link
+        v-for="(data, comp) in navComponents"
         v-bind:key="comp"
         v-bind:class="[data.icon]"
-        v-on:click.native="updateWidth(data.width)"
         class="icon solid"
         :to="{path: data.link}"
       >
@@ -37,50 +38,59 @@
 import "./assets/css/main.css";
 
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
       navComponents: {
         work: {
-          icon: "fa-folder",
-          width: "45em",
+          icon: 'fa-folder',
+          width: '45em',
           link: '/projects'
         },
         contact: {
-          icon: "fa-envelope",
-          width: "45em",
+          icon: 'fa-envelope',
+          width: '45em',
           link: '/contact'
         },
         blog: {
-          icon: "fa-newspaper-o",
-          width: "70em",
+          icon: 'fa-newspaper-o',
+          width: '70em',
           link: '/blog'
         }
+      },
+      wrapperWidth: '45em'
+    }
+  },
+  watch: {
+    $route () {
+      console.log('routerWatched', this.$route.path)
+      if (this.$route.path.startsWith('/blog')) {
+        this.updateWidth('65em')
+      } else {
+        this.updateWidth('45em')
       }
-    };
+    }
   },
   methods: {
-    updateWidth(width) {
+    updateWidth (width) {
       console.log('Width Change', width)
-      this.wrapperWidth = width;
+      console.log('this.wrapperWidth', this.wrapperWidth)
+      this.wrapperWidth = width
     }
   }
-};
+}
 </script>
 
 <style>
 @import "./assets/css/font-awesome.min.css";
 @import "./assets/css/notifications.css";
-/* #wrapper {
-  width: 45em;
-} */
 
 .component-fade-enter-active,
 .component-fade-leave-active {
   transition: opacity 0.4s ease;
 }
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active below version 2.1.8 */ {
+.component-fade-enter,
+.component-fade-leave-to {
   opacity: 0;
 }
 </style>
