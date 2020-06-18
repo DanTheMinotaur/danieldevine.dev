@@ -20,17 +20,6 @@
         <router-view :key="$route.fullPath"></router-view>
       </transition>
     </main>
-
-    <!-- Footer -->
-    <div id="footer">
-      <ul class="copyright">
-        <li>&copy; Untitled.</li>
-        <li>
-          Design:
-          <a href="http://html5up.net">HTML5 UP</a>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -73,8 +62,6 @@ export default {
   },
   methods: {
     updateWidth (width) {
-      console.log('Width Change', width)
-      console.log('this.wrapperWidth', this.wrapperWidth)
       this.wrapperWidth = width
     }
   }
