@@ -8,7 +8,7 @@ jobs:
     execute_update_commands:
         runs-on: ubuntu-latest
         steps:
-        -   name: connect and pull updates
+        -   name: pull updates
             uses: garygrossgarten/github-action-ssh@release
             with:
                 host: ${{ secrets.STAGING_HOST }}
