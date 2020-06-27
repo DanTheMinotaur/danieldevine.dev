@@ -1,12 +1,12 @@
 #!/bin/sh
-echo "Building for $1 environment"
+git checkout $1
+git pull
+echo "Building for $1 front end environment"
 cd ${$2}/frontend
+docker-compose down
+docker-compose up --build -d
 
-echo -e "VUE_APP_GRAPHQL_URL:$3" >> .env
-echo -e "VUE_APP_API_URL:$4" >> .env
-echo -e "VIRTUAL_HOST:$5" >> .env
-echo -e "VIRTUAL_PORT:$6" >> .env
-echo -e "LETSENCRYPT_HOST:$7" >> .env
-
+echo "Building for $1 back end environment"
+cd ${$2}/backend
 docker-compose down
 docker-compose up --build -d
