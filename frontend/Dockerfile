@@ -15,5 +15,5 @@ COPY ./public ./public
 
 RUN yarn build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+EXPOSE 7000
+CMD [ "http-server", "-p 7000", "dist"]

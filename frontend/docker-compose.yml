@@ -4,6 +4,6 @@ services:
     build:
       context: .
     ports:
-      - '127.0.0.1:8080:8080'
+      - '127.0.0.1:7000:7000'
     env_file: 
       .env
