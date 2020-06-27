@@ -5,7 +5,6 @@ import VueRouter from 'vue-router'
 import apolloClient from './vue-apollo'
 
 import App from './App.vue'
-import gql from 'graphql-tag'
 import VueLazyLoad from 'vue-lazyload'
 
 // use default options
@@ -18,7 +17,7 @@ Vue.config.productionTip = false
 Vue.mixin({
   methods: {
     getURL: url => {
-      return new URL(url, process.env.VUE_APP_STRAPI_API_URL)
+      return new URL(url, process.env.VUE_APP_API_URL)
     },
     capitalize: string => {
       return string.charAt(0).toUpperCase() + string.slice(1)
@@ -30,18 +29,8 @@ Vue.mixin({
         return all
       }, [])
     }
-  },
-  data () {
-    return {
-      wrapperWidth: '45em'
-    }
   }
 })
-
-Vue.prototype.$gql = gql
-
-// Vue.component(gql)
-// Vue.use(gql)
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
@@ -74,12 +63,11 @@ const router = new VueRouter({
       path: '/blog/:slug',
       components: require('./containers/Article.vue')
     },
-    {
-      path: '/blog/category/:slug',
-      components: require('./containers/Category.vue')
-    }
+    // {
+    //   path: '/blog/category/:slug',
+    //   components: require('./containers/Category.vue')
+    // }
   ],
-  // linkExactActiveClass: 'active',
   linkActiveClass: 'active'
 })
 

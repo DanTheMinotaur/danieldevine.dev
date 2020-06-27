@@ -381,7 +381,7 @@ export default {
         }
 
         .date {
-          font-size: 1rem;
+          font-size: 1.3rem;
           margin: 0 0 4rem 0;
 
           &:before,
@@ -450,6 +450,7 @@ export default {
           }
 
           p {
+            font-size: 1.4rem;
             margin-top: 0;
             text-align: center;
           }
