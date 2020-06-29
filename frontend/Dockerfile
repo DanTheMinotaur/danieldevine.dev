@@ -1,7 +1,7 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as build-stage
 
 # install simple http server for serving static content
-RUN yarn global add http-server
+# RUN yarn global add http-server
 
 WORKDIR /app
 
@@ -15,5 +15,7 @@ COPY ./public ./public
 
 RUN yarn build
 
-EXPOSE 7000
-CMD [ "http-server", "-p 7000", "dist"]
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
