@@ -15,7 +15,7 @@ COPY ./public ./public
 
 RUN yarn build
 
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+FROM httpd:2.4 as production-stage
+COPY --from=build-stage /app/dist /usr/local/apache2/htdocs/
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]

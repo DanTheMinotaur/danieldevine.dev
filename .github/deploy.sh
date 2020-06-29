@@ -1,6 +1,8 @@
 #!/bin/bash
 git checkout $1
+
 git pull
+
 echo "Building for $1 front end environment"
 cd $2/frontend && docker-compose down && docker-compose up --build -d
 
