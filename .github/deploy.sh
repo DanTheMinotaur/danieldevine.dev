@@ -1,4 +1,7 @@
 #!/bin/bash
+
+cd ${$2}
+
 git checkout $1
 
 git pull
