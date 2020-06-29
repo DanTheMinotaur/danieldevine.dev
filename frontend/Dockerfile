@@ -12,6 +12,7 @@ RUN yarn install
 
 COPY ./src ./src
 COPY ./public ./public
+COPY ./.env ./
 
 RUN yarn build
 
