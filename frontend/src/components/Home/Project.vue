@@ -9,7 +9,6 @@
           :src="getURL(project.main_image.formats.large.url).href"
           :alt="project.main_image.alternativeText"
         />
-        <!-- <img src="images/me.jpg" alt /> -->
       </a>
       <header>
         <h1>{{project.title}}</h1>
