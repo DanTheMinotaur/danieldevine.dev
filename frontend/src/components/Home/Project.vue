@@ -9,16 +9,16 @@
           :src="getURL(project.main_image.formats.large.url).href"
           :alt="project.main_image.alternativeText"
         />
-        <!-- <img src="images/me.jpg" alt /> -->
       </a>
       <header>
         <h1>{{project.title}}</h1>
       </header>
     </section>
+    <TechnologiesBar :icons="project.technologies"/>
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
-    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery" />
+    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery && project.gallery.length" />
   </article>
 </template>
 
@@ -27,38 +27,20 @@ import gql from "graphql-tag";
 import MarkdownItVue from "markdown-it-vue";
 import Gallery from "./Gallery.vue";
 require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
+import TechnologiesBar from './Technologies.vue'
 
 export default {
   data() {
     return {
       projects: {},
       routeParam: this.$route.params.slug,
-      showLightBox: false,
-      imageList: [
-        {
-          // For image
-          thumb:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-6.jpg",
-          src:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-6-lg.jpg",
-          caption: "caption to display. receive <html> <b>tag</b>" // Optional
-          // srcset: "..." // Optional for displaying responsive images
-        },
-        {
-          // For image
-          thumb:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-12.jpg",
-          src:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-12-lg.jpg",
-          caption: "caption to display. receive <html> <b>tag</b>" // Optional
-          // srcset: "..." // Optional for displaying responsive images
-        }
-      ]
-    };
+      showLightBox: false
+    }
   },
   components: {
     MarkdownItVue,
-    Gallery
+    Gallery,
+    TechnologiesBar
   },
   computed: {
     project() {
@@ -84,6 +66,12 @@ export default {
               url
               formats
               caption
+            }
+            technologies {
+              name
+              image_icon {
+                url
+              }
             }
           }
         }

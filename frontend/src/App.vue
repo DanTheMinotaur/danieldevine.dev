@@ -13,6 +13,18 @@
       >
         <span>{{capitalize(comp)}}</span>
       </router-link>
+      <a
+        v-for="link in mediaLinks"
+        v-bind:key="link.name"
+        v-bind:class="[link.icon]"
+        class="icon solid social"
+        v-bind:href="link.link"
+        target="_blank"
+        v-bind:style="{ color: link.color}"
+      >
+        <span>{{capitalize(link.name)}}</span>
+      </a>
+
     </nav>
 
     <main id="main">
@@ -24,7 +36,7 @@
 </template>
 
 <script>
-import "./assets/css/main.css";
+import './assets/css/main.css'
 
 export default {
   name: 'App',
@@ -45,14 +57,33 @@ export default {
           icon: 'fa-newspaper-o',
           width: '70em',
           link: '/blog'
-        }
+        },
       },
+      mediaLinks: [
+        {
+          name: 'Twitter',
+          link: 'https://twitter.com',
+          icon: 'fa-twitter',
+          color: '#1DA1F2'
+        },
+        {
+          name: 'Instagram',
+          link: 'https://instagram.com',
+          icon: 'fa-instagram',
+          color: '#3f729b'
+        },
+        {
+          name: 'GitHub',
+          link: 'https://github.com/DanTheMinotaur/',
+          icon: 'fa-github',
+          color: '#111111'
+        }
+      ],
       wrapperWidth: '45em'
     }
   },
   watch: {
     $route () {
-      console.log('routerWatched', this.$route.path)
       if (this.$route.path.startsWith('/blog')) {
         this.updateWidth('65em')
       } else {
@@ -82,6 +113,12 @@ export default {
 }
 </style>
 
+<style lang="scss" scoped>
+.social {
+  font-size: 2.1em !important;
+}
+</style>
+
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600");
 
@@ -90,62 +127,6 @@ export default {
   body {
     min-width: 320px;
   }
-}
-
-// Vue Transitions
-
-.tray-enter,
-.tray-leave-to {
-  opacity: 0;
-}
-
-.tray-leave,
-.tray-enter-to {
-  opacity: 1;
-}
-
-.tray-enter-active,
-.tray-leave-active {
-  transition: opacity 10000ms;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 3s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slither-enter-active,
-.slither-leave-active {
-  transition: transform 1s;
-}
-
-.slither-enter,
-.slither-leave-to {
-  transform: translateX(-100%);
-}
-
-.slither-enter-to,
-.slither-leave {
-  transform: translateX(0);
-}
-
-.drain-enter-active,
-.drain-leave-active {
-  transition: transform 1s;
-}
-
-.drain-enter,
-.drain-leave-to {
-  transform: translateY(100%);
-}
-
-.drain-enter-to,
-.drain-leave {
-  transform: translateY(0);
 }
 
 .no-hover {
@@ -162,4 +143,5 @@ export default {
     text-transform: none !important;
   }
 }
+
 </style>
