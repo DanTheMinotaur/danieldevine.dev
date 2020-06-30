@@ -14,7 +14,7 @@
         <h1>{{project.title}}</h1>
       </header>
     </section>
-    <TechnologiesBar/>
+    <TechnologiesBar :icons="project.technologies"/>
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
@@ -66,6 +66,12 @@ export default {
               url
               formats
               caption
+            }
+            technologies {
+              name
+              image_icon {
+                url
+              }
             }
           }
         }

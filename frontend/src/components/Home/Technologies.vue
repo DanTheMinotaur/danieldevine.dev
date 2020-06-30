@@ -1,20 +1,19 @@
 <template>
   <section class="icon-bar">
-    <div class="icon tooltip"><i class="fa fa-home"></i><span class="tooltiptext">Test Some Stuff</span></div>
-    <span class="icon tooltip"><i class="fa fa-search"></i><span class="tooltiptext">Test Some Stuff</span></span>
-    <span class="icon tooltip"><i class="fa fa-envelope"></i><span class="tooltiptext">Test Some Stuff</span></span>
-    <span class="icon tooltip"><i class="fa fa-globe"></i><span class="tooltiptext">Test Some Stuff</span></span>
-    <span class="icon tooltip"><i class="fa fa-trash"></i><span class="tooltiptext">Test Some Stuff</span></span>
+    <span v-for="(icon, i) in icons" v-bind:key="i" class="icon tooltip" v-bind:style="{ width: getIconWidth() }">
+      <img :src="getURL(icon.image_icon.url).href" :alt="`${icon.name} Logo`">
+      <span class="tooltiptext">{{icon.name}}</span>
+    </span>
   </section>
 </template>
 
 <script>
 export default {
   name: 'TechnologiesBar',
-  props: ['technologies'],
-  computed: {
+  props: ['icons'],
+  methods: {
     getIconWidth() {
-      return this.technologies.length / 100
+      return `${100 / this.icons.length}%`
     }
   }
 }
@@ -28,12 +27,12 @@ export default {
 
   .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    // width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 2%;
     
     /* Position the tooltip */
     position: absolute;
@@ -58,7 +57,7 @@ export default {
   
   .icon {
     text-align: center;
-    width: 20%; 
+    // width: 20%; 
     padding: 12px 0;
     transition: all 0.3s ease;
     color: white;
@@ -66,6 +65,10 @@ export default {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
+
+    img {
+      height: 2em;
+    }
 
     &:hover {
       background-color: #000;
