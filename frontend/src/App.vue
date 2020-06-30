@@ -13,6 +13,17 @@
       >
         <span>{{capitalize(comp)}}</span>
       </router-link>
+      <a
+        v-for="link in mediaLinks"
+        v-bind:key="link.name"
+        v-bind:class="[link.icon]"
+        class="icon solid social"
+        v-bind:href="link.link"
+        target="_blank"
+      >
+        <span>{{capitalize(link.name)}}</span>
+      </a>
+
     </nav>
 
     <main id="main">
@@ -45,8 +56,25 @@ export default {
           icon: 'fa-newspaper-o',
           width: '70em',
           link: '/blog'
-        }
+        },
       },
+      mediaLinks: [
+        {
+          "name": "Twitter",
+          "link": "https://twitter.com",
+          "icon": "fa-twitter"
+        },
+        {
+          "name": "Instagram",
+          "link": "https://instagram.com",
+          "icon": "fa-instagram"
+        },
+        {
+          "name": "GitHub",
+          "link": "https://github.com/DanTheMinotaur/",
+          "icon": "fa-github"
+        }
+      ],
       wrapperWidth: '45em'
     }
   },
