@@ -14,6 +14,7 @@
         <h1>{{project.title}}</h1>
       </header>
     </section>
+    <TechnologiesBar/>
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
@@ -26,6 +27,7 @@ import gql from "graphql-tag";
 import MarkdownItVue from "markdown-it-vue";
 import Gallery from "./Gallery.vue";
 require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
+import TechnologiesBar from './Technologies.vue'
 
 export default {
   data() {
@@ -37,7 +39,8 @@ export default {
   },
   components: {
     MarkdownItVue,
-    Gallery
+    Gallery,
+    TechnologiesBar
   },
   computed: {
     project() {
