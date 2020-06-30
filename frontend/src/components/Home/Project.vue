@@ -18,7 +18,7 @@
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
-    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery" />
+    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery.length" />
   </article>
 </template>
 
@@ -33,28 +33,8 @@ export default {
     return {
       projects: {},
       routeParam: this.$route.params.slug,
-      showLightBox: false,
-      imageList: [
-        {
-          // For image
-          thumb:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-6.jpg",
-          src:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-6-lg.jpg",
-          caption: "caption to display. receive <html> <b>tag</b>" // Optional
-          // srcset: "..." // Optional for displaying responsive images
-        },
-        {
-          // For image
-          thumb:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/thumb-12.jpg",
-          src:
-            "https://dzine.io/products/lightgallery-wp-plugin/static/images/demo/image-12-lg.jpg",
-          caption: "caption to display. receive <html> <b>tag</b>" // Optional
-          // srcset: "..." // Optional for displaying responsive images
-        }
-      ]
-    };
+      showLightBox: false
+    }
   },
   components: {
     MarkdownItVue,
