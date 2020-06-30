@@ -17,7 +17,7 @@
     <section>
       <markdown-it-vue v-if="project.description" :content="project.description" />
     </section>
-    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery.length" />
+    <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery && project.gallery.length" />
   </article>
 </template>
 

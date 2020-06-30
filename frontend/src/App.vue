@@ -116,7 +116,6 @@ export default {
 <style lang="scss" scoped>
 .social {
   font-size: 2.1em !important;
-  // opacity: 1 !important;
 }
 </style>
 
