@@ -52,7 +52,6 @@ export default {
   },
   watch: {
     $route () {
-      console.log('routerWatched', this.$route.path)
       if (this.$route.path.startsWith('/blog')) {
         this.updateWidth('65em')
       } else {
