@@ -1,10 +1,11 @@
 <template>
   <section class="icon-bar">
-    <span v-for="(icon, i) in icons" v-bind:key="i" class="icon tooltip" v-bind:style="{ width: getIconWidth() }">
+    <span v-for="(icon, i) in icons" v-bind:key="i" class="icon tooltip" v-bind:style="{ width:`${getIconWidth()}%` }">
       <img :src="getURL(icon.image_icon.url).href" :alt="`${icon.name} Logo`">
       <span class="tooltiptext">{{icon.name}}</span>
     </span>
   </section>
+
 </template>
 
 <script>
@@ -13,7 +14,7 @@ export default {
   props: ['icons'],
   methods: {
     getIconWidth() {
-      return `${100 / this.icons.length}%`
+      return 100 / this.icons.length
     }
   }
 }
@@ -27,19 +28,16 @@ export default {
 
   .tooltiptext {
     visibility: hidden;
-    // width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 2%;
-    
-    /* Position the tooltip */
     position: absolute;
     z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
+    bottom: 110%;
+    right: 50%;
+    transform: translateX(50%);
   }
 
   &:hover .tooltiptext {

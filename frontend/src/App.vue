@@ -48,16 +48,16 @@ export default {
           width: '45em',
           link: '/projects'
         },
-        contact: {
-          icon: 'fa-envelope',
-          width: '45em',
-          link: '/contact'
-        },
         blog: {
           icon: 'fa-newspaper-o',
           width: '70em',
           link: '/blog'
         },
+        contact: {
+          icon: 'fa-envelope',
+          width: '45em',
+          link: '/contact'
+        }
       },
       mediaLinks: [
         {

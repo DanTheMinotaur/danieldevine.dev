@@ -586,6 +586,26 @@
                 "type": "string"
               }
             }
+          },
+          "tech_group": {
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "technologies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "name": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -595,6 +615,9 @@
         ],
         "properties": {
           "name": {
+            "type": "string"
+          },
+          "tech_group": {
             "type": "string"
           }
         }
