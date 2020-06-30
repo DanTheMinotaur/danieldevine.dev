@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tech_groups",
+  "info": {
+    "name": "TechGroup"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "technologies": {
+      "collection": "technologies",
+      "via": "tech_group"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

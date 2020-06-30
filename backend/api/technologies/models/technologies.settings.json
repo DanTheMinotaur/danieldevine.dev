@@ -23,6 +23,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "tech_group": {
+      "via": "technologies",
+      "model": "tech-group"
     }
   }
 }
