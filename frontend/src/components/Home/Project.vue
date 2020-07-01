@@ -16,7 +16,7 @@
     </section>
     <TechnologiesBar :icons="project.technologies"/>
     <section>
-      <markdown-it-vue v-if="project.description" :content="project.description" />
+      <vue-simple-markdown :source="project.description" v-if="project.description" ></vue-simple-markdown>
     </section>
     <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery && project.gallery.length" />
   </article>
@@ -24,7 +24,6 @@
 
 <script>
 import gql from 'graphql-tag'
-import MarkdownItVue from 'markdown-it-vue'
 import Gallery from './Gallery.vue'
 require('vue-image-lightbox/dist/vue-image-lightbox.min.css')
 import TechnologiesBar from './Technologies.vue'
@@ -40,7 +39,6 @@ export default {
     }
   },
   components: {
-    MarkdownItVue,
     Gallery,
     TechnologiesBar
   },

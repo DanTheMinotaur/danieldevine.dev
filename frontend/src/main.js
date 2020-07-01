@@ -9,9 +9,13 @@ import VueLazyLoad from 'vue-lazyload'
 
 import titleMixin from './mixins/title'
 
+import VueSimpleMarkdown from 'vue-simple-markdown'
+import 'vue-simple-markdown/dist/vue-simple-markdown.css'
+
 Vue.use(VueApollo)
 Vue.use(VueRouter)
 Vue.use(VueLazyLoad)
+Vue.use(VueSimpleMarkdown)
 
 Vue.config.productionTip = false
 Vue.mixin({
