@@ -18,10 +18,13 @@
       </span>
     </article>
     <aside>
-      <h2>Things I can do</h2>
-      <section>
-        <p>Here is some content</p>
-        <TechnologiesBar :icons="testD"/>
+      <h2>Things I Do</h2>
+      <section v-for="(group, i) in techGroups" :key="i">
+        <div class="con">
+          <hr>
+          <h3>{{group.name}}</h3>
+        </div>
+        <TechnologiesBar :icons="group.technologies"/>
       </section>
     </aside>
   </div>
@@ -39,6 +42,7 @@ export default {
   data() {
     return {
       homePage: {},
+      techGroups: [],
       testD: [
           {
             "name": "Google Firebase",
@@ -74,9 +78,46 @@ export default {
           }
         }
       }
+    `,
+    techGroups: gql`
+      query {
+        techGroups {
+          name
+          technologies {
+            name
+            image_icon {
+              url
+            }
+          }
+        }
+      }
     `
   }
 };
 </script>
 
+<style lang="scss" scoped>
+  aside {
+    text-align: center;
+    margin-top: 8%;
 
+    h2 {
+      margin: 3% 0;
+    }
+
+    .con {
+      width: 90%;
+      margin: auto auto 1em auto;
+    }
+
+    section {
+      h3 {
+
+        letter-spacing: -0.015em;
+        font-size: 1.25em;
+        margin: 0.25em 0 0 0;
+        color: #aaa;
+      }
+    }
+  }
+</style>
