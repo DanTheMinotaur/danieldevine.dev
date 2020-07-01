@@ -1,9 +1,9 @@
 <template>
   <article id="contact" class="panel">
-    <header>
+    <header :class="{ hide: messageSent }">
       <h2>Contact Me</h2>
     </header>
-    <form @submit.prevent="postMessage" >
+    <form @submit.prevent="postMessage" :class="{ hide: messageSent }">
       <div id="form-submit-notify"></div>
       <div>
         <div class="row">
@@ -11,7 +11,7 @@
             <input type="text" name="name" placeholder="Name" v-model="name"  required/>
           </div>
           <div class="col-6 col-12-medium">
-            <input type="text" name="email" placeholder="Email" v-model="email" required/>
+            <input type="email" name="email" placeholder="Email" v-model="email" required/>
           </div>
           <div class="col-12">
             <textarea name="message" placeholder="Message" rows="6" v-model="message"  required></textarea>
@@ -22,6 +22,9 @@
         </div>
       </div>
     </form>
+    <header class="display" :class="{ hide: !messageSent }">
+      <h2>Message Revieved!</h2>
+    </header>
   </article>
 </template>
 
@@ -36,7 +39,8 @@ export default {
       return {
           message: null,
           name: null,
-          email: null
+          email: null,
+          messageSent: false
       }
   },
   methods: {
@@ -60,8 +64,9 @@ export default {
                 notificationConfig.theme = 'success'
                 message.title = 'Message Sent!'
                 message.message = 'Your message was recieved succesfully'
+                this.messageSent = true
             }).catch(error => {
-                console.log(error)
+                console.error(error)
                 notificationConfig.theme = 'error'
                 message.title = 'Error!'
                 message.message = 'Could not send message :-('
@@ -75,3 +80,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .hide {
+    display: none;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .display {
+    text-align: center;
+  }
+</style>
