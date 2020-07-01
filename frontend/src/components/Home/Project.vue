@@ -16,35 +16,35 @@
     </section>
     <TechnologiesBar :icons="project.technologies"/>
     <section>
-      <markdown-it-vue v-if="project.description" :content="project.description" />
+      <vue-simple-markdown :source="project.description" v-if="project.description" ></vue-simple-markdown>
     </section>
     <Gallery :title="project.title" :images="project.gallery" v-if="project.gallery && project.gallery.length" />
   </article>
 </template>
 
 <script>
-import gql from "graphql-tag";
-import MarkdownItVue from "markdown-it-vue";
-import Gallery from "./Gallery.vue";
-require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
+import gql from 'graphql-tag'
+import Gallery from './Gallery.vue'
+require('vue-image-lightbox/dist/vue-image-lightbox.min.css')
 import TechnologiesBar from './Technologies.vue'
 
 export default {
+  title() {
+    return this.project.title
+  },
   data() {
     return {
       projects: {},
-      routeParam: this.$route.params.slug,
-      showLightBox: false
+      routeParam: this.$route.params.slug
     }
   },
   components: {
-    MarkdownItVue,
     Gallery,
     TechnologiesBar
   },
   computed: {
     project() {
-      return this.projects && this.projects.length > 0 ? this.projects[0] : {};
+      return this.projects && this.projects.length > 0 ? this.projects[0] : {}
     }
   },
   apollo: {
@@ -70,7 +70,7 @@ export default {
             technologies {
               name
               image_icon {
-                url
+                formats
               }
             }
           }
@@ -79,7 +79,7 @@ export default {
       variables() {
         return {
           slug: this.routeParam
-        };
+        }
       }
     }
   }

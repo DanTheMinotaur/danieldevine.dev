@@ -30,7 +30,8 @@
 const axios = require('axios')
 
 export default {  
-  name: "Contact",
+  name: 'Contact',
+  title: 'Contact',
   data() {
       return {
           message: null,

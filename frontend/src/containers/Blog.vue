@@ -15,26 +15,24 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
-const moment = require("moment");
-
-import ArticlePreview from "../components/Blog/ArticlePreview.vue";
+import gql from 'graphql-tag'
+import ArticlePreview from '../components/Blog/ArticlePreview.vue'
 
 export default {
-  name: "Blog",
+  name: 'Blog',
+  title: 'Blog',
   data() {
     return {
-      articles: [],
-      moment: moment
-    };
+      articles: []
+    }
   },
   components: {
     ArticlePreview
   },
   computed: {
     columnSplit() {
-      if (this.articles) return this.getChunks(this.articles, 3);
-      return [];
+      if (this.articles) return this.getChunks(this.articles, 3)
+      return []
     }
   },
   apollo: {
@@ -57,7 +55,7 @@ export default {
       }
     `
   }
-};
+}
 </script>
 
 <style lang="scss">

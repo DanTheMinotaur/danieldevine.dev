@@ -7,11 +7,15 @@ import apolloClient from './vue-apollo'
 import App from './App.vue'
 import VueLazyLoad from 'vue-lazyload'
 
-// use default options
+import titleMixin from './mixins/title'
+
+import VueSimpleMarkdown from 'vue-simple-markdown'
+import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
 Vue.use(VueLazyLoad)
+Vue.use(VueSimpleMarkdown)
 
 Vue.config.productionTip = false
 Vue.mixin({
@@ -31,6 +35,7 @@ Vue.mixin({
     }
   }
 })
+Vue.mixin(titleMixin)
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient

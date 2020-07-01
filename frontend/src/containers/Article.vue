@@ -9,28 +9,27 @@
       <div class="image main" v-if="article.header_image">
         <img :src="getURL(article.header_image.url).href" />
       </div>
-      <markdown-it-vue v-if="article.content" :content="article.content" />
+      <vue-simple-markdown :source="article.content" v-if="article.content" ></vue-simple-markdown>
     </section>
   </article>
 </template>
 
 <script>
-import MarkdownItVue from "markdown-it-vue";
-import "markdown-it-vue/dist/markdown-it-vue.css";
-import gql from "graphql-tag";
-const moment = require("moment");
+import gql from 'graphql-tag'
+const moment = require('moment')
 
 export default {
+  title() {
+    return this.article.title
+  },
   data() {
     return {
       articles: {},
       routeParam: this.$route.params.slug,
       moment: moment
-    };
+    }
   },
-  components: {
-    MarkdownItVue
-  },
+  components: {},
   computed: {
     article() {
       return this.articles && this.articles.length > 0 ? this.articles[0] : {};
@@ -55,7 +54,7 @@ export default {
       variables() {
         return {
           slug: this.routeParam
-        };
+        }
       }
     }
   }
