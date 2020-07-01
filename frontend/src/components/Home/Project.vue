@@ -36,8 +36,7 @@ export default {
   data() {
     return {
       projects: {},
-      routeParam: this.$route.params.slug,
-      showLightBox: false
+      routeParam: this.$route.params.slug
     }
   },
   components: {
