@@ -15,18 +15,21 @@
 </template>
 
 <script>
-import MarkdownItVue from "markdown-it-vue";
-import "markdown-it-vue/dist/markdown-it-vue.css";
-import gql from "graphql-tag";
-const moment = require("moment");
+import MarkdownItVue from 'markdown-it-vue';
+import 'markdown-it-vue/dist/markdown-it-vue.css';
+import gql from 'graphql-tag';
+const moment = require('moment');
 
 export default {
+  title() {
+    return this.article.title
+  },
   data() {
     return {
       articles: {},
       routeParam: this.$route.params.slug,
       moment: moment
-    };
+    }
   },
   components: {
     MarkdownItVue
@@ -55,7 +58,7 @@ export default {
       variables() {
         return {
           slug: this.routeParam
-        };
+        }
       }
     }
   }
