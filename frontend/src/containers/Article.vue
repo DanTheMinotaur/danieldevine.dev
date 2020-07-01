@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import MarkdownItVue from 'markdown-it-vue';
-import 'markdown-it-vue/dist/markdown-it-vue.css';
-import gql from 'graphql-tag';
-const moment = require('moment');
+import MarkdownItVueLight from 'markdown-it-vue/dist/markdonw-it-vue-light.umd.min.js'
+import 'markdown-it-vue/dist/markdown-it-vue.css'
+import gql from 'graphql-tag'
+const moment = require('moment')
 
 export default {
   title() {
