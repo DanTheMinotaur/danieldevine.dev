@@ -7,7 +7,7 @@ import apolloClient from './vue-apollo'
 import App from './App.vue'
 import VueLazyLoad from 'vue-lazyload'
 
-// use default options
+import titleMixin from './mixins/title'
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
@@ -31,6 +31,7 @@ Vue.mixin({
     }
   }
 })
+Vue.mixin(titleMixin)
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
