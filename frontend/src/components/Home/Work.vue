@@ -30,9 +30,10 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 
 export default {
+  title: 'Projects',
   data() {
     return {
       projects: []

@@ -23,13 +23,16 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
-import MarkdownItVue from "markdown-it-vue";
-import Gallery from "./Gallery.vue";
-require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
+import gql from 'graphql-tag'
+import MarkdownItVue from 'markdown-it-vue'
+import Gallery from './Gallery.vue'
+require('vue-image-lightbox/dist/vue-image-lightbox.min.css')
 import TechnologiesBar from './Technologies.vue'
 
 export default {
+  title() {
+    return this.project.title
+  },
   data() {
     return {
       projects: {},
@@ -44,7 +47,7 @@ export default {
   },
   computed: {
     project() {
-      return this.projects && this.projects.length > 0 ? this.projects[0] : {};
+      return this.projects && this.projects.length > 0 ? this.projects[0] : {}
     }
   },
   apollo: {
@@ -79,7 +82,7 @@ export default {
       variables() {
         return {
           slug: this.routeParam
-        };
+        }
       }
     }
   }
