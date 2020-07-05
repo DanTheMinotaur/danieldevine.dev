@@ -15,5 +15,12 @@
       "parser",
       "router"
     ]
+  },
+  "parser": {
+    "enabled": true,
+    "multipart": true,
+    "formidable": {
+      "maxFileSize": 524288000
+    }
   }
 }
