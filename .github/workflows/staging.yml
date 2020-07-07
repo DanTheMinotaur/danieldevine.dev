@@ -14,4 +14,4 @@ jobs:
                 host: ${{ secrets.STAGING_HOST }}
                 username: ${{ secrets.STAGING_USERNAME }}
                 privateKey: ${{ secrets.STAGING_KEY }}
-                command: ${{ secrets.STAGING_DIRECTORY }}/.github/deploy.sh STAGING ${{ secrets.STAGING_DIRECTORY }}
+                command: ${{ secrets.STAGING_DIRECTORY }}/.github/deploy.sh staging ${{ secrets.STAGING_DIRECTORY }}

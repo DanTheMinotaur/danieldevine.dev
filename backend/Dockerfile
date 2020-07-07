@@ -15,8 +15,8 @@ ENV NODE_ENV "${NODE_ENV}"
 
 RUN yarn build
 
-ARG VIRTUAL_PORT
+ARG PORT
 
-EXPOSE ${VIRTUAL_PORT}
+EXPOSE ${PORT}
 
 CMD ["yarn", "start"]
