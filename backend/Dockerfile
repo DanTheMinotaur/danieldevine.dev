@@ -9,12 +9,14 @@ RUN yarn install
 
 COPY . .
 
-ARG ENVIRONMENT
+ARG NODE_ENV 
 
-ENV NODE_ENV "${ENVIRONMENT}"
+ENV NODE_ENV "${NODE_ENV}"
 
 RUN yarn build
 
-EXPOSE 1337
+ARG PORT
+
+EXPOSE ${PORT}
 
 CMD ["yarn", "start"]
