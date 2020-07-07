@@ -4,7 +4,8 @@ services:
     build:
       context: .
       args: 
-        ENVIRONMENT: ${NODE_ENV}
+        NODE_ENV: ${NODE_ENV}
+        PORT: ${VIRTUAL_PORT}
     ports:
       - '127.0.0.1:1337:1337'
     volumes:
