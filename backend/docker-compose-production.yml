@@ -1,6 +1,7 @@
 version: '3.3'
 services:
-  strapi:
+  strapi-production:
+    name: 'backend-production.danieldevine.dev'
     build:
       context: .
       args: 

@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  vue:
+  vue-production:
     name: 'frontend-production.danieldevine.dev'
     build:
       context: .

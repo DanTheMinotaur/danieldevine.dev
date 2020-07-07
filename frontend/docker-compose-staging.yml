@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  vue:
+  vue-staging:
     name: 'frontend-staging.danieldevine.dev'
     build:
       context: .
