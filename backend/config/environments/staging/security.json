@@ -26,7 +26,7 @@
   },
   "ip": {
     "enabled": false,
-    "whiteList": [],
+    "whiteList": ["54.37.19.231"],
     "blackList": []
   }
 }
