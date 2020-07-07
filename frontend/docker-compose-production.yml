@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  vue:
+    name: 'frontend-production.danieldevine.dev'
+    build:
+      context: .
+    ports:
+      - '127.0.0.1:8090:80'
+    env_file: 
+      .env
+    restart: unless-stopped
+    networks:
+      - backend
+networks:
+  backend:
+    external:
+      name: backend
