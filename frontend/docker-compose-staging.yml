@@ -1,7 +1,7 @@
 version: '3.3'
 services:
-  vue-staging:
-    name: 'frontend-staging.danieldevine.dev'
+  vue_staging:
+    # name: 'frontend-staging.danieldevine.dev'
     build:
       context: .
     ports:

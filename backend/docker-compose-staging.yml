@@ -1,7 +1,7 @@
 version: '3.3'
 services:
-  strapi-staging:
-    name: 'backend-staging.danieldevine.dev'
+  strapi_staging:
+    # name: 'backend-staging.danieldevine.dev'
     build:
       context: .
       args: 
