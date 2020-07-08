@@ -1,12 +1,14 @@
 version: '3.3'
 services:
-  strapi:
+  strapi_production:
+    #name: 'backend-production.danieldevine.dev'
     build:
       context: .
       args: 
-        ENVIRONMENT: ${NODE_ENV}
+        NODE_ENV: ${NODE_ENV}
+        PORT: ${VIRTUAL_PORT}
     ports:
-      - '127.0.0.1:1000:1000'
+      - '127.0.0.1:2500:2500'
     volumes:
       - 'staging_public_files:/app/public'
     env_file: 
