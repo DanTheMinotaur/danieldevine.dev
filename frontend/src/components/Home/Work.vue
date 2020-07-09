@@ -20,6 +20,7 @@
               <img
                 :src="getURL(project.main_image.formats.large.url).href"
                 :alt="project.main_image.alternativeText"
+                :v-if="project.main_image"
               />
             </router-link>
           </div>
