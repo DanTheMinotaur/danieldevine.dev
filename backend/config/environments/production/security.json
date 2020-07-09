@@ -22,7 +22,7 @@
   },
   "cors": {
     "enabled": true,
-    "origin": "https://danieldevine.dev, https://api.danieldevine.dev"
+    "origin": "https://danieldevine.dev, https://api.danieldevine.dev, https://temp.danieldevine.dev"
   },
   "ip": {
     "enabled": false,
