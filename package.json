@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "strapi": "^3.0.5",
     "vue-simple-markdown": "^1.1.4"
   }
 }
