@@ -9,7 +9,7 @@ services:
     ports:
       - '127.0.0.1:1337:1337'
     volumes:
-      - 'staging_public_files:/app/public'
+      - 'strapi_staging_public:/app/public'
     env_file: 
       .env
     networks:
