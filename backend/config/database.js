@@ -8,8 +8,8 @@ module.exports = ({ env }) => ({
         filename: env('DATABASE_FILENAME', '.tmp/data.db'),
       },
       options: {
-        useNullAsDefault: true,
-      },
-    },
-  },
-});
+        useNullAsDefault: true
+      }
+    }
+  }
+})

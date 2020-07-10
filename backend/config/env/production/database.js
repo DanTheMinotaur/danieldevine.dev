@@ -13,8 +13,8 @@ module.exports = ({ env }) => ({
         password: env('DATABASE_PASSWORD', '')
       },
       options: {
-        useNullAsDefault: true,
-      },
-    },
-  },
-});
+        useNullAsDefault: true
+      }
+    }
+  }
+})
