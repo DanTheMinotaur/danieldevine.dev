@@ -31,5 +31,10 @@ const configs = {
       whiteList: ['54.37.19.231']
     }
   },
-  development: {}
+  development: {
+    ip: {
+      enabled: true,
+      whiteList: ['64.43.180.189']
+    }
+  }
 }
