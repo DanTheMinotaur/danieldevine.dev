@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  strapi_production:
+    build:
+      context: .
+      args: 
+        NODE_ENV: ${NODE_ENV}
+        PORT: ${VIRTUAL_PORT}
+    ports:
+      - '127.0.0.1:2500:2500'
+    volumes:
+      - 'staging_public_files:/app/public'
+    env_file: 
+      .env
+    networks:
+      - backend
+    external_links:
+      - mariadb_server:mysql
+    restart: unless-stopped
+volumes:
+  staging_public_files:
+    external: true
+networks:
+  backend:
+    external:
+      name: backend
