@@ -18,7 +18,7 @@ services:
       - mariadb_server:mysql
     restart: unless-stopped
 volumes:
-  staging_public_files:
+  strapi_staging_public:
     external: true
 networks:
   backend:
