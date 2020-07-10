@@ -1,16 +1,8 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/concepts/controllers.html#core-controllers)
+ * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
  */
-const { sanitizeEntity } = require('strapi-utils')
 
-module.exports = {
-  async findOneBySlug (ctx) {
-    const { slug } = ctx.params
-
-    const entity = await strapi.services.article.findOne({ slug })
-    return sanitizeEntity(entity, { model: strapi.models.article })
-  }
-}
+module.exports = {};

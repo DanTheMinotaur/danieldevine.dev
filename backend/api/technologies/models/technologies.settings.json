@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "technologies",
   "info": {
-    "name": "technologies"
+    "name": "Technologies"
   },
   "options": {
     "increments": true,
@@ -14,7 +14,7 @@
       "required": true
     },
     "image_icon": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -25,8 +25,8 @@
       "required": false
     },
     "tech_group": {
-      "via": "technologies",
-      "model": "tech-group"
+      "model": "tech-group",
+      "via": "technologies"
     }
   }
 }
