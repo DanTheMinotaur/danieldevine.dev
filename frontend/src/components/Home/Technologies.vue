@@ -1,7 +1,7 @@
 <template>
   <section class="icon-bar">
     <div v-for="(group, i) in iconsSplit" v-bind:key="i">
-      <span v-for="(icon, i) in group" v-bind:key="i" class="icon tooltip" v-bind:style="{ width:`${getIconWidth(group)}%` }">
+      <span v-for="(icon, j) in group" v-bind:key="j" class="icon tooltip" v-bind:style="{ width:`${getIconWidth(group)}%` }">
         <img :src="getURL(getAvailableImage(icon.image_icon.formats, true).url).href" :alt="`${icon.name} Logo`" v-if="icon.image_icon.formats">
         <img :src="getURL(icon.url).href" :alt="`${icon.name} Logo`" v-else>
         <span class="tooltiptext">{{icon.name}}</span>
