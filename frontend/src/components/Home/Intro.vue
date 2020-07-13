@@ -20,7 +20,7 @@
     <aside>
       <h2>Things I Do</h2>
       <section v-for="(group, i) in techGroups" :key="i">
-        <div class="con">
+        <div class="con" v-if="group.technologies.length">
           <hr>
           <h3>{{group.name}}</h3>
         </div>
