@@ -33,8 +33,10 @@ Vue.mixin({
         return all
       }, [])
     },
-    getLargestAvailableImage: (formats) => {
-      for (const size of ['large', 'medium', 'small', 'thumbnail']) {
+    getAvailableImage: (formats, smallest = false) => {
+      let types = ['large', 'medium', 'small', 'thumbnail']
+      if (smallest) types = types.reverse()
+      for (const size of types) {
         if (size in formats) return formats[size]
       }
     }

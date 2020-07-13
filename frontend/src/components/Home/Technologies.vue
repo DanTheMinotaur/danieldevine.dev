@@ -1,7 +1,7 @@
 <template>
   <section class="icon-bar">
     <span v-for="(icon, i) in icons" v-bind:key="i" class="icon tooltip" v-bind:style="{ width:`${getIconWidth()}%` }">
-      <img :src="getURL(icon.image_icon.formats.thumbnail.url).href" :alt="`${icon.name} Logo`">
+      <img :src="getURL(getAvailableImage(icon.image_icon.formats, true).url).href" :alt="`${icon.name} Logo`">
       <span class="tooltiptext">{{icon.name}}</span>
     </span>
   </section>

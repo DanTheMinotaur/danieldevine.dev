@@ -18,7 +18,7 @@
               class="image fit"
             >
               <img
-                :src="getURL(getLargestAvailableImage(project.main_image.formats).url).href"
+                :src="getURL(getAvailableImage(project.main_image.formats).url).href"
                 :alt="project.main_image.alternativeText"
                 :v-if="project.main_image"
               />
