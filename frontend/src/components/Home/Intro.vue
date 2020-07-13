@@ -20,9 +20,9 @@
     <aside>
       <h2>Things I Do</h2>
       <section v-for="(group, i) in techGroups" :key="i">
-        <div class="con">
+        <div class="con" v-if="group.technologies.length">
           <hr>
-          <h3>{{group.name}}</h3>
+          <h3><i class="icon" :class="group.icon" v-if="group.icon"></i>{{group.name}}</h3>
         </div>
         <TechnologiesBar :icons="group.technologies"/>
       </section>
@@ -64,6 +64,7 @@ export default {
       query {
         techGroups {
           name
+          icon
           technologies {
             name
             image_icon {
@@ -89,6 +90,11 @@ export default {
     .con {
       width: 90%;
       margin: auto auto 1em auto;
+
+      i {
+         font-size: 2rem;
+         margin-right: 1%;
+      }
     }
 
     section {

@@ -32,6 +32,11 @@ Vue.mixin({
         all[ch] = [].concat((all[ch] || []), one)
         return all
       }, [])
+    },
+    getLargestAvailableImage: (formats) => {
+      for (const size of ['large', 'medium', 'small', 'thumbnail']) {
+        if (size in formats) return formats[size]
+      }
     }
   }
 })
