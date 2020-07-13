@@ -1,10 +1,12 @@
 <template>
   <section class="icon-bar">
-    <span v-for="(icon, i) in icons" v-bind:key="i" class="icon tooltip" v-bind:style="{ width:`${getIconWidth()}%` }">
-      <img :src="getURL(getAvailableImage(icon.image_icon.formats, true).url).href" :alt="`${icon.name} Logo`" v-if="icon.image_icon.formats">
-      <img :src="getURL(icon.url).href" :alt="`${icon.name} Logo`" v-else>
-      <span class="tooltiptext">{{icon.name}}</span>
-    </span>
+    <div v-for="(group, i) in iconsSplit" v-bind:key="i">
+      <span v-for="(icon, j) in group" v-bind:key="j" class="icon tooltip" v-bind:style="{ width:`${getIconWidth(group)}%` }">
+        <img :src="getURL(getAvailableImage(icon.image_icon.formats, true).url).href" :alt="`${icon.name} Logo`" v-if="icon.image_icon.formats">
+        <img :src="getURL(icon.url).href" :alt="`${icon.name} Logo`" v-else>
+        <span class="tooltiptext">{{icon.name}}</span>
+      </span>
+    </div>
   </section>
 
 </template>
@@ -13,9 +15,14 @@
 export default {
   name: 'TechnologiesBar',
   props: ['icons'],
+  computed: {
+    iconsSplit() {
+      return this.getChunks(this.icons, 4)
+    }
+  },
   methods: {
-    getIconWidth() {
-      return 100 / this.icons.length
+    getIconWidth(icons) {
+      return 100 / icons.length
     }
   }
 }
