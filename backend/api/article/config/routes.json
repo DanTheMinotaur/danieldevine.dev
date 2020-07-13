@@ -25,14 +25,6 @@
       }
     },
     {
-      "method": "GET",
-      "path": "/articles/slug/:slug",
-      "handler": "article.findOneBySlug",
-      "config": {
-        "policies": []
-      }
-    },
-    {
       "method": "POST",
       "path": "/articles",
       "handler": "article.create",

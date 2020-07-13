@@ -1,7 +1,6 @@
 version: '3.3'
 services:
   strapi_staging:
-    # name: 'backend-staging.danieldevine.dev'
     build:
       context: .
       args: 
@@ -10,7 +9,7 @@ services:
     ports:
       - '127.0.0.1:1337:1337'
     volumes:
-      - 'staging_public_files:/app/public'
+      - 'strapi_staging_public:/app/public'
     env_file: 
       .env
     networks:
@@ -19,7 +18,7 @@ services:
       - mariadb_server:mysql
     restart: unless-stopped
 volumes:
-  staging_public_files:
+  strapi_staging_public:
     external: true
 networks:
   backend:

@@ -6,8 +6,9 @@
           <span>See my work</span>
         </span>
         <img
-          :src="getURL(project.main_image.formats.large.url).href"
+          :src="getURL(getLargestAvailableImage(project.main_image.formats).url).href"
           :alt="project.main_image.alternativeText"
+          :v-if="project.main_image"
         />
       </a>
       <header>
