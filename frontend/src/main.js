@@ -5,17 +5,23 @@ import VueRouter from 'vue-router'
 import apolloClient from './vue-apollo'
 
 import App from './App.vue'
-import gql from 'graphql-tag'
-// use default options
+import VueLazyLoad from 'vue-lazyload'
+
+import titleMixin from './mixins/title'
+
+import VueSimpleMarkdown from 'vue-simple-markdown'
+import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
+Vue.use(VueLazyLoad)
+Vue.use(VueSimpleMarkdown)
 
 Vue.config.productionTip = false
 Vue.mixin({
   methods: {
     getURL: url => {
-      return new URL(url, process.env.VUE_APP_STRAPI_API_URL)
+      return new URL(url, process.env.VUE_APP_API_URL)
     },
     capitalize: string => {
       return string.charAt(0).toUpperCase() + string.slice(1)
@@ -26,12 +32,15 @@ Vue.mixin({
         all[ch] = [].concat((all[ch] || []), one)
         return all
       }, [])
+    },
+    getLargestAvailableImage: (formats) => {
+      for (const size of ['large', 'medium', 'small', 'thumbnail']) {
+        if (size in formats) return formats[size]
+      }
     }
   }
 })
-
-// Vue.component(gql)
-// Vue.use(gql)
+Vue.mixin(titleMixin)
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
@@ -42,7 +51,19 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: require('./containers/Home.vue')
+      components: require('./components/Home/Intro.vue')
+    },
+    {
+      path: '/contact',
+      components: require('./components/Home/Contact.vue')
+    },
+    {
+      path: '/projects',
+      components: require('./components/Home/Work.vue')
+    },
+    {
+      path: '/projects/:slug',
+      components: require('./components/Home/Project.vue')
     },
     {
       path: '/blog',
@@ -52,17 +73,16 @@ const router = new VueRouter({
       path: '/blog/:slug',
       components: require('./containers/Article.vue')
     },
-    {
-      path: '/blog/category/:slug',
-      components: require('./containers/Category.vue')
-    }
+    // {
+    //   path: '/blog/category/:slug',
+    //   components: require('./containers/Category.vue')
+    // }
   ],
-  linkExactActiveClass: 'active'
+  linkActiveClass: 'active'
 })
 
 new Vue({
   apolloProvider,
   router,
-  gql,
   render: h => h(App)
 }).$mount('#app')
