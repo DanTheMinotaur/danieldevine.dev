@@ -30,9 +30,9 @@ const configs = {
     //  enabled: true,
     //  origin: 'https://dev.danieldevine.dev, https://api.dev.danieldevine.dev, http://localhost'
     //}
-    // ip: {
-    //   enabled: true,
-    //   whiteList: ['64.43.180.189']
-    // }
+    ip: {
+      enabled: true,
+      whiteList: ['192.168.*']
+    }
   }
 }
