@@ -9,7 +9,7 @@
       </h2>
     </header>
     <router-link :to="{path: `/blog/${slug}`}" :key="slug" class="image fit">
-      <img :src="getURL(image.url).href" :alt="image.alternativeText" />
+      <img :src="getURL(image.url).href" :alt="image.alternativeText" v-if="image"/>
     </router-link>
     <p v-if="description">{{description}}</p>
     <ul class="actions special">
@@ -31,7 +31,7 @@ export default {
       moment: moment,
     }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

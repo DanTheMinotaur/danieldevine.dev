@@ -60,18 +60,18 @@ export default {
         }
       },
       mediaLinks: [
-        {
-          name: 'Twitter',
-          link: 'https://twitter.com',
-          icon: 'fa-twitter',
-          color: '#1DA1F2'
-        },
-        {
-          name: 'Instagram',
-          link: 'https://instagram.com',
-          icon: 'fa-instagram',
-          color: '#3f729b'
-        },
+        // {
+        //   name: 'Twitter',
+        //   link: 'https://twitter.com/neonBilboard',
+        //   icon: 'fa-twitter',
+        //   color: '#1DA1F2'
+        // },
+        // {
+        //   name: 'Instagram',
+        //   link: 'https://instagram.com',
+        //   icon: 'fa-instagram',
+        //   color: '#3f729b'
+        // },
         {
           name: 'GitHub',
           link: 'https://github.com/DanTheMinotaur/',
