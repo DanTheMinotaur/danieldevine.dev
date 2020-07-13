@@ -60,12 +60,12 @@ export default {
         }
       },
       mediaLinks: [
-        {
-          name: 'Twitter',
-          link: 'https://twitter.com/neonBilboard',
-          icon: 'fa-twitter',
-          color: '#1DA1F2'
-        },
+        // {
+        //   name: 'Twitter',
+        //   link: 'https://twitter.com/neonBilboard',
+        //   icon: 'fa-twitter',
+        //   color: '#1DA1F2'
+        // },
         // {
         //   name: 'Instagram',
         //   link: 'https://instagram.com',
