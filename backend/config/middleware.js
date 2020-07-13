@@ -26,10 +26,6 @@ const configs = {
     }
   },
   staging: {
-    //cors: {
-    //  enabled: true,
-    //  origin: 'https://dev.danieldevine.dev, https://api.dev.danieldevine.dev, http://localhost'
-    //}
     ip: {
       enabled: true,
       whiteList: ['192.168.*']
