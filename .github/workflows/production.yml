@@ -2,7 +2,7 @@ name: Production API & UI Updates
 
 on:
     pull_request:
-        branches: [ production ]
+        branches: [ master ]
 
 jobs:
     execute_update_commands:
