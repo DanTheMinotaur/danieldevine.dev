@@ -71,6 +71,7 @@ export default {
             technologies {
               name
               image_icon {
+                url
                 formats
               }
             }

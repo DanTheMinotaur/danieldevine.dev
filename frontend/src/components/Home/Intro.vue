@@ -69,6 +69,7 @@ export default {
             name
             image_icon {
               formats
+              url
             }
           }
         }
