@@ -26,9 +26,9 @@ const configs = {
     }
   },
   staging: {
-    ip: {
-      enabled: true,
-      whiteList: ['192.168.*']
-    }
+    // ip: {
+    //   enabled: true,
+    //   whiteList: ['192.168.*']
+    // }
   }
 }
