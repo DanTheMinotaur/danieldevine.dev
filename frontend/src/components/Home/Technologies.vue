@@ -17,7 +17,8 @@ export default {
   props: ['icons'],
   computed: {
     iconsSplit() {
-      return this.getChunks(this.icons, 3)
+      if (this.icons) return this.getChunks(this.icons, 3)
+      return []
     }
   },
   methods: {
