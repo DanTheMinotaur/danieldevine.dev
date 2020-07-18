@@ -49,7 +49,7 @@ export default {
     projects: {
       query: gql`
         query {
-          projects {
+          projects (sort: "priority:ASC") {
             title
             slug
             main_image {
