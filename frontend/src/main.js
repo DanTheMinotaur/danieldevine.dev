@@ -11,6 +11,7 @@ import titleMixin from './mixins/title'
 
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
@@ -81,6 +82,11 @@ const router = new VueRouter({
     // }
   ],
   linkActiveClass: 'active'
+})
+
+Vue.use(VueAnalytics, {
+  id: process.env.VUE_APP_GA_KEY,
+  router
 })
 
 new Vue({
