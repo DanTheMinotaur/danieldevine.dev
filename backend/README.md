@@ -1,3 +1,3 @@
-# Strapi application
+# Run
 
-A quick description of your strapi application
+`yarn develop`
