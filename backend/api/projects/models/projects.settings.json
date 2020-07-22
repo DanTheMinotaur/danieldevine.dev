@@ -46,6 +46,11 @@
     },
     "technologies": {
       "collection": "technologies"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 1,
+      "required": true
     }
   }
 }

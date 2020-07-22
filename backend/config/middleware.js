@@ -4,7 +4,8 @@ module.exports = ({ env }) => ({
 
 function getEnvSettings (env) {
   try {
-    return configs[env]
+    console.log({ ...configs.shared, ...configs[env] })
+    return { ...configs.shared, ...configs[env] }
   } catch (err) {
     console.error(err)
     return configs.development
@@ -30,5 +31,11 @@ const configs = {
     //   enabled: true,
     //   whiteList: ['192.168.*']
     // }
+  },
+  development: {},
+  shared: {
+    gzip: {
+      enabled: true
+    }
   }
 }

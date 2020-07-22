@@ -18,11 +18,16 @@
               class="image fit"
             >
               <img
-                :src="getURL(getLargestAvailableImage(project.main_image.formats).url).href"
+                :src="getURL(getAvailableImage(project.main_image.formats).url).href"
                 :alt="project.main_image.alternativeText"
                 :v-if="project.main_image"
               />
             </router-link>
+            <router-link
+              :to="{path: `/projects/${project.slug}`}"
+              :key="project.slug"
+              class="display"
+            >{{project.title}}</router-link>
           </div>
         </div>
       </section>
@@ -38,13 +43,13 @@ export default {
   data() {
     return {
       projects: []
-    };
+    }
   },
   apollo: {
     projects: {
       query: gql`
         query {
-          projects {
+          projects (sort: "priority:ASC") {
             title
             slug
             main_image {
@@ -56,23 +61,33 @@ export default {
       `
     }
   }
-};
+}
 </script>
 
-<style lang="css" scoped>
-.label {
-  display: block;
-  position: absolute;
-  background: #222222;
-  color: #ffffff;
-  top: -2.75em;
-  font-size: 0.3em;
-  height: 2.25em;
-  line-height: 2.25em;
-  left: 50%;
-  opacity: 0;
-  transition: opacity 0.25s ease-in-out;
-  width: 5.5em;
-  margin-left: -2.75em;
+<style lang="scss" scoped>
+a {
+  img {
+    -moz-transition: -moz-transform 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    -ms-transition: -ms-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover img {
+    -moz-transform: scale(1.075);
+    -webkit-transform: scale(1.075);
+    -ms-transform: scale(1.075);
+    transform: scale(1.075);
+  }
+}
+
+.row {
+  text-align: center;
+  font-size: 1rem;
+
+  a {
+    text-decoration: none;
+  }
+  
 }
 </style>
