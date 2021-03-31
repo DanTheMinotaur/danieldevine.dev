@@ -1,4 +1,4 @@
-FROM strapi/base
+FROM node:15
 
 WORKDIR /app
 
@@ -9,13 +9,15 @@ RUN yarn install
 
 COPY . .
 
-ARG NODE_ENV 
+ARG NODE_ENV
 
 ENV NODE_ENV "${NODE_ENV}"
 
 RUN yarn build
 
 ARG PORT
+
+ENV PORT "${PORT}"
 
 EXPOSE ${PORT}
 
