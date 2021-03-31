@@ -12,7 +12,7 @@ RUN yarn install
 
 COPY ./src ./src
 COPY ./public ./public
-COPY ./.env ./
+
 
 RUN yarn build
 
@@ -23,5 +23,10 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 COPY ./nginx/nginx.conf /etc/nginx/conf.d
 
-EXPOSE 80
+ARG PORT
+
+ENV PORT "${PORT}"
+
+EXPOSE ${PORT}
+
 CMD ["nginx", "-g", "daemon off;"] 
