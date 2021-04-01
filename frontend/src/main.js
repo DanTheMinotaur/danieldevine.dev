@@ -11,7 +11,7 @@ import titleMixin from './mixins/title'
 
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
-import VueAnalytics from 'vue-analytics'
+import config from './config/env'
 
 Vue.use(VueApollo)
 Vue.use(VueRouter)
@@ -22,7 +22,7 @@ Vue.config.productionTip = false
 Vue.mixin({
   methods: {
     getURL: url => {
-      return new URL(url, process.env.VUE_APP_API_URL)
+      return new URL(url, config.VUE_APP_API_URL)
     },
     capitalize: string => {
       return string.charAt(0).toUpperCase() + string.slice(1)
@@ -82,11 +82,6 @@ const router = new VueRouter({
     // }
   ],
   linkActiveClass: 'active'
-})
-
-Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_GA_KEY,
-  router
 })
 
 new Vue({

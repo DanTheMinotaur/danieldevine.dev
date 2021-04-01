@@ -14,7 +14,7 @@
           >
             <router-link
               :to="{path: `/projects/${project.slug}`}"
-              :key="project.slug"
+              :key="'img' + project.slug"
               class="image fit"
             >
               <img

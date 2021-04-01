@@ -1,17 +1,17 @@
 name: Staging API Update
 
-on:
-    pull_request:
-        branches: [ staging ]
-
-jobs:
-    execute_update_commands:
-        runs-on: ubuntu-latest
-        steps:
-        -   name: pull updates
-            uses: garygrossgarten/github-action-ssh@release
-            with:
-                host: ${{ secrets.STAGING_HOST }}
-                username: ${{ secrets.STAGING_USERNAME }}
-                privateKey: ${{ secrets.STAGING_KEY }}
-                command: ~/staging.danieldevine.dev/.github/deploy.sh staging ~/staging.danieldevine.dev
+#on:
+#    pull_request:
+#        branches: [ staging ]
+#
+#jobs:
+#    execute_update_commands:
+#        runs-on: ubuntu-latest
+#        steps:
+#        -   name: pull updates
+#            uses: garygrossgarten/github-action-ssh@release
+#            with:
+#                host: ${{ secrets.STAGING_HOST }}
+#                username: ${{ secrets.STAGING_USERNAME }}
+#                privateKey: ${{ secrets.STAGING_KEY }}
+#                command: ~/staging.danieldevine.dev/.github/deploy.sh staging ~/staging.danieldevine.dev
