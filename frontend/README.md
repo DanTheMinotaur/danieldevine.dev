@@ -21,5 +21,8 @@ yarn lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/env/).
 # frontend
+
+
+Needs to use .env file, can't use system variables. 

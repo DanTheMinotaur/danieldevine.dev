@@ -13,7 +13,11 @@ RUN yarn install
 COPY ./src ./src
 COPY ./public ./public
 
-RUN yarn build
+ARG NODE_ENV
+
+ENV NODE_ENV "${NODE_ENV}"
+
+RUN yarn build --mode "$NODE_ENV"
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
