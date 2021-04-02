@@ -1,5 +1,5 @@
-name: Staging API Update
-
+#name: Staging API Update
+#
 #on:
 #    pull_request:
 #        branches: [ staging ]
@@ -14,4 +14,9 @@ name: Staging API Update
 #                host: ${{ secrets.STAGING_HOST }}
 #                username: ${{ secrets.STAGING_USERNAME }}
 #                privateKey: ${{ secrets.STAGING_KEY }}
-#                command: ~/staging.danieldevine.dev/.github/deploy.sh staging ~/staging.danieldevine.dev
+#                env:
+#                    ENVIRON: staging
+#                    DATABASE_HOST: ${{ secrets.DB_HOST }}
+#                    DATABASE_PORT: 3306
+#                    DATABASE_NAME: ${{ secrets.DB_HOST }}
+#                command: ~/apps/danieldevine.dev/.github/deploy.sh staging
