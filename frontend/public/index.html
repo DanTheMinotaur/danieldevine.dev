@@ -7,7 +7,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script src="<%= BASE_URL %>static/notifications.js"></script>
-    <script async defer data-domain="danieldevine.dev" src="https://analytics.fail.ie/js/plausible.js"></script>
+    <script async defer data-domain="<%= VUE_APP_DOMAIN %>" src="https://analytics.fail.ie/js/plausible.js"></script>
   </head>
   <body>
     <noscript>
