@@ -1,4 +1,4 @@
-FROM node:lts-alpine as build-stage
+FROM node:14 as build-stage
 
 # install simple http server for serving static content
 # RUN yarn global add http-server
