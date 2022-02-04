@@ -10,8 +10,8 @@ const config = {
         VUE_APP_GRAPHQL_URL: 'https://api.danieldevine.dev/graphql'
     },
     development: {
-        VUE_APP_API_URL: 'http://localhost:1337',
-        VUE_APP_GRAPHQL_URL: 'http://localhost:1337/graphql'
+        VUE_APP_API_URL: process.env.VUE_APP_API_URL || 'http://localhost:1337',
+        VUE_APP_GRAPHQL_URL: process.env.VUE_APP_GRAPHQL_URL || 'http://localhost:1337/graphql'
     }
 }
 

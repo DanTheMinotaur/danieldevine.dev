@@ -18,6 +18,8 @@ ARG NODE_ENV
 
 ENV NODE_ENV "${NODE_ENV}"
 
+RUN cp ".env.${NODE_ENV}" .env
+
 RUN yarn build --mode "$NODE_ENV"
 
 FROM nginx:stable-alpine as production-stage
