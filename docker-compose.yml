@@ -22,7 +22,7 @@ services:
       args: 
         NODE_ENV: ${NODE_ENV}
     # ports:
-      # - '10001:80'
+      # - '10001:8080'
     env_file: 
       frontend.env
     restart: unless-stopped
