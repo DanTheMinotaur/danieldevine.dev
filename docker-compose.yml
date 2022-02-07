@@ -6,8 +6,8 @@ services:
       args: 
         NODE_ENV: ${NODE_ENV}
         PORT: 10000
-    ports:
-      - '10000:10000'
+    # ports:
+    #   - '10000:10000'
     volumes:
       - 'strapi_production_public:/app/public'
     env_file: 
@@ -21,8 +21,8 @@ services:
       context: ./frontend/.
       args: 
         NODE_ENV: ${NODE_ENV}
-    ports:
-      - '9000:80'
+    # ports:
+      # - '10001:80'
     env_file: 
       frontend.env
     restart: unless-stopped
