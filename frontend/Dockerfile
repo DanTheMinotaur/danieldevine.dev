@@ -1,7 +1,7 @@
-FROM node:14 as build-stage
+FROM node:14-alpine as build-stage
 
 # install simple http server for serving static content
-# RUN yarn global add http-server
+RUN yarn global add http-server
 
 WORKDIR /app
 
@@ -22,13 +22,17 @@ RUN cp ".env.${NODE_ENV}" .env
 
 RUN yarn build --mode "$NODE_ENV"
 
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+CMD ["http-server", "/app/dist", "-p", "8080", "--brotli", "--gzip"]
 
-RUN rm /etc/nginx/conf.d/default.conf
+# RUN yarn build --mode "$NODE_ENV"
 
-COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# FROM nginx:stable-alpine as production-stage
+# COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-EXPOSE 8080
+# RUN rm /etc/nginx/conf.d/default.conf
 
-CMD ["nginx", "-g", "daemon off;"] 
+# COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# EXPOSE 8080
+
+# CMD ["nginx", "-g", "daemon off;"] 
