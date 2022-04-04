@@ -4,14 +4,10 @@ services:
     # name: 'frontend-production.danieldevine.dev'
     build:
       context: .
+      args: 
+        NODE_ENV: ${NODE_ENV}
     ports:
-      - '127.0.0.1:8090:8080'
+      - '8081:8080'
     env_file: 
       .env
     restart: unless-stopped
-    networks:
-      - backend
-networks:
-  backend:
-    external:
-      name: backend
