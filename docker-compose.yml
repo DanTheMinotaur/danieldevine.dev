@@ -6,23 +6,16 @@ services:
       args: 
         NODE_ENV: ${NODE_ENV}
         PORT: 10000
-    # ports:
-    #   - '10000:10000'
     volumes:
       - 'strapi_production_public:/app/public'
     env_file: 
       backend.env
-    # external_links:
-    #   - mariadb_server:mysql
     restart: unless-stopped
   vue_frontend:
-    # name: 'frontend-production.danieldevine.dev'
     build:
       context: ./frontend/.
       args: 
         NODE_ENV: ${NODE_ENV}
-    # ports:
-      # - '10001:8080'
     env_file: 
       frontend.env
     restart: unless-stopped
