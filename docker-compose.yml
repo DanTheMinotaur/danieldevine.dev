@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  strapi_backend:
+    build:
+      context: ./backend/.
+      args: 
+        NODE_ENV: ${NODE_ENV}
+        PORT: 10000
+    volumes:
+      - 'strapi_production_public:/app/public'
+    env_file: 
+      backend.env
+    restart: unless-stopped
+  vue_frontend:
+    build:
+      context: ./frontend/.
+      args: 
+        NODE_ENV: ${NODE_ENV}
+    env_file: 
+      frontend.env
+    restart: unless-stopped
+    depends_on:
+      - strapi_backend
+volumes:
+  strapi_production_public:
+    external: true
