@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "cvs",
+  "info": {
+    "name": "CV"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "CV": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.job"
+    }
+  }
+}

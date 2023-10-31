@@ -4,15 +4,13 @@ Vue.js based front end.
 
 ## Pre-requisits
 Node V15
-Python 2.7
+Python 2.7 (to build node-sass)
 
 ## docker-compose
 
 ```shell
 NODE_ENV=production docker-compose up
 ```
-
-
 
 ## Issues
 

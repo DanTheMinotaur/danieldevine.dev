@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_resume_programming_languages",
+  "info": {
+    "name": "programming_languages",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "language": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_resume_jobs",
+  "info": {
+    "name": "Job",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "job_title": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "job_description": {
+      "type": "text"
+    },
+    "job_projects": {
+      "type": "richtext"
+    },
+    "programming_languages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.programming-languages"
+    },
+    "Programs_frameworks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.programs-frameworks"
+    }
+  }
+}
