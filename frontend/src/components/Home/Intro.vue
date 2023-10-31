@@ -17,29 +17,15 @@
         />
       </span>
     </article>
-    <aside>
-      <h2>Things I Do</h2>
-      <section v-for="(group, i) in techGroups" :key="i">
-        <div class="con" v-if="group.technologies.length">
-          <hr>
-          <h3><i class="icon" :class="group.icon" v-if="group.icon"></i>{{group.name}}</h3>
-        </div>
-        <TechnologiesBar :icons="group.technologies"/>
-      </section>
-    </aside>
   </div>
 </template>
 
 <script>
 import gql from 'graphql-tag'
-import TechnologiesBar from './Technologies.vue'
 
 export default {
   name: 'Intro',
   title: 'Home',
-  components: {
-    TechnologiesBar
-  },
   data() {
     return {
       homePage: {},
@@ -60,21 +46,6 @@ export default {
         }
       }
     `,
-    techGroups: gql`
-      query {
-        techGroups {
-          name
-          icon
-          technologies {
-            name
-            image_icon {
-              formats
-              url
-            }
-          }
-        }
-      }
-    `
   }
 };
 </script>
