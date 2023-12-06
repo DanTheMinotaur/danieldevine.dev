@@ -29,7 +29,7 @@
       "repeatable": true,
       "component": "resume.programming-languages"
     },
-    "Programs_frameworks": {
+    "programs_frameworks": {
       "type": "component",
       "repeatable": true,
       "component": "resume.programs-frameworks"
