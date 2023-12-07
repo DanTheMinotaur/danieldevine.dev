@@ -79,7 +79,28 @@ export default {
               }
           }
     `,
-  }
+  },
+  methods: {
+    anchorHashCheck() {
+      const hash = this.$route.hash
+      if (window.location.hash === hash) {
+        
+        const el = document.getElementById(hash.slice(1))
+        if (el) {
+          window.scrollTo({
+            top: el.offsetTop + 200,
+            left: 0,
+            behavior: "smooth"
+          })
+        }
+      }
+    },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.anchorHashCheck()
+    }, 500)
+  },
 };
 </script>
 
