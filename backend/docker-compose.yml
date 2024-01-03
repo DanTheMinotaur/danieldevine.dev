@@ -12,6 +12,10 @@ services:
     volumes:
       - './public:/app/public'
       - './.tmp:/app/.tmp'
+      - './api:/app/api'
+      - './components:/app/components'
+      - './config:/app/config'
+      - './extensions:/app/extensions'
     restart: unless-stopped
     entrypoint: "yarn"
     command: "develop"
