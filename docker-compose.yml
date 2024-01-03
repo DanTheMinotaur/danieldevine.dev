@@ -8,8 +8,8 @@ services:
         PORT: 10000
     volumes:
       - 'strapi_production_public:/app/public'
-    env_file: 
-      backend.env
+    # env_file:
+    #   backend.env
     restart: unless-stopped
   vue_frontend:
     build:

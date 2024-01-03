@@ -2,11 +2,22 @@
 
 A [Strapi(v3)](https://docs-v3.strapi.io/developer-docs/latest/getting-started/introduction.html) app. Provides the CMS and APIS for the frontend. 
 
+
+## Prerequisits
+
+- Requires node v15.14
+
+## Run Strapi in Dev mode
+
 ```shell
-yarn serve
+yarn develop
+
+# with docker
+docker compose up
 ```
 
-## Files
+
+## Data
 
 Prepopulated backend is available to [download here](https://drive.google.com/drive/folders/1dsNqqdlJA5NEeVROMTscTJZ94ld4fqKx?usp=drive_link)
 

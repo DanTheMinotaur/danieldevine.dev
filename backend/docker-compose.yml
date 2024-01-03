@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  dd-backend:
+    container_name: danieldevine.dev-backend
+    build:
+      context: .
+      args: 
+        NODE_ENV: development
+        PORT: 1337
+    ports:
+      - '1337:1337'
+    volumes:
+      - './public:/app/public'
+      - './.tmp:/app/.tmp'
+    restart: unless-stopped
+    entrypoint: "yarn"
+    command: "develop"
