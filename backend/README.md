@@ -23,14 +23,14 @@ Prepopulated backend is available to [download here](https://drive.google.com/dr
 
 ### Restore
 
-Use the [restore_dev.sh](./restore_dev.sh) script to restore a 
+Use the [restore_dev.sh](./scripts/restore_dev.sh) script to restore a 
 
 ```shell
 ./restore_dev.sh "strapi_dev.zip"
 ```
 
 ### Backup
-To backup the current db and files use: [backup_dev.sh](./backup_dev.sh), this will output a zip file into `.backup`.
+To backup the current db and files use: [backup_dev.sh](./scripts/backup_dev.sh), this will output a zip file into `.backup`.
 
 ```shell
 ./backup_dev.sh
