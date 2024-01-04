@@ -1,26 +1,36 @@
 version: '3.3'
 services:
-  strapi_backend:
+  dd-backend:
+    container_name: danieldevine.dev-backend
     build:
       context: ./backend/.
       args: 
-        NODE_ENV: ${NODE_ENV}
-        PORT: 10000
+        NODE_ENV: development
+    ports:
+      - '1337:1337'
     volumes:
-      - 'strapi_production_public:/app/public'
-    # env_file:
-    #   backend.env
+      - './backend/public:/app/public'
+      - './backend/.tmp:/app/.tmp'
+      - './backend/api:/app/api'
+      - './backend/components:/app/components'
+      - './backend/config:/app/config'
+      - './backend/extensions:/app/extensions'
     restart: unless-stopped
-  vue_frontend:
+    entrypoint: "yarn"
+    command: "develop"
+
+  dd-frontend:
+    container_name: danieldevine.dev-frontend
     build:
       context: ./frontend/.
       args: 
-        NODE_ENV: ${NODE_ENV}
-    env_file: 
-      frontend.env
+        NODE_ENV: development
+    volumes:
+      - './frontend/:/app/'
+    ports:
+      - '8080:8080'
     restart: unless-stopped
-    depends_on:
-      - strapi_backend
-volumes:
-  strapi_production_public:
-    external: true
+    entrypoint: "yarn" 
+    command: "serve"
+    depends_on: 
+      - "dd-backend"
