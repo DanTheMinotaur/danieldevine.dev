@@ -1,4 +1,4 @@
-FROM node:14-alpine as build-stage
+FROM node:15-stretch as build-stage
 
 # install simple http server for serving static content
 RUN yarn global add http-server
@@ -19,20 +19,3 @@ ARG NODE_ENV
 ENV NODE_ENV "${NODE_ENV}"
 
 RUN cp ".env.${NODE_ENV}" .env
-
-RUN yarn build --mode "$NODE_ENV"
-
-CMD ["http-server", "/app/dist", "-p", "8080", "--brotli", "--gzip"]
-
-# RUN yarn build --mode "$NODE_ENV"
-
-# FROM nginx:stable-alpine as production-stage
-# COPY --from=build-stage /app/dist /usr/share/nginx/html
-
-# RUN rm /etc/nginx/conf.d/default.conf
-
-# COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# EXPOSE 8080
-
-# CMD ["nginx", "-g", "daemon off;"] 
