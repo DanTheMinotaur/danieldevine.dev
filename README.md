@@ -1,7 +1,28 @@
-# Run with Docker Compose
+# danieldevine.dev
 
-Node env is needed to build the images for each env. 
+Code for my personal website and blog. 
+
+[Strapi V3 Backend](./backend/)
+
+[Vue V2 Frontend](./frontend/)
+
+## Dev Mode
+
+This will run both back and front end with hotswapping enabled. Both services
+will run on their default ports. 
+
+[Frontend: http://localhost:8080/](http://localhost:8080/)
+[Backend: http://localhost:1337](http://localhost:1337)
+
+### Run locally 
 
 ```shell
-NODE_ENV=development docker-compose up --build
+nvm use v15.14.0
+./dev.sh
+```
+
+### Run with Docker Compose
+
+```shell
+docker-compose up
 ```
