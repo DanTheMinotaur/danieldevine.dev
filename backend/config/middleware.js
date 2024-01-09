@@ -4,7 +4,6 @@ module.exports = ({ env }) => ({
 
 function getEnvSettings (env) {
   try {
-    console.log({ ...configs.shared, ...configs[env] })
     return { ...configs.shared, ...configs[env] }
   } catch (err) {
     console.error(err)
