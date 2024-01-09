@@ -19,6 +19,8 @@ RUN cp ".env.${NODE_ENV}" .env
 
 FROM dev AS prod 
 
+ENV NODE_ENV "production"
+
 RUN yarn global add http-server
 
 RUN yarn build
