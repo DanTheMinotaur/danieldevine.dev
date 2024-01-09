@@ -6,6 +6,7 @@ services:
       context: .
       args: 
         NODE_ENV: development
+      target: dev
     ports:
       - '1337:1337'
     volumes:

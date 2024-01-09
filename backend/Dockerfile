@@ -1,4 +1,4 @@
-FROM node:15
+FROM node:15 AS dev
 
 WORKDIR /app
 
@@ -12,3 +12,13 @@ COPY . .
 ARG NODE_ENV
 
 ENV NODE_ENV "${NODE_ENV}"
+
+FROM dev AS prod
+
+ENV NODE_ENV "production"
+
+RUN yarn build
+
+ENTRYPOINT [ "yarn" ]
+
+CMD [ "start" ]

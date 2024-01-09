@@ -6,6 +6,7 @@ services:
       context: ./backend/.
       args: 
         NODE_ENV: development
+      target: dev
     ports:
       - '1337:1337'
     volumes:
@@ -25,6 +26,7 @@ services:
       context: ./frontend/.
       args: 
         NODE_ENV: development
+      target: dev
     volumes:
       - './frontend/:/app/'
     ports:

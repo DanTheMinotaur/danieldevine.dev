@@ -1,7 +1,4 @@
-FROM node:15-stretch as build-stage
-
-# install simple http server for serving static content
-RUN yarn global add http-server
+FROM node:15-stretch AS dev
 
 WORKDIR /app
 
@@ -19,3 +16,13 @@ ARG NODE_ENV
 ENV NODE_ENV "${NODE_ENV}"
 
 RUN cp ".env.${NODE_ENV}" .env
+
+FROM dev AS prod 
+
+RUN yarn global add http-server
+
+RUN yarn build
+
+ENTRYPOINT [ "http-server" ]
+
+CMD ["/app/dist", "-p", "8080", "--brotli", "--gzip"]
