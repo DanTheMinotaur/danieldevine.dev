@@ -4,7 +4,6 @@ Vue.js based front end.
 
 ## Pre-requisits
 Node V15
-Python 2.7 (to build node-sass)
 
 ## docker-compose
 
@@ -13,16 +12,6 @@ NODE_ENV=production docker-compose up
 ```
 
 ## Issues
-
-### node-sass v4
-
-This requires Python 2.7, it needs to be installed somewhere on the path. 
-
-```shell
-pyenv install 2.7.18
-```
-
-This should then be 
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/env/).
