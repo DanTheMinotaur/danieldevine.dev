@@ -26,3 +26,14 @@ nvm use v15.14.0
 ```shell
 docker-compose up
 ```
+
+## Production
+
+Production images are built using:
+
+```
+docker build ./backend/. --tag dd-backend:latest
+docker build ./frontend/. --tag dd-frontend:lates
+```
+
+[More info on deployment](https://github.com/DanTheMinotaur/Servers-and-Stuff)
