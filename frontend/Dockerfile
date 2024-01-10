@@ -29,4 +29,5 @@ RUN yarn build
 
 ENTRYPOINT [ "http-server" ]
 
-CMD ["/app/dist", "-p", "8080", "--brotli", "--gzip"]
+# --proxy option is for handling router history mode when running behind reverse proxy https://stackoverflow.com/questions/69143139/how-do-i-configure-http-server-for-history-mode-in-vue-js-2
+CMD ["/app/dist", "--proxy", "http://localhost:8080?", "-p", "8080", "--brotli", "--gzip"]
