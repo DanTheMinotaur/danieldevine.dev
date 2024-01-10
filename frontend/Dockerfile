@@ -1,7 +1,4 @@
-FROM node:14-alpine as build-stage
-
-# install simple http server for serving static content
-RUN yarn global add http-server
+FROM node:15-stretch AS dev
 
 WORKDIR /app
 
@@ -14,25 +11,23 @@ COPY ./src ./src
 COPY ./public ./public
 COPY *.env* ./
 
-ARG NODE_ENV
+ARG NODE_ENV="development"
 
 ENV NODE_ENV "${NODE_ENV}"
 
 RUN cp ".env.${NODE_ENV}" .env
 
-RUN yarn build --mode "$NODE_ENV"
+FROM dev AS prod 
 
-CMD ["http-server", "/app/dist", "-p", "8080", "--brotli", "--gzip"]
+ENV NODE_ENV "production"
 
-# RUN yarn build --mode "$NODE_ENV"
+RUN cp ".env.production" .env
 
-# FROM nginx:stable-alpine as production-stage
-# COPY --from=build-stage /app/dist /usr/share/nginx/html
+RUN yarn global add http-server
 
-# RUN rm /etc/nginx/conf.d/default.conf
+RUN yarn build
 
-# COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+ENTRYPOINT [ "http-server" ]
 
-# EXPOSE 8080
-
-# CMD ["nginx", "-g", "daemon off;"] 
+# --proxy option is for handling router history mode when running behind reverse proxy https://stackoverflow.com/questions/69143139/how-do-i-configure-http-server-for-history-mode-in-vue-js-2
+CMD ["/app/dist", "--proxy", "http://localhost:8080?", "-p", "8080", "--brotli", "--gzip"]

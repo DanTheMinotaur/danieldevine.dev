@@ -1,4 +1,4 @@
-FROM node:15
+FROM node:15 AS dev
 
 WORKDIR /app
 
@@ -9,16 +9,16 @@ RUN yarn install
 
 COPY . .
 
-ARG NODE_ENV
+ARG NODE_ENV="development"
 
 ENV NODE_ENV "${NODE_ENV}"
 
+FROM dev AS prod
+
+ENV NODE_ENV "production"
+
 RUN yarn build
 
-ARG PORT
+ENTRYPOINT [ "yarn" ]
 
-ENV PORT "${PORT}"
-
-EXPOSE ${PORT}
-
-CMD ["yarn", "start"]
+CMD [ "start" ]

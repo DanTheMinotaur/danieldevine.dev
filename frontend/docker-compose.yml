@@ -1,13 +1,16 @@
 version: '3.3'
 services:
-  vue_production:
-    # name: 'frontend-production.danieldevine.dev'
+  dd-frontend:
+    container_name: danieldevine.dev-frontend
     build:
       context: .
       args: 
-        NODE_ENV: ${NODE_ENV}
+        NODE_ENV: development
+      target: dev
+    volumes:
+      - './:/app/'
     ports:
       - '8080:8080'
-    env_file: 
-      .env
     restart: unless-stopped
+    entrypoint: "yarn" 
+    command: "serve"

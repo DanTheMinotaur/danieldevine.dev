@@ -40,6 +40,9 @@ Vue.mixin({
       for (const size of types) {
         if (size in formats) return formats[size]
       }
+    },
+    dateToStringMonth (date) {
+      return new Date(date).toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
     }
   }
 })
@@ -55,6 +58,10 @@ const router = new VueRouter({
     {
       path: '/',
       components: require('./components/Home/Intro.vue')
+    },
+    {
+      path: '/cv-resume',
+      components: require('./components/Home/CV.vue')
     },
     {
       path: '/contact',

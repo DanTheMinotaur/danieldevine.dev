@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_resume_programs_frameworks",
+  "info": {
+    "name": "programs_frameworks",
+    "icon": "code-branch"
+  },
+  "options": {},
+  "attributes": {
+    "tool": {
+      "type": "string"
+    }
+  }
+}

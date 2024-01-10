@@ -1,10 +1,17 @@
 # frontend
 
+Vue.js based front end. 
+
+## Pre-requisits
+Node V15
+
 ## docker-compose
 
 ```shell
 NODE_ENV=production docker-compose up
 ```
+
+## Issues
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/env/).

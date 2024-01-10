@@ -43,6 +43,11 @@ export default {
   data () {
     return {
       navComponents: {
+        cv: {
+          icon: 'fa-user',
+          width: '45em',
+          link: '/cv-resume'
+        },
         work: {
           icon: 'fa-folder',
           width: '45em',
